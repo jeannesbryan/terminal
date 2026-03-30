@@ -1,5 +1,5 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK - JS CORE v1.1
+   TERMINAL UI FRAMEWORK - JS CORE v1.2
    ========================================= */
 
 const Terminal = {
@@ -70,11 +70,30 @@ const Terminal = {
             btnElement.innerText = "[ SHOW ]";
             btnElement.style.color = "var(--t-green-dim)";
         }
+    },
+
+    // 6. Sistem Splash Screen (Booting Sequence)
+    splash: {
+        close: function() {
+            const splashEl = document.getElementById('t-splash-screen');
+            if (splashEl) {
+                setTimeout(() => {
+                    splashEl.classList.add('hidden');
+                    setTimeout(() => splashEl.remove(), 500);
+                }, 800); // Simulasi delay booting 0.8s
+            }
+        }
     }
 };
 
-// Global Listener: Tutup modal jika klik di luar area
+// Global Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Tutup splash screen otomatis jika ada
+    Terminal.splash.close();
+});
+
 document.addEventListener('click', function(event) {
+    // Tutup modal jika klik di luar area konten
     if (event.target.classList.contains('t-modal')) {
         event.target.classList.remove('is-open');
     }

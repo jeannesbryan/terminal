@@ -3,45 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal UI Framework</title>
+    <title>Terminal UI Framework v1.2</title>
     
     <link rel="icon" type="image/svg+xml" href="terminal-icon.svg">
-    
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="terminal.css">
     
     <style>
-        .hero-section {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .hero-title {
-            font-size: 3rem;
-            color: var(--t-green);
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--t-green-dim);
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2rem; }
-        }
+        .hero-section { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .hero-title { font-size: 3rem; color: var(--t-green); margin-bottom: 10px; text-shadow: 0 0 15px rgba(0, 255, 65, 0.3); }
+        .hero-subtitle { font-size: 1.2rem; color: var(--t-green-dim); max-width: 600px; margin-bottom: 40px; }
+        @media (max-width: 768px) { .hero-title { font-size: 2rem; } }
     </style>
 </head>
 <body class="t-crt">
 
-    <nav class="t-navbar" style="border-bottom: 1px solid var(--t-green-dim);">
-        <div class="t-nav-brand" style="display: flex; align-items: center; gap: 10px;">
+    <div id="t-splash-screen" class="t-splash">
+        <img src="terminal-icon.svg" width="80" class="mb-3" style="filter: drop-shadow(0 0 10px var(--t-green));">
+        <div class="font-bold">> INIT_SYSTEM</div>
+        <div class="text-muted mt-2">Memuat Kernel CSS<span class="t-loading-dots"></span></div>
+    </div>
+
+    <nav class="t-navbar m-0">
+        <div class="t-nav-brand d-flex align-items-center gap-2">
             <img src="terminal-icon.svg" width="24" alt="Logo">
             TERMINAL_UI
         </div>
@@ -51,61 +35,44 @@
         </div>
     </nav>
 
-    <div class="t-container">
+    <div class="t-container mt-4">
         
         <section class="hero-section">
-            <img src="terminal-icon.svg" width="120" class="mb-4" style="filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));">
+            <img src="terminal-icon.svg" width="120" class="mb-4 t-retro-filter" style="filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));">
             <h1 class="hero-title">> TERMINAL UI <span class="t-blink">_</span></h1>
             <p class="hero-subtitle">
-                Kerangka kerja CSS/JS ringan tanpa dependensi. Bangun antarmuka web bertema Retro, Cyberpunk, Bunker, atau Sistem Satelit dalam hitungan menit.
+                Kerangka kerja CSS/JS ringan (v1.2). Kini dilengkapi Kanban Board, Masonry, Thread, dan Utility super lengkap untuk project bergaya Bunker/Satelit Anda.
             </p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <div class="d-flex justify-content-center flex-wrap gap-3">
                 <a href="docs.html" class="t-btn">BACA DOKUMENTASI</a>
                 <a href="https://github.com/jeannesbryan/terminal" class="t-btn danger" target="_blank">FORK REPOSITORY</a>
             </div>
         </section>
 
         <section class="mb-5">
-            <h2 class="t-card-header text-center mb-4">> SPESIFIKASI_SISTEM</h2>
+            <h2 class="t-card-header text-center mb-4">> SPESIFIKASI_SISTEM_V1.2</h2>
             <div class="t-grid t-grid-3">
-                <div class="t-card text-center">
-                    <h3 class="font-bold mb-2">ZERO DEPENDENCY</h3>
-                    <p class="text-muted" style="font-size: 13px;">Tanpa jQuery, tanpa React, tanpa kerumitan. Sepenuhnya dibangun dengan HTML murni, CSS, dan Vanilla JS.</p>
+                <div class="t-card text-center mb-0">
+                    <h3 class="font-bold mb-2">FULL UTILITY</h3>
+                    <p class="text-muted fs-small">Tidak perlu inline CSS. Gunakan class d-flex, w-100, m-0, p-3 seperti pada Bootstrap/Tailwind.</p>
                 </div>
-                <div class="t-card text-center">
-                    <h3 class="font-bold mb-2">RETRO AESTHETIC</h3>
-                    <p class="text-muted" style="font-size: 13px;">Sudah terintegrasi dengan efek <i>scanlines</i> CRT, skema warna phosphor green, dan kursor berkedip ikonik.</p>
+                <div class="t-card text-center mb-0">
+                    <h3 class="font-bold mb-2">LAYOUT MODULES</h3>
+                    <p class="text-muted fs-small">Sudah termasuk struktur Masonry, papan Kanban, dan Thread Connector untuk sistem yang kompleks.</p>
                 </div>
-                <div class="t-card text-center">
-                    <h3 class="font-bold mb-2">23 MODUL AKTIF</h3>
-                    <p class="text-muted" style="font-size: 13px;">Dilengkapi komponen UI komprehensif mulai dari Sistem Grid, Chat Bubbles, hingga Indikator LED.</p>
+                <div class="t-card text-center mb-0">
+                    <h3 class="font-bold mb-2">RETRO FILTER</h3>
+                    <p class="text-muted fs-small">Class t-retro-filter untuk mengubah gambar/avatar menjadi ala layar monokrom jadul secara instan.</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="mb-5">
-            <h2 class="t-card-header text-center mb-4">> INISIALISASI_CEPAT (CDN)</h2>
-            <div class="t-window">
-                <div class="t-window-header">
-                    <span>root@server:~/install#</span>
-                    <span>[ COPY ]</span>
-                </div>
-                <pre class="t-window-body"><code>&lt;!-- Untuk pengguna luar, gunakan CDN jsDelivr di tag &lt;head&gt; --&gt;
-&lt;link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css"&gt;
-
-&lt;!-- Sisipkan JS tepat sebelum penutup &lt;/body&gt; --&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js"&gt;&lt;/script&gt;</code></pre>
             </div>
         </section>
 
         <footer class="text-center text-muted border-dashed p-4 mt-5">
             <p>> KONEKSI TERENKRIPSI. // TERMINAL UI FRAMEWORK.</p>
-            <p style="font-size: 12px;" class="mt-2">Dikembangkan oleh Jeannes Bryan &copy; 2026</p>
+            <p class="fs-small mt-2">Dikembangkan oleh Jeannes Bryan &copy; 2026</p>
         </footer>
 
     </div>
-
     <script src="terminal.js"></script>
 </body>
 </html>
