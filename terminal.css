@@ -1,9 +1,10 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK v1.2.2 (PATCHED)
+   TERMINAL UI FRAMEWORK v1.2.3 (HOTFIX)
    -----------------------------------------
    [CHANGE LOG]
-   v1.2.2: - Increased CRT z-index to show over splash screen.
-           - Removed solid background from t-splash.
+   v1.2.3: - Fixed invalid CSS value in CRT background.
+           - Restored solid background on splash screen.
+           - Ensured CRT z-index (100000) overrides Splash (99999).
    ========================================= */
 
 :root {
@@ -36,11 +37,10 @@ body {
     min-height: 100vh;
 }
 
-/* --- CRT EFFECT --- */
+/* --- CRT EFFECT (HOTFIX) --- */
 body.t-crt::after {
     content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0,  blue, 0.06));
-    /* z-index ditingkatkan agar berada di atas splash screen (z-index 99999) */
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 100000; background-size: 100% 2px, 3px 100%; pointer-events: none;
 }
 
@@ -237,9 +237,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-retro-filter:hover { filter: grayscale(0) sepia(0) hue-rotate(0) contrast(1); }
 
 /* 1. Splash Screen Module */
-.t-splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    /* removed solid background */ background: transparent;
-    z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; }
+.t-splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; }
 .t-splash.hidden { opacity: 0; pointer-events: none; }
 .t-loading-dots::after { content: "."; animation: loadingDots 1.5s infinite steps(4, end); }
 @keyframes loadingDots { 0%, 100% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
