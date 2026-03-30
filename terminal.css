@@ -1,5 +1,9 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK v1.2.1 (PATCHED)
+   TERMINAL UI FRAMEWORK v1.2.2 (PATCHED)
+   -----------------------------------------
+   [CHANGE LOG]
+   v1.2.2: - Increased CRT z-index to show over splash screen.
+           - Removed solid background from t-splash.
    ========================================= */
 
 :root {
@@ -32,14 +36,15 @@ body {
     min-height: 100vh;
 }
 
+/* --- CRT EFFECT --- */
 body.t-crt::after {
     content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0,  blue, 0.06));
+    /* z-index ditingkatkan agar berada di atas splash screen (z-index 99999) */
+    z-index: 100000; background-size: 100% 2px, 3px 100%; pointer-events: none;
 }
 
-/* --- UTILITY CLASSES (LAYOUT & SPACING) --- */
-/* Ditambahkan !important agar tidak bertabrakan dengan elemen lain */
+/* --- UTILITY CLASSES --- */
 .d-flex { display: flex !important; }
 .d-none { display: none !important; }
 .flex-column { flex-direction: column !important; }
@@ -54,19 +59,18 @@ body.t-crt::after {
 .w-100 { width: 100% !important; }
 .h-100 { height: 100% !important; }
 
-/* Margin Utilities */
+/* Margin */
 .m-0 { margin: 0 !important; } .mt-0 { margin-top: 0 !important; } .mb-0 { margin-bottom: 0 !important; }
 .mt-1 { margin-top: 5px !important; } .mt-2 { margin-top: 10px !important; } .mt-3 { margin-top: 15px !important; } .mt-4 { margin-top: 20px !important; } .mt-5 { margin-top: 30px !important; }
 .mb-1 { margin-bottom: 5px !important; } .mb-2 { margin-bottom: 10px !important; } .mb-3 { margin-bottom: 15px !important; } .mb-4 { margin-bottom: 20px !important; } .mb-5 { margin-bottom: 30px !important; }
 .my-1 { margin-top: 5px !important; margin-bottom: 5px !important; } .my-2 { margin-top: 10px !important; margin-bottom: 10px !important; } .my-3 { margin-top: 15px !important; margin-bottom: 15px !important; }
 
-/* Padding Utilities */
-.p-0 { padding: 0 !important; }
-.p-1 { padding: 5px !important; } .p-2 { padding: 10px !important; } .p-3 { padding: 15px !important; } .p-4 { padding: 20px !important; }
+/* Padding */
+.p-0 { padding: 0 !important; } .p-1 { padding: 5px !important; } .p-2 { padding: 10px !important; } .p-3 { padding: 15px !important; } .p-4 { padding: 20px !important; }
 .py-1 { padding-top: 5px !important; padding-bottom: 5px !important; } .py-2 { padding-top: 10px !important; padding-bottom: 10px !important; } .py-3 { padding-top: 15px !important; padding-bottom: 15px !important; }
 .px-1 { padding-left: 5px !important; padding-right: 5px !important; } .px-2 { padding-left: 10px !important; padding-right: 10px !important; } .px-3 { padding-left: 15px !important; padding-right: 15px !important; }
 
-/* Typography Utilities */
+/* Typography */
 .text-center { text-align: center !important; } .text-right { text-align: right !important; } .text-left { text-align: left !important; }
 .text-muted { color: var(--t-green-dim) !important; } .text-danger { color: var(--t-red) !important; } .text-success { color: var(--t-green) !important; }
 .font-bold { font-weight: bold !important; } .fw-normal { font-weight: normal !important; } .fs-small { font-size: 11px !important; }
@@ -82,8 +86,7 @@ body.t-crt::after {
 .t-side-panel { flex: 1; min-width: 250px; }
 .t-center-screen { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; width: 100%; position: relative; }
 
-/* --- BOX SIZING MODULE (BARU) --- */
-/* Mencegah kotak melebar seukuran layar */
+/* Box Sizing */
 .t-center-box { width: 100%; max-width: 400px; margin: 0 auto; }
 .t-box-md { max-width: 650px; }
 .t-box-lg { max-width: 850px; }
@@ -130,7 +133,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-radiomark::before { content: "( )"; margin-right: 8px; font-family: inherit; font-weight: bold; }
 .t-radio-label input:checked ~ .t-radiomark::before { content: "(*)"; color: var(--t-green); }
 
-/* --- ACTION GRID MODULE (BARU) --- */
+/* Action Grid Responsif */
 .t-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin: 0 auto; }
 @media (max-width: 600px) { .t-action-grid { grid-template-columns: 1fr; } }
 
@@ -234,7 +237,9 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-retro-filter:hover { filter: grayscale(0) sepia(0) hue-rotate(0) contrast(1); }
 
 /* 1. Splash Screen Module */
-.t-splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-base); z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; }
+.t-splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    /* removed solid background */ background: transparent;
+    z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; }
 .t-splash.hidden { opacity: 0; pointer-events: none; }
 .t-loading-dots::after { content: "."; animation: loadingDots 1.5s infinite steps(4, end); }
 @keyframes loadingDots { 0%, 100% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
