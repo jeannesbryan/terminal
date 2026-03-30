@@ -1,5 +1,5 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK - JS CORE
+   TERMINAL UI FRAMEWORK - JS CORE v1.1
    ========================================= */
 
 const Terminal = {
@@ -20,11 +20,9 @@ const Terminal = {
         const wrapper = btnElement.closest('.t-tabs-wrapper');
         if (!wrapper) return;
         
-        // Matikan semua tab yang sedang aktif di grup ini
         wrapper.querySelectorAll('.t-tab-btn').forEach(btn => btn.classList.remove('active'));
         wrapper.querySelectorAll('.t-tab-content').forEach(content => content.classList.remove('active'));
         
-        // Aktifkan tab yang diklik
         btnElement.classList.add('active');
         wrapper.querySelector('#' + targetId).classList.add('active');
     },
@@ -41,27 +39,22 @@ const Terminal = {
         const toast = document.createElement('div');
         toast.className = `t-toast ${type === 'danger' ? 'danger' : ''}`;
         toast.innerHTML = `> ${message}`;
-
         container.appendChild(toast);
 
-        // Hapus otomatis setelah durasi habis
         setTimeout(() => {
             toast.style.animation = 'fadeOut 0.3s forwards';
             setTimeout(() => toast.remove(), 300);
         }, duration);
-    }
+    },
 
     // 4. Sistem Accordion
     accordion: function(btnElement) {
-        // Toggle class active di tombol
         btnElement.classList.toggle('active');
-        
-        // Cari elemen konten persis di bawah tombol tersebut
         const content = btnElement.nextElementSibling;
         if (content && content.classList.contains('t-accordion-content')) {
             content.classList.toggle('active');
         }
-    }
+    },
 
     // 5. Sistem Input Aksi (Toggle Show/Hide)
     toggleInputAction: function(inputId, btnElement) {

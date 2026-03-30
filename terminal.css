@@ -1,25 +1,26 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK - ESSENTIALS
+   TERMINAL UI FRAMEWORK v1.1
    ========================================= */
 
 :root {
-    --bg-base: #030303;      /* Latar belakang utama (Sangat gelap) */
-    --bg-surface: #0a0a0a;   /* Latar belakang untuk Card/Modal */
-    --t-green: #00ff41;      /* Hijau Terminal Utama */
-    --t-green-dim: #008f11;  /* Hijau Redup untuk border/aksen */
-    --t-red: #ff003c;        /* Merah untuk Danger/Alert */
+    --bg-base: #030303;
+    --bg-surface: #0a0a0a;
+    --t-green: #00ff41;
+    --t-green-dim: #008f11;
+    --t-red: #ff003c;
     --t-font: 'JetBrains Mono', 'Courier New', monospace;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* --- 1. BACKGROUND & TYPOGRAPHY --- */
 body {
     background-color: var(--bg-base);
+    
+    /* --- EFEK TITIK-TITIK (DOT MATRIX BACKGROUND) --- */
+    background-image: radial-gradient(rgba(0, 255, 65, 0.08) 1px, transparent 1px);
+    background-size: 18px 18px; /* Mengatur jarak antar titik */
+    background-position: 0 0;
+    
     color: var(--t-green);
     font-family: var(--t-font);
     font-size: 14px;
@@ -27,173 +28,110 @@ body {
     overflow-x: hidden;
 }
 
-/* Efek Layar CRT (Background persis seperti di Repo) */
-body::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 9999;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none; /* Agar tidak menghalangi klik */
+body.t-crt::after {
+    content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none;
 }
 
-/* --- 2. LAYOUT & CONTAINERS --- */
-.t-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+/* --- LAYOUT UTAMA --- */
+.t-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; }
+.t-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 768px) { .t-grid-2 { grid-template-columns: 1fr 1fr; } .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
 
-.t-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--t-green-dim);
-    padding: 20px;
-    margin-bottom: 20px;
-}
+/* Layout Sidebar Asimetris (Relay) */
+.t-grid-layout { display: flex; flex-wrap: wrap; gap: 20px; }
+.t-main-panel { flex: 3; min-width: 300px; }
+.t-side-panel { flex: 1; min-width: 250px; }
 
-.t-card-header {
-    border-bottom: 1px dashed var(--t-green-dim);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+/* Center Screen (Login/Install) */
+.t-center-screen { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.t-center-box { width: 100%; max-width: 400px; text-align: center; }
 
-/* --- 3. BUTTONS --- */
-.t-btn {
-    display: inline-block;
-    background: transparent;
-    color: var(--t-green);
-    border: 1px solid var(--t-green);
-    padding: 8px 16px;
-    font-family: inherit;
-    font-size: 14px;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
+/* --- KOMPONEN DASAR --- */
+.t-navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px dashed var(--t-green-dim); background: var(--bg-surface); margin-bottom: 20px; }
+.t-nav-brand { font-weight: bold; color: var(--t-green); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.t-nav-menu { display: flex; gap: 15px; }
+.t-nav-menu a { color: var(--t-green-dim); text-decoration: none; font-size: 13px; transition: 0.2s; }
+.t-nav-menu a:hover { color: var(--t-green); text-shadow: 0 0 5px var(--t-green); }
 
-.t-btn:hover {
-    background: var(--t-green);
-    color: var(--bg-base);
-}
+.t-card { background-color: var(--bg-surface); border: 1px solid var(--t-green-dim); padding: 20px; margin-bottom: 20px; }
+.t-card-header { border-bottom: 1px dashed var(--t-green-dim); padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; }
 
-.t-btn.danger {
-    color: var(--t-red);
-    border-color: var(--t-red);
-}
+/* --- TOMBOL & FORM --- */
+.t-btn { display: inline-block; background: transparent; color: var(--t-green); border: 1px solid var(--t-green); padding: 8px 16px; font-family: inherit; font-size: 14px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s ease; }
+.t-btn:hover { background: var(--t-green); color: var(--bg-base); }
+.t-btn.danger { color: var(--t-red); border-color: var(--t-red); }
+.t-btn.danger:hover { background: var(--t-red); color: #fff; }
 
-.t-btn.danger:hover {
-    background: var(--t-red);
-    color: #fff;
-}
+.t-input { width: 100%; background: transparent; color: var(--t-green); border: none; border-bottom: 1px solid var(--t-green-dim); padding: 8px 0; font-family: inherit; font-size: 14px; outline: none; margin-bottom: 15px; }
+.t-input:focus { border-bottom-color: var(--t-green); box-shadow: 0 1px 0 var(--t-green); }
 
-/* --- 4. FORMS & INPUTS --- */
-.t-input {
-    width: 100%;
-    background: transparent;
-    color: var(--t-green);
-    border: none;
-    border-bottom: 1px solid var(--t-green-dim);
-    padding: 8px 0;
-    font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    margin-bottom: 15px;
-}
+.t-input-group { position: relative; display: flex; width: 100%; margin-bottom: 15px; }
+.t-input-group .t-input { padding-right: 70px; margin-bottom: 0; }
+.t-input-action-btn { position: absolute; right: 0; top: 0; height: 100%; background: transparent; border: none; border-left: 1px dashed var(--t-green-dim); color: var(--t-green-dim); font-family: inherit; font-size: 11px; cursor: pointer; text-transform: uppercase; padding: 0 10px; transition: 0.2s; }
+.t-input-action-btn:hover { color: var(--t-green); background: rgba(0, 255, 65, 0.05); }
 
-.t-input:focus {
-    border-bottom-color: var(--t-green);
-    box-shadow: 0 1px 0 var(--t-green);
-}
+/* Textarea & Select */
+.t-textarea { width: 100%; background: transparent; color: var(--t-green); border: 1px solid var(--t-green-dim); padding: 10px; font-family: inherit; font-size: 14px; outline: none; margin-bottom: 15px; resize: vertical; transition: 0.2s; }
+.t-textarea:focus { border-color: var(--t-green); box-shadow: 0 0 8px rgba(0, 255, 65, 0.2); }
+.t-select { width: 100%; background: var(--bg-surface); color: var(--t-green); border: 1px solid var(--t-green-dim); padding: 8px 10px; font-family: inherit; font-size: 14px; outline: none; cursor: pointer; appearance: none; margin-bottom: 15px; }
+.t-select:focus { border-color: var(--t-green); }
+.t-select option { background: var(--bg-base); color: var(--t-green); }
 
-/* --- 5. TABLES --- */
-.t-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
+/* Checkbox & Radio */
+.t-checkbox-label, .t-radio-label { display: flex; align-items: center; cursor: pointer; font-size: 13px; margin-bottom: 10px; color: var(--t-green-dim); transition: 0.2s; }
+.t-checkbox-label:hover, .t-radio-label:hover { color: var(--t-green); }
+.t-checkbox-label input, .t-radio-label input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+.t-checkmark::before { content: "[ ]"; margin-right: 8px; font-family: inherit; font-weight: bold; }
+.t-checkbox-label input:checked ~ .t-checkmark::before { content: "[X]"; color: var(--t-green); }
+.t-radiomark::before { content: "( )"; margin-right: 8px; font-family: inherit; font-weight: bold; }
+.t-radio-label input:checked ~ .t-radiomark::before { content: "(*)"; color: var(--t-green); }
 
-.t-table th, .t-table td {
-    border: 1px solid var(--t-green-dim);
-    padding: 10px;
-    text-align: left;
-}
+/* --- TABEL & DATA --- */
+.t-table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--t-green-dim); margin-bottom: 20px; }
+.t-table { width: 100%; border-collapse: collapse; white-space: nowrap; }
+.t-table th, .t-table td { border: 1px solid var(--t-green-dim); padding: 10px; text-align: left; }
+.t-table th { background-color: rgba(0, 255, 65, 0.1); text-transform: uppercase; }
 
-.t-table th {
-    background-color: rgba(0, 255, 65, 0.1);
-    text-transform: uppercase;
-}
+/* List Group */
+.t-list-group { display: flex; flex-direction: column; border: 1px dashed var(--t-green-dim); margin-bottom: 20px; }
+.t-list-item { padding: 15px; border-bottom: 1px dashed var(--t-green-dim); cursor: pointer; text-decoration: none; color: var(--t-green-dim); transition: 0.2s; position: relative; }
+.t-list-item:last-child { border-bottom: none; }
+.t-list-item:hover, .t-list-item.active { background: rgba(255, 0, 60, 0.03); color: var(--t-red); border-left: 3px solid var(--t-red); padding-left: 12px; }
+.t-list-item-title { font-weight: bold; font-size: 14px; margin-bottom: 3px; display: block; }
+.t-list-item-subtitle { font-size: 11px; opacity: 0.8; display: block; }
 
-/* --- 6. MODAL --- */
-.t-modal {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(3px);
-    display: none; /* Hidden by default */
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-}
+/* --- CHAT BUBBLES --- */
+.t-chat-container { display: flex; flex-direction: column; gap: 15px; padding: 10px; }
+.t-bubble { max-width: 80%; padding: 12px; border: 1px dashed; position: relative; font-size: 13px; line-height: 1.4; word-wrap: break-word; }
+.t-bubble-meta { font-size: 10px; color: var(--t-green-dim); margin-bottom: 5px; display: block; }
+.t-bubble-them { align-self: flex-start; border-color: var(--t-green-dim); background: rgba(0, 255, 65, 0.05); color: var(--t-green); }
+.t-bubble-me { align-self: flex-end; border-color: var(--t-red); background: rgba(255, 0, 60, 0.05); color: var(--t-red); text-align: right; }
 
-.t-modal.is-open {
-    display: flex;
-}
-
-.t-modal-content {
-    background: var(--bg-surface);
-    border: 1px solid var(--t-green);
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-}
-
-/* --- 7. RESPONSIVE UTILITIES --- */
-
-/* 1. Responsive Table (Bisa di-scroll ke kanan/kiri di HP) */
-.t-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Efek scroll halus di iOS */
-    border: 1px solid var(--t-green-dim); /* Pindahkan border luar ke sini */
-}
-
-.t-table-wrapper .t-table {
-    margin-bottom: 0;
-    border: none;
-    white-space: nowrap; /* Mencegah teks tabel bertumpuk ke bawah */
-}
-
-/* 2. Responsive Grid Sederhana */
-.t-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Default HP: elemen menumpuk atas-bawah */
-    gap: 20px;
-}
-
-/* Jika layar lebih besar dari tablet (768px), ubah jadi berdampingan */
-@media (min-width: 768px) {
-    .t-grid-2 { grid-template-columns: 1fr 1fr; } /* 2 Kolom */
-    .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; } /* 3 Kolom */
-}
-
-/* --- 8. BADGES (Lencana) --- */
+/* --- INDIKATOR & ALERT --- */
 .t-badge { display: inline-block; padding: 2px 8px; font-size: 11px; font-weight: bold; text-transform: uppercase; background: rgba(0, 255, 65, 0.1); color: var(--t-green); border: 1px solid var(--t-green-dim); }
 .t-badge.danger { background: rgba(255, 0, 60, 0.1); color: var(--t-red); border-color: var(--t-red); }
 .t-badge.warning { background: rgba(255, 255, 0, 0.1); color: #ffff00; border-color: #b3b300; }
 
-/* --- 9. PROGRESS BAR --- */
+.t-led-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; position: relative; }
+.t-led-green { background-color: var(--t-green); box-shadow: 0 0 10px var(--t-green), 0 0 5px #fff; animation: t-led-pulse 2s infinite; }
+.t-led-red { background-color: var(--t-red); box-shadow: 0 0 10px var(--t-red); animation: t-led-pulse-danger 2s infinite; }
+@keyframes t-led-pulse { 0% { box-shadow: 0 0 5px var(--t-green); } 50% { box-shadow: 0 0 15px var(--t-green), 0 0 5px #fff; } 100% { box-shadow: 0 0 5px var(--t-green); } }
+@keyframes t-led-pulse-danger { 0% { box-shadow: 0 0 5px var(--t-red); } 50% { box-shadow: 0 0 15px var(--t-red); } 100% { box-shadow: 0 0 5px var(--t-red); } }
+
 .t-progress-bg { width: 100%; background: var(--bg-base); border: 1px solid var(--t-green-dim); height: 20px; position: relative; overflow: hidden; margin-bottom: 15px; }
 .t-progress-bar { height: 100%; background: var(--t-green-dim); width: 0%; transition: width 0.5s ease; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--bg-base); font-weight: bold; }
 
-/* --- 10. TABS (Navigasi Konten) --- */
+.t-alert { padding: 15px; border: 1px solid var(--t-green-dim); background: rgba(0, 255, 65, 0.05); margin-bottom: 15px; font-size: 13px; border-left: 4px solid var(--t-green); }
+.t-alert.warning { border-color: #b3b300; background: rgba(255, 255, 0, 0.05); color: #ffff00; border-left-color: #ffff00; }
+.t-alert.danger { border-color: var(--t-red); background: rgba(255, 0, 60, 0.05); color: var(--t-red); border-left-color: var(--t-red); }
+
+.t-spinner { display: inline-block; font-family: inherit; font-weight: bold; color: var(--t-green); }
+.t-spinner::after { content: "|"; animation: terminal-spin 0.8s infinite step-end; }
+@keyframes terminal-spin { 0% { content: "|"; } 25% { content: "/"; } 50% { content: "-"; } 75% { content: "\\"; } }
+
+/* --- NAVIGASI LANJUTAN & INTERAKTIF --- */
 .t-tabs-wrapper { margin-bottom: 20px; }
 .t-tabs-header { display: flex; border-bottom: 1px dashed var(--t-green-dim); margin-bottom: 15px; overflow-x: auto; }
 .t-tab-btn { background: none; border: none; color: var(--t-green-dim); padding: 8px 15px; cursor: pointer; font-family: inherit; font-size: 13px; text-transform: uppercase; white-space: nowrap; transition: 0.2s; }
@@ -203,7 +141,23 @@ body::after {
 .t-tab-content.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-/* --- 11. TOASTS / ALERTS (Sistem Notifikasi) --- */
+.t-accordion { border: 1px solid var(--t-green-dim); margin-bottom: 10px; }
+.t-accordion-btn { width: 100%; background: transparent; color: var(--t-green-dim); border: none; padding: 12px 15px; text-align: left; cursor: pointer; font-family: inherit; font-size: 13px; text-transform: uppercase; transition: 0.2s; display: flex; justify-content: space-between; }
+.t-accordion-btn:hover, .t-accordion-btn.active { color: var(--t-green); background: rgba(0, 255, 65, 0.05); }
+.t-accordion-btn::before { content: "[+]"; margin-right: 10px; }
+.t-accordion-btn.active::before { content: "[-]"; }
+.t-accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; font-size: 13px; color: var(--t-green-dim); }
+.t-accordion-content.active { padding: 15px; max-height: 500px; border-top: 1px dashed var(--t-green-dim); overflow-y: auto; }
+
+[data-tooltip] { position: relative; cursor: help; border-bottom: 1px dotted var(--t-green-dim); }
+[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 5px 10px; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 0 10px rgba(0,255,65,0.2); z-index: 1000; }
+[data-tooltip]:hover::after { opacity: 1; bottom: 130%; }
+
+/* --- POPUPS (MODAL & TOAST) --- */
+.t-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 10000; }
+.t-modal.is-open { display: flex; }
+.t-modal-content { background: var(--bg-surface); border: 1px solid var(--t-green); width: 90%; max-width: 500px; padding: 20px; box-shadow: 0 0 15px rgba(0, 255, 65, 0.1); }
+
 .t-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
 .t-toast { background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 12px 20px; box-shadow: 0 0 15px rgba(0,255,65,0.15); animation: slideIn 0.3s forwards; min-width: 250px; font-size: 13px; pointer-events: auto; }
 .t-toast.danger { border-color: var(--t-red); color: var(--t-red); box-shadow: 0 0 15px rgba(255,0,60,0.15); }
@@ -211,103 +165,41 @@ body::after {
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; transform: translateY(10px); } }
 
 /* =========================================
-   12. NAVBAR (SYSTEM STATUS BAR)
-   ========================================= */
-.t-navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px dashed var(--t-green-dim); background: var(--bg-surface); margin-bottom: 20px; }
-.t-nav-brand { font-weight: bold; color: var(--t-green); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
-.t-nav-menu { display: flex; gap: 15px; }
-.t-nav-menu a { color: var(--t-green-dim); text-decoration: none; font-size: 13px; transition: 0.2s; }
-.t-nav-menu a:hover { color: var(--t-green); text-shadow: 0 0 5px var(--t-green); }
-
-/* =========================================
-   13. FORM LANJUTAN (CHECKBOX & RADIO)
-   ========================================= */
-.t-checkbox-label, .t-radio-label { display: flex; align-items: center; cursor: pointer; font-size: 13px; margin-bottom: 10px; color: var(--t-green-dim); transition: 0.2s; }
-.t-checkbox-label:hover, .t-radio-label:hover { color: var(--t-green); }
-/* Sembunyikan input aslinya */
-.t-checkbox-label input, .t-radio-label input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-/* Kotak Checkbox kustom ala Terminal: [ ] */
-.t-checkmark::before { content: "[ ]"; margin-right: 8px; font-family: var(--t-font); font-weight: bold; }
-.t-checkbox-label input:checked ~ .t-checkmark::before { content: "[X]"; color: var(--t-green); }
-/* Bulatan Radio kustom ala Terminal: ( ) */
-.t-radiomark::before { content: "( )"; margin-right: 8px; font-family: var(--t-font); font-weight: bold; }
-.t-radio-label input:checked ~ .t-radiomark::before { content: "(*)"; color: var(--t-green); }
-
-/* =========================================
-   14. ALERTS / CALLOUTS (Pesan Statis)
-   ========================================= */
-.t-alert { padding: 15px; border: 1px solid var(--t-green-dim); background: rgba(0, 255, 65, 0.05); margin-bottom: 15px; font-size: 13px; border-left: 4px solid var(--t-green); }
-.t-alert.warning { border-color: #b3b300; background: rgba(255, 255, 0, 0.05); color: #ffff00; border-left-color: #ffff00; }
-.t-alert.danger { border-color: var(--t-red); background: rgba(255, 0, 60, 0.05); color: var(--t-red); border-left-color: var(--t-red); }
-
-/* =========================================
-   15. ANIMASI LOADING (TERMINAL SPINNER)
-   ========================================= */
-.t-spinner { display: inline-block; font-family: var(--t-font); font-weight: bold; color: var(--t-green); }
-.t-spinner::after { content: "|"; animation: terminal-spin 0.8s infinite step-end; }
-@keyframes terminal-spin { 0% { content: "|"; } 25% { content: "/"; } 50% { content: "-"; } 75% { content: "\\"; } }
-
-/* =========================================
-   16. ACCORDION (PANEL BUKA-TUTUP)
-   ========================================= */
-.t-accordion { border: 1px solid var(--t-green-dim); margin-bottom: 10px; }
-.t-accordion-btn { width: 100%; background: transparent; color: var(--t-green-dim); border: none; padding: 12px 15px; text-align: left; cursor: pointer; font-family: var(--t-font); font-size: 13px; text-transform: uppercase; transition: 0.2s; display: flex; justify-content: space-between; }
-.t-accordion-btn:hover, .t-accordion-btn.active { color: var(--t-green); background: rgba(0, 255, 65, 0.05); }
-.t-accordion-btn::before { content: "[+]"; margin-right: 10px; }
-.t-accordion-btn.active::before { content: "[-]"; }
-.t-accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; font-size: 13px; color: var(--t-green-dim); }
-.t-accordion-content.active { padding: 15px; max-height: 500px; border-top: 1px dashed var(--t-green-dim); }
-
-/* =========================================
-   17. TOOLTIPS (INFO MELAYANG)
-   ========================================= */
-[data-tooltip] { position: relative; cursor: help; border-bottom: 1px dotted var(--t-green-dim); }
-[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 5px 10px; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 0 10px rgba(0,255,65,0.2); z-index: 1000; }
-[data-tooltip]:hover::after { opacity: 1; bottom: 130%; }
-
-/* =========================================
-   INTEGRATION PATCH: RELAY STATION SPECIFIC
+   NEW FITUR V1.1 (UTILITY & COMPONENTS)
    ========================================= */
 
-/* --- 18. LAYOUT ASIMETRIS (SIDEBAR) --- */
-/* Kebalikan dari grid simetris, ini membagi 70% utama : 30% sidebar */
-.t-grid-layout { display: flex; flex-wrap: wrap; gap: 20px; }
-.t-main-panel { flex: 3; min-width: 300px; } /* Area konten besar */
-.t-side-panel { flex: 1; min-width: 250px; } /* Area menu/daftar kecil */
+/* --- UTILITY CLASSES --- */
+.mt-1 { margin-top: 5px; } .mt-2 { margin-top: 10px; } .mt-3 { margin-top: 15px; } .mt-4 { margin-top: 20px; } .mt-5 { margin-top: 30px; }
+.mb-1 { margin-bottom: 5px; } .mb-2 { margin-bottom: 10px; } .mb-3 { margin-bottom: 15px; } .mb-4 { margin-bottom: 20px; } .mb-5 { margin-bottom: 30px; }
+.p-1 { padding: 5px; } .p-2 { padding: 10px; } .p-3 { padding: 15px; } .p-4 { padding: 20px; }
 
-/* --- 19. CHAT UI (MESSAGE BUBBLES) --- */
-.t-chat-container { display: flex; flex-direction: column; gap: 15px; padding: 10px; height: 100%; }
-.t-bubble { max-width: 80%; padding: 12px; border: 1px dashed; position: relative; font-size: 13px; line-height: 1.4; word-wrap: break-word; }
-.t-bubble-meta { font-size: 10px; color: var(--t-green-dim); margin-bottom: 5px; display: block; }
+.text-center { text-align: center; } 
+.text-right { text-align: right; } 
+.text-left { text-align: left; }
+.text-muted { color: var(--t-green-dim); } 
+.text-danger { color: var(--t-red); } 
+.text-success { color: var(--t-green); }
+.font-bold { font-weight: bold; }
 
-/* Pesan dari 'Luar' (Pihak Lain) - Hijau */
-.t-bubble-them { align-self: flex-start; border-color: var(--t-green-dim); background: rgba(0, 255, 65, 0.05); color: var(--t-green); }
+/* Animasi Kedip Standar */
+.t-blink { animation: t-blink-anim 1s step-end infinite; }
+@keyframes t-blink-anim { 50% { opacity: 0; } }
 
-/* Pesan dari 'Saya' (Me) - Merah (Khas LaserLink di Relay) */
-.t-bubble-me { align-self: flex-end; border-color: var(--t-red); background: rgba(255, 0, 60, 0.05); color: var(--t-red); text-align: right; }
+/* --- TERMINAL WINDOW (CODE BLOCK) --- */
+.t-window { border: 1px solid var(--t-green-dim); margin-bottom: 20px; background: var(--bg-base); }
+.t-window-header { background: var(--bg-surface); border-bottom: 1px dashed var(--t-green-dim); padding: 5px 10px; font-size: 12px; color: var(--t-green-dim); display: flex; justify-content: space-between; align-items: center; }
+.t-window-body { padding: 15px; overflow-x: auto; font-family: inherit; font-size: 13px; color: var(--t-green); margin: 0; }
+.t-window-body code { white-space: pre; }
 
-/* --- 20. LED STATUS (GLOWING INDICATORS) --- */
-.t-led-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; position: relative; }
-/* Warna Hijau (Online/Aman) */
-.t-led-green { background-color: var(--t-green); box-shadow: 0 0 10px var(--t-green), 0 0 5px #fff; animation: t-led-pulse 2s infinite; }
-/* Warna Merah (Offline/Danger) */
-.t-led-red { background-color: var(--t-red); box-shadow: 0 0 10px var(--t-red); animation: t-led-pulse-danger 2s infinite; }
+/* --- DATA NAVIGATION (BREADCRUMB & PAGINATION) --- */
+.t-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 13px; color: var(--t-green-dim); }
+.t-breadcrumb li { display: flex; align-items: center; }
+.t-breadcrumb li::after { content: "/"; margin-left: 8px; color: var(--t-green-dim); }
+.t-breadcrumb li:last-child::after { content: ""; margin: 0; }
+.t-breadcrumb a { color: var(--t-green-dim); text-decoration: none; transition: 0.2s; }
+.t-breadcrumb a:hover { color: var(--t-green); text-shadow: 0 0 5px var(--t-green); }
+.t-breadcrumb li.active { color: var(--t-green); font-weight: bold; }
 
-@keyframes t-led-pulse { 0% { box-shadow: 0 0 5px var(--t-green); } 50% { box-shadow: 0 0 15px var(--t-green), 0 0 5px #fff; } 100% { box-shadow: 0 0 5px var(--t-green); } }
-@keyframes t-led-pulse-danger { 0% { box-shadow: 0 0 5px var(--t-red); } 50% { box-shadow: 0 0 15px var(--t-red); } 100% { box-shadow: 0 0 5px var(--t-red); } }
-
-/* --- 21. LIST GROUP (CONTACTS/INBOX) --- */
-.t-list-group { display: flex; flex-direction: column; border: 1px dashed var(--t-green-dim); }
-.t-list-item { padding: 15px; border-bottom: 1px dashed var(--t-green-dim); cursor: pointer; text-decoration: none; color: var(--t-green-dim); transition: 0.2s; position: relative; }
-.t-list-item:last-child { border-bottom: none; }
-
-/* Hover state - Merah Danger (Khas Relay saat hover kontak) */
-.t-list-item:hover, .t-list-item.active { background: rgba(255, 0, 60, 0.03); color: var(--t-red); border-left: 3px solid var(--t-red); padding-left: 12px; }
-.t-list-item-title { font-weight: bold; font-size: 14px; margin-bottom: 3px; display: block; }
-.t-list-item-subtitle { font-size: 11px; opacity: 0.8; }
-
-/* --- 22. INPUT GROUP (DENGAN AKSI TOGGLE) --- */
-.t-input-group { position: relative; display: flex; width: 100%; }
-.t-input-group .t-input { padding-right: 70px; /* Ruang untuk tombol */ margin-bottom: 0; }
-.t-input-action-btn { position: absolute; right: 0; top: 0; height: 100%; background: transparent; border: none; border-left: 1px dashed var(--t-green-dim); color: var(--t-green-dim); font-family: var(--t-font); font-size: 11px; cursor: pointer; text-transform: uppercase; padding: 0 10px; transition: 0.2s; }
-.t-input-action-btn:hover { color: var(--t-green); background: rgba(0, 255, 65, 0.05); }
+.t-pagination { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 15px; }
+.t-page-btn { background: transparent; border: 1px solid var(--t-green-dim); color: var(--t-green-dim); padding: 6px 12px; font-family: inherit; font-size: 12px; cursor: pointer; text-decoration: none; transition: 0.2s; }
+.t-page-btn:hover, .t-page-btn.active { border-color: var(--t-green); color: var(--t-green); background: rgba(0,255,65,0.05); }
