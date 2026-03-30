@@ -1,5 +1,10 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK - JS CORE v1.2
+   TERMINAL UI FRAMEWORK - JS CORE v1.2.1
+   -----------------------------------------
+   [CHANGE LOG]
+   v1.2.1: - Splash screen query selector changed to class (.t-splash) 
+             for better flexibility across different HTML IDs.
+           - Added custom delay parameter for splash.close()
    ========================================= */
 
 const Terminal = {
@@ -74,13 +79,15 @@ const Terminal = {
 
     // 6. Sistem Splash Screen (Booting Sequence)
     splash: {
-        close: function() {
-            const splashEl = document.getElementById('t-splash-screen');
+        // Parameter delay sekarang bisa diatur (default 800ms)
+        close: function(customDelay = 800) {
+            // Menggunakan querySelector berdasarkan class agar universal
+            const splashEl = document.querySelector('.t-splash');
             if (splashEl) {
                 setTimeout(() => {
                     splashEl.classList.add('hidden');
-                    setTimeout(() => splashEl.remove(), 500);
-                }, 800); // Simulasi delay booting 0.8s
+                    setTimeout(() => splashEl.remove(), 500); // Tunggu animasi CSS selesai
+                }, customDelay); 
             }
         }
     }
@@ -88,7 +95,7 @@ const Terminal = {
 
 // Global Listeners
 document.addEventListener('DOMContentLoaded', function() {
-    // Tutup splash screen otomatis jika ada
+    // Tutup splash screen otomatis jika ada di halaman
     Terminal.splash.close();
 });
 
