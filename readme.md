@@ -1,12 +1,12 @@
-# 📟 Terminal UI Framework
+# 📡 Terminal UI Framework
 
 > Kerangka kerja CSS/JS ringan tanpa *dependency* untuk membangun antarmuka web bertema Retro, Cyberpunk, Bunker, atau Terminal Satelit.
 
-**Terminal UI** diekstrak dari proyek *Bunker OS* dan dioptimalkan secara khusus untuk ekosistem **Relay Station**. Framework ini menawarkan desain dengan tingkat kontras tinggi, efek visual CRT (layar tabung), dan 22+ komponen modular yang sangat mudah diimplementasikan.
+**Terminal UI** diekstrak dari proyek *Bunker OS* dan dioptimalkan secara khusus untuk ekosistem **Relay Station** dengan filosofi *Continuous Improvement*. Framework ini menawarkan desain dengan tingkat kontras tinggi, efek visual CRT (layar tabung), dan puluhan komponen modular yang sangat mudah diimplementasikan.
 
 ---
 
-## 🚀 Fitur Utama
+## ⚙️ Fitur Utama
 
 - **Zero Dependencies:** Tidak butuh jQuery, Bootstrap, atau React. Murni HTML, CSS, dan Vanilla JS.
 - **Sangat Ringan & Cepat:** Disajikan secara global melalui CDN jsDelivr.
@@ -16,26 +16,26 @@
 
 ---
 
-## 🛠 Instalasi via CDN (Disarankan)
+## 🔌 Instalasi via CDN (Disarankan)
 
 Cara tercepat menggunakan Terminal UI adalah melalui CDN jsDelivr. Anda tidak perlu mengunduh *file* apa pun.
 
 Sisipkan *tag* ini di dalam `<head>` HTML Anda:
 ```html
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css">
+<link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap)" rel="stylesheet">
+<link rel="stylesheet" href="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css)">
 ```
 
 Sisipkan *tag* ini tepat sebelum penutup `</body>`:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js"></script>
+<script src="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js)"></script>
 ```
 
 ---
 
 ## 📖 Buku Panduan (Man Page)
 
-Framework ini memiliki dokumentasi lengkap berupa "Direktori Sistem" yang mencakup contoh visual dan kode HTML dari **22 Modul Komponen**. 
+Framework ini memiliki dokumentasi lengkap berupa "Direktori Sistem" yang mencakup contoh visual dan kode HTML untuk semua Modul Komponen. 
 
 Unduh atau buka file **`docs.html`** di repositori ini melalui *browser* Anda untuk melihat panduan lengkapnya, yang meliputi:
 1. **Layout & Grid:** Utility, Symmetrical Grid, Asymmetrical Sidebar, dan Center Screen.
@@ -46,7 +46,7 @@ Unduh atau buka file **`docs.html`** di repositori ini melalui *browser* Anda un
 
 ---
 
-## 💻 Struktur Dasar (Boilerplate)
+## 🖥️ Struktur Dasar (Boilerplate)
 
 Berikut adalah kerangka HTML murni untuk langsung memulai *coding* dengan gaya terminal:
 
@@ -57,10 +57,11 @@ Berikut adalah kerangka HTML murni untuk langsung memulai *coding* dengan gaya t
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Bunker</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css">
+    <link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css)">
 </head>
-<body class="t-crt"> <div class="t-center-screen">
+<body class="t-crt"> 
+    <div class="t-center-screen">
         <div class="t-center-box t-card">
             <div class="t-card-header">> SYSTEM_INIT <span class="t-blink">_</span></div>
             <p class="text-muted">Selamat datang di Terminal OS.</p>
@@ -68,14 +69,14 @@ Berikut adalah kerangka HTML murni untuk langsung memulai *coding* dengan gaya t
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js"></script>
+    <script src="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js)"></script>
 </body>
 </html>
 ```
 
 ---
 
-## 📜 Lisensi & Atribusi
+## ⚖️ Lisensi & Atribusi
 
 - Dikembangkan oleh: **Jeannes Bryan**
 - Dibangun untuk komunitas *Open Source*. Silakan gunakan, modifikasi, dan integrasikan ke dalam dApps, P2P *Nodes*, atau proyek *Cyberpunk* Anda.

@@ -1,12 +1,7 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK - JS CORE v1.3.0
+   TERMINAL UI FRAMEWORK - JS CORE
    -----------------------------------------
-   [CHANGE LOG]
-   v1.2.4: - Increased default splash screen delay by 1 second (1800ms)
-   v1.3.0: - Added Terminal.splash.show() method for dynamic loading.
-           - Added 'warning' type to Terminal.toast().
-           - Added ESC key listener to safely close modals.
-           - Improved toast exit transition logic.
+   Continuous Improvement Edition
    ========================================= */
 
 const Terminal = {
@@ -42,18 +37,16 @@ const Terminal = {
 
         const toast = document.createElement('div');
         
-        // Memastikan class yang ditambahkan sesuai (danger atau warning)
         let typeClass = '';
         if (type === 'danger') typeClass = 'danger';
         if (type === 'warning') typeClass = 'warning';
         
         toast.className = `t-toast ${typeClass}`;
         toast.innerHTML = `> ${message}`;
-        toast.style.transition = 'all 0.3s ease'; // Persiapan animasi keluar
+        toast.style.transition = 'all 0.3s ease'; 
         container.appendChild(toast);
 
         setTimeout(() => {
-            // Animasi geser dan menghilang yang mulus (tanpa butuh keyframe CSS)
             toast.style.transform = 'translateX(100%)';
             toast.style.opacity = '0';
             setTimeout(() => toast.remove(), 300);
@@ -83,8 +76,46 @@ const Terminal = {
         }
     },
 
+    dropdown: function(btnElement) {
+        const menu = btnElement.nextElementSibling;
+        // Tutup semua dropdown lain agar tidak tumpang tindih
+        document.querySelectorAll('.t-dropdown-menu').forEach(m => {
+            if (m !== menu) m.classList.remove('show');
+        });
+        menu.classList.toggle('show');
+    },
+
+    treeToggle: function(folderElement) {
+        folderElement.classList.toggle('open');
+        const childUl = folderElement.nextElementSibling;
+        if (childUl && childUl.tagName === 'UL') {
+            childUl.classList.toggle('active');
+        }
+    },
+
+    typewrite: function(elementId, text, speed = 30, callback = null) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        el.innerHTML = '';
+        let i = 0;
+        const cursor = document.createElement('span');
+        cursor.className = 't-typewriter-cursor';
+        
+        function type() {
+            if (i < text.length) {
+                const charNode = document.createTextNode(text.charAt(i));
+                el.appendChild(charNode);
+                i++;
+                el.appendChild(cursor);
+                setTimeout(type, speed);
+            } else {
+                if (callback) callback();
+            }
+        }
+        type();
+    },
+
     splash: {
-        // NEW: Fungsi untuk memunculkan layar loading secara dinamis
         show: function(customText = null) {
             const splashEl = document.querySelector('.t-splash');
             if (splashEl) {
@@ -96,13 +127,11 @@ const Terminal = {
             }
         },
 
-        // Delay default dipertahankan di 1800ms
         close: function(customDelay = 1800) {
             const splashEl = document.querySelector('.t-splash');
             if (splashEl) {
                 setTimeout(() => {
                     splashEl.classList.add('hidden');
-                    // Elemen tidak dihapus dari DOM agar bisa dipanggil lagi dengan Terminal.splash.show()
                 }, customDelay);
             }
         }
@@ -115,15 +144,22 @@ document.addEventListener('DOMContentLoaded', function() {
     Terminal.splash.close();
 });
 
-// Menutup modal dengan klik area luar (background)
 document.addEventListener('click', function(event) {
+    // 1. Tutup modal jika area luar (backdrop) diklik
     if (event.target.classList.contains('t-modal')) {
         event.target.classList.remove('is-open');
     }
+    
+    // 2. Tutup dropdown menu jika user mengklik area lain di layar
+    if (!event.target.matches('.t-dropdown-btn') && !event.target.closest('.t-dropdown-btn')) {
+        document.querySelectorAll('.t-dropdown-menu').forEach(menu => {
+            if (menu.classList.contains('show')) menu.classList.remove('show');
+        });
+    }
 });
 
-// NEW: Menutup modal dengan menekan tombol ESC di keyboard
 document.addEventListener('keydown', function(event) {
+    // 3. Tutup modal jika tombol "Escape" (ESC) ditekan pada keyboard
     if (event.key === "Escape") {
         document.querySelectorAll('.t-modal.is-open').forEach(modal => {
             modal.classList.remove('is-open');

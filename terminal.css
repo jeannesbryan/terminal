@@ -1,15 +1,7 @@
 /* =========================================
-   TERMINAL UI FRAMEWORK v1.3.0
+   TERMINAL UI FRAMEWORK
    -----------------------------------------
-   [CHANGE LOG]
-   v1.2.4: - Added CRT matrix dots to splash screen background.
-   v1.2.5: - Added .t-card.danger with solid background.
-             Added .t-container-fluid for wider layouts.
-   v1.3.0: - Added ::selection styling for native terminal feel.
-           - Added --t-yellow variables for warning standard.
-           - Added button :active states and :disabled forms.
-           - Added .t-glow and .t-flicker animation utilities.
-           - Added .t-border-top & .t-border-bottom utilities.
+   Continuous Improvement Edition
    ========================================= */
 
 :root {
@@ -18,14 +10,13 @@
     --t-green: #00ff41;
     --t-green-dim: #008f11;
     --t-red: #ff003c;
-    --t-yellow: #ffcc00;     /* NEW: Standar peringatan */
-    --t-yellow-dim: #b38f00; /* NEW: Standar peringatan redup */
+    --t-yellow: #ffcc00;
+    --t-yellow-dim: #b38f00;
     --t-font: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* NEW: Teks yang diblok akan terlihat seperti terminal asli */
 ::selection { background: var(--t-green); color: var(--bg-base); text-shadow: none; }
 ::-moz-selection { background: var(--t-green); color: var(--bg-base); text-shadow: none; }
 
@@ -45,7 +36,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
-    text-shadow: 0 0 2px rgba(0, 255, 65, 0.3); /* NEW: Phosphor text glow halus */
+    text-shadow: 0 0 2px rgba(0, 255, 65, 0.3);
 }
 
 body.t-crt::after {
@@ -78,7 +69,6 @@ body.t-crt::after {
 .py-1 { padding-top: 5px !important; padding-bottom: 5px !important; } .py-2 { padding-top: 10px !important; padding-bottom: 10px !important; } .py-3 { padding-top: 15px !important; padding-bottom: 15px !important; }
 .px-1 { padding-left: 5px !important; padding-right: 5px !important; } .px-2 { padding-left: 10px !important; padding-right: 10px !important; } .px-3 { padding-left: 15px !important; padding-right: 15px !important; }
 
-/* NEW: Border Utilities */
 .t-border-bottom { border-bottom: 1px dashed var(--t-green-dim) !important; }
 .t-border-top { border-top: 1px dashed var(--t-green-dim) !important; }
 .t-border { border: 1px solid var(--t-green-dim) !important; }
@@ -87,7 +77,7 @@ body.t-crt::after {
 .text-muted { color: var(--t-green-dim) !important; } 
 .text-danger { color: var(--t-red) !important; } 
 .text-success { color: var(--t-green) !important; }
-.text-warning { color: var(--t-yellow) !important; } /* NEW */
+.text-warning { color: var(--t-yellow) !important; }
 
 .font-bold { font-weight: bold !important; } .fw-normal { font-weight: normal !important; } .fs-small { font-size: 11px !important; }
 
@@ -95,9 +85,7 @@ body.t-crt::after {
 .t-blink { animation: t-blink-anim 1s step-end infinite; }
 @keyframes t-blink-anim { 50% { opacity: 0; } }
 
-.t-glow { text-shadow: 0 0 10px var(--t-green), 0 0 20px rgba(0, 255, 65, 0.4) !important; } /* NEW */
-
-/* NEW: Efek layar rusak/glitch ringan */
+.t-glow { text-shadow: 0 0 10px var(--t-green), 0 0 20px rgba(0, 255, 65, 0.4) !important; }
 .t-flicker { animation: t-flicker-anim 0.3s infinite alternate; }
 @keyframes t-flicker-anim { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 0.95; } }
 
@@ -126,7 +114,7 @@ body.t-crt::after {
 .t-card-header { border-bottom: 1px dashed var(--t-green-dim); padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; }
 .t-card.danger { border-color: var(--t-red); border-top-color: var(--t-red); background-color: var(--bg-surface); color: var(--t-red); }
 .t-card.danger .t-card-header { border-bottom-color: var(--t-red); color: var(--t-red); }
-.t-card.warning { border-color: var(--t-yellow); border-top-color: var(--t-yellow); background-color: var(--bg-surface); color: var(--t-yellow); } /* NEW */
+.t-card.warning { border-color: var(--t-yellow); border-top-color: var(--t-yellow); background-color: var(--bg-surface); color: var(--t-yellow); }
 .t-card.warning .t-card-header { border-bottom-color: var(--t-yellow); color: var(--t-yellow); }
 
 hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20px 0; }
@@ -134,8 +122,8 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 /* --- FORMS & BUTTONS --- */
 .t-btn { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--t-green); border: 1px solid var(--t-green); padding: 8px 16px; font-family: inherit; font-size: 14px; text-transform: uppercase; cursor: pointer; text-decoration: none; transition: all 0.2s ease; border-radius: 0; }
 .t-btn:hover { background: var(--t-green); color: var(--bg-base); box-shadow: 0 0 10px var(--t-green); }
-.t-btn:active { transform: translateY(2px); } /* NEW: Klik feedback */
-.t-btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; } /* NEW: Disabled state */
+.t-btn:active { transform: translateY(2px); }
+.t-btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
 
 .t-btn.danger { color: var(--t-red); border-color: var(--t-red); }
 .t-btn.danger:hover { background: var(--t-red); color: #fff; box-shadow: 0 0 10px var(--t-red); }
@@ -145,7 +133,12 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-form-label { display: block; font-size: 12px; color: var(--t-green-dim); margin-bottom: 8px; text-transform: uppercase; }
 .t-input { width: 100%; background: transparent; color: var(--t-green); border: none; border-bottom: 1px solid var(--t-green-dim); padding: 10px 0; font-family: inherit; font-size: 14px; outline: none; margin-bottom: 15px; transition: 0.2s; border-radius: 0; }
 .t-input:focus { border-bottom-color: var(--t-green); box-shadow: 0 1px 0 var(--t-green); }
-.t-input:disabled { opacity: 0.5; cursor: not-allowed; border-bottom-style: dashed; } /* NEW */
+.t-input:disabled { opacity: 0.5; cursor: not-allowed; border-bottom-style: dashed; }
+
+/* Form Validation States */
+.t-input.error { border-bottom-color: var(--t-red) !important; color: var(--t-red); box-shadow: 0 1px 0 var(--t-red); }
+.t-input.success { border-bottom-color: var(--t-green) !important; box-shadow: 0 1px 0 var(--t-green); }
+.t-feedback { font-size: 11px; margin-top: -10px; margin-bottom: 15px; display: block; }
 
 .t-input-group { position: relative; display: flex; width: 100%; margin-bottom: 15px; }
 .t-input-group .t-input { padding-right: 70px; margin-bottom: 0; }
@@ -190,12 +183,12 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 
 .t-badge { display: inline-block; padding: 2px 8px; font-size: 11px; font-weight: bold; text-transform: uppercase; background: rgba(0, 255, 65, 0.1); color: var(--t-green); border: 1px solid var(--t-green-dim); }
 .t-badge.danger { background: rgba(255, 0, 60, 0.1); color: var(--t-red); border-color: var(--t-red); }
-.t-badge.warning { background: rgba(255, 204, 0, 0.1); color: var(--t-yellow); border-color: var(--t-yellow-dim); } /* UPDATED */
+.t-badge.warning { background: rgba(255, 204, 0, 0.1); color: var(--t-yellow); border-color: var(--t-yellow-dim); }
 
 .t-led-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; position: relative; }
 .t-led-green { background-color: var(--t-green); box-shadow: 0 0 10px var(--t-green), 0 0 5px #fff; animation: t-led-pulse 2s infinite; }
 .t-led-red { background-color: var(--t-red); box-shadow: 0 0 10px var(--t-red); animation: t-led-pulse-danger 2s infinite; }
-.t-led-yellow { background-color: var(--t-yellow); box-shadow: 0 0 10px var(--t-yellow); animation: t-led-pulse-warning 2s infinite; } /* NEW */
+.t-led-yellow { background-color: var(--t-yellow); box-shadow: 0 0 10px var(--t-yellow); animation: t-led-pulse-warning 2s infinite; }
 @keyframes t-led-pulse { 0% { box-shadow: 0 0 5px var(--t-green); } 50% { box-shadow: 0 0 15px var(--t-green), 0 0 5px #fff; } 100% { box-shadow: 0 0 5px var(--t-green); } }
 @keyframes t-led-pulse-danger { 0% { box-shadow: 0 0 5px var(--t-red); } 50% { box-shadow: 0 0 15px var(--t-red); } 100% { box-shadow: 0 0 5px var(--t-red); } }
 @keyframes t-led-pulse-warning { 0% { box-shadow: 0 0 5px var(--t-yellow); } 50% { box-shadow: 0 0 15px var(--t-yellow); } 100% { box-shadow: 0 0 5px var(--t-yellow); } }
@@ -204,7 +197,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-progress-bar { height: 100%; background: var(--t-green-dim); width: 0%; transition: width 0.5s ease; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--bg-base); font-weight: bold; }
 
 .t-alert { padding: 15px; border: 1px solid var(--t-green-dim); background: rgba(0, 255, 65, 0.05); margin-bottom: 15px; font-size: 13px; border-left: 4px solid var(--t-green); }
-.t-alert.warning { border-color: var(--t-yellow-dim); background: rgba(255, 204, 0, 0.05); color: var(--t-yellow); border-left-color: var(--t-yellow); } /* UPDATED */
+.t-alert.warning { border-color: var(--t-yellow-dim); background: rgba(255, 204, 0, 0.05); color: var(--t-yellow); border-left-color: var(--t-yellow); }
 .t-alert.danger { border-color: var(--t-red); background: rgba(255, 0, 60, 0.05); color: var(--t-red); border-left-color: var(--t-red); }
 
 .t-spinner { display: inline-block; font-family: inherit; font-weight: bold; color: var(--t-green); }
@@ -239,6 +232,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
 .t-toast { background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 12px 20px; box-shadow: 0 0 15px rgba(0,255,65,0.15); animation: slideIn 0.3s forwards; min-width: 250px; font-size: 13px; pointer-events: auto; }
 .t-toast.danger { border-color: var(--t-red); color: var(--t-red); box-shadow: 0 0 15px rgba(255,0,60,0.15); }
+.t-toast.warning { border-color: var(--t-yellow); color: var(--t-yellow); box-shadow: 0 0 15px rgba(255,204,0,0.15); }
 @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
 .t-window { border: 1px solid var(--t-green-dim); margin-bottom: 20px; background: var(--bg-base); }
@@ -301,7 +295,52 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-markdown p { margin-bottom: 15px; }
 .t-markdown blockquote { border-left: 3px solid var(--t-green); padding-left: 15px; color: var(--t-green-dim); font-style: italic; background: rgba(0,255,65,0.05); margin-bottom: 15px; padding-top: 5px; padding-bottom: 5px; }
 .t-markdown pre { background: var(--bg-surface); border: 1px solid var(--t-green-dim); padding: 15px; overflow-x: auto; margin-bottom: 15px; }
-.t-markdown code { color: #a8ffb7; background: rgba(0,255,65,0.05); border: 1px solid var(--t-green-dim); padding: 2px 5px; font-size: 13px; font-family: var(--t-font); } /* UPDATED */
+.t-markdown code { color: #a8ffb7; background: rgba(0,255,65,0.05); border: 1px solid var(--t-green-dim); padding: 2px 5px; font-size: 13px; font-family: var(--t-font); }
 .t-markdown ul, .t-markdown ol { margin-left: 20px; margin-bottom: 15px; }
 .t-markdown li { margin-bottom: 5px; }
 .t-markdown img { max-width: 100%; border: 1px solid var(--t-green-dim); filter: grayscale(1) sepia(0.5); }
+
+/* =========================================
+   ADDITIVE MODULES (Terminal UI Extensions)
+   ========================================= */
+
+/* 1. DROPDOWN MENU */
+.t-dropdown { position: relative; display: inline-block; }
+.t-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background-color: var(--bg-surface); min-width: 160px; border: 1px solid var(--t-green); box-shadow: 0 8px 16px rgba(0,255,65,0.15); z-index: 1000; margin-top: 5px; }
+.t-dropdown-menu.show { display: block; animation: fadeIn 0.2s ease; }
+.t-dropdown-item { color: var(--t-green-dim); padding: 10px 15px; text-decoration: none; display: block; font-size: 13px; border-bottom: 1px dashed var(--t-green-dim); transition: 0.2s; cursor: pointer; }
+.t-dropdown-item:last-child { border-bottom: none; }
+.t-dropdown-item:hover { background-color: rgba(0, 255, 65, 0.1); color: var(--t-green); padding-left: 20px; border-left: 2px solid var(--t-green); }
+
+/* 2. TOGGLE SWITCH */
+.t-switch { position: relative; display: inline-block; width: 40px; height: 20px; vertical-align: middle; }
+.t-switch input { opacity: 0; width: 0; height: 0; }
+.t-switch-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: transparent; border: 1px solid var(--t-green-dim); transition: .2s; }
+.t-switch-slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: var(--t-green-dim); transition: .2s; }
+.t-switch input:checked + .t-switch-slider { border-color: var(--t-green); background-color: rgba(0,255,65,0.1); box-shadow: 0 0 5px rgba(0,255,65,0.2); }
+.t-switch input:checked + .t-switch-slider:before { transform: translateX(20px); background-color: var(--t-green); box-shadow: 0 0 5px var(--t-green); }
+
+/* 3. RANGE SLIDER (KALIBRATOR) */
+.t-range { -webkit-appearance: none; width: 100%; background: transparent; height: 20px; outline: none; margin: 10px 0; }
+.t-range::-webkit-slider-runnable-track { width: 100%; height: 2px; background: repeating-linear-gradient(to right, var(--t-green-dim) 0, var(--t-green-dim) 5px, transparent 5px, transparent 10px); cursor: pointer; }
+.t-range::-webkit-slider-thumb { height: 16px; width: 10px; background: var(--t-green); cursor: pointer; -webkit-appearance: none; margin-top: -7px; border: 1px solid var(--bg-base); box-shadow: 0 0 5px var(--t-green); transition: 0.2s; }
+.t-range::-webkit-slider-thumb:hover { background: var(--t-yellow); box-shadow: 0 0 8px var(--t-yellow); }
+.t-range:focus::-webkit-slider-runnable-track { background: repeating-linear-gradient(to right, var(--t-green) 0, var(--t-green) 5px, transparent 5px, transparent 10px); }
+.t-range::-moz-range-track { width: 100%; height: 2px; background: repeating-linear-gradient(to right, var(--t-green-dim) 0, var(--t-green-dim) 5px, transparent 5px, transparent 10px); cursor: pointer; }
+.t-range::-moz-range-thumb { height: 16px; width: 10px; background: var(--t-green); cursor: pointer; border: 1px solid var(--bg-base); box-shadow: 0 0 5px var(--t-green); border-radius: 0; }
+
+/* 4. TREE VIEW (PENJELAJAH BERKAS) */
+.t-tree { list-style-type: none; padding-left: 0; font-size: 13px; margin-bottom: 15px; }
+.t-tree ul { list-style-type: none; padding-left: 20px; border-left: 1px dashed var(--t-green-dim); margin-left: 5px; display: none; }
+.t-tree ul.active { display: block; animation: fadeIn 0.2s ease; }
+.t-tree li { margin: 8px 0; position: relative; }
+.t-tree li::before { content: ""; position: absolute; top: 10px; left: -20px; width: 15px; border-top: 1px dashed var(--t-green-dim); }
+.t-tree-folder { cursor: pointer; color: var(--t-green); font-weight: bold; user-select: none; transition: 0.2s; }
+.t-tree-folder:hover { text-shadow: 0 0 5px var(--t-green); }
+.t-tree-folder::before { content: "[+] "; color: var(--t-green-dim); font-weight: normal; }
+.t-tree-folder.open::before { content: "[-] "; color: var(--t-yellow); }
+.t-tree-file { color: var(--t-green-dim); text-decoration: none; transition: 0.2s; }
+.t-tree-file:hover { color: var(--t-green); text-shadow: 0 0 5px var(--t-green); }
+
+/* 5. TYPEWRITER CURSOR */
+.t-typewriter-cursor { display: inline-block; width: 8px; height: 14px; background-color: var(--t-green); vertical-align: middle; margin-left: 2px; animation: t-blink-anim 1s step-end infinite; }
