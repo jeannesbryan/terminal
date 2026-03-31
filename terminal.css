@@ -344,3 +344,15 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 
 /* 5. TYPEWRITER CURSOR */
 .t-typewriter-cursor { display: inline-block; width: 8px; height: 14px; background-color: var(--t-green); vertical-align: middle; margin-left: 2px; animation: t-blink-anim 1s step-end infinite; }
+
+/* 6. TOTP / AUTH MODULE */
+.t-totp-code { font-size: 2.2rem; letter-spacing: 8px; font-weight: bold; cursor: copy; transition: 0.2s; user-select: none; text-align: center; }
+.t-totp-code:hover { color: #fff !important; text-shadow: 0 0 15px var(--t-green); }
+.t-totp-code.warning { color: var(--t-red) !important; text-shadow: 0 0 10px var(--t-red); }
+.t-timer-line-bg { height: 4px; background: rgba(0,255,65,0.1); width: 100%; margin-top: 15px; position: relative; border-radius: 0; overflow: hidden; }
+.t-timer-line { height: 100%; background: var(--t-green); width: 100%; transition: width 1s linear, background-color 0.3s; }
+.t-timer-line.warning { background: var(--t-red); box-shadow: 0 0 8px var(--t-red); }
+
+/* 7. SPA PANE (Single Page View) */
+.t-pane { display: none; }
+.t-pane.active { display: block; animation: fadeIn 0.3s ease; }
