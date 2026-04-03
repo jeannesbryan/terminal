@@ -78,7 +78,7 @@ const Terminal = {
 
     dropdown: function(btnElement) {
         const menu = btnElement.nextElementSibling;
-        // Tutup semua dropdown lain agar tidak tumpang tindih
+        // Close all other dropdowns to prevent overlapping
         document.querySelectorAll('.t-dropdown-menu').forEach(m => {
             if (m !== menu) m.classList.remove('show');
         });
@@ -144,7 +144,7 @@ const Terminal = {
                 box = document.createElement('div');
                 box.id = 't-lightbox-container';
                 box.className = 't-lightbox';
-                // Tutup jika area luar diklik
+                // Close if outside area is clicked
                 box.onclick = function(e) { if(e.target === box) Terminal.lightbox.close(); };
                 box.innerHTML = '<span class="t-lightbox-close" onclick="Terminal.lightbox.close()">[ X ]</span><img id="t-lightbox-img" src="">';
                 document.body.appendChild(box);
@@ -164,10 +164,18 @@ const Terminal = {
         if (input && label) {
             input.addEventListener('change', function(e) {
                 let fileName = e.target.files[0] ? e.target.files[0].name : '[ NO_MEDIA ]';
-                // Potong nama file jika terlalu panjang
+                // Truncate file name if it's too long
                 if (fileName.length > 20) fileName = fileName.substring(0, 17) + '...';
                 label.innerText = '> ' + fileName;
             });
+        }
+    },
+
+    // --- NEW EXTENSION: NAVBAR TOGGLER --- //
+    navbarToggle: function(menuId) {
+        const menu = document.getElementById(menuId);
+        if (menu) {
+            menu.classList.toggle('show');
         }
     }
 };
@@ -179,12 +187,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('click', function(event) {
-    // 1. Tutup modal jika area luar (backdrop) diklik
+    // 1. Close modal if outside area (backdrop) is clicked
     if (event.target.classList.contains('t-modal')) {
         event.target.classList.remove('is-open');
     }
     
-    // 2. Tutup dropdown menu jika user mengklik area lain di layar
+    // 2. Close dropdown menu if user clicks elsewhere on the screen
     if (!event.target.matches('.t-dropdown-btn') && !event.target.closest('.t-dropdown-btn')) {
         document.querySelectorAll('.t-dropdown-menu').forEach(menu => {
             if (menu.classList.contains('show')) menu.classList.remove('show');
@@ -193,7 +201,7 @@ document.addEventListener('click', function(event) {
 });
 
 document.addEventListener('keydown', function(event) {
-    // 3. Tutup modal jika tombol "Escape" (ESC) ditekan pada keyboard
+    // 3. Close modal if "Escape" (ESC) key is pressed
     if (event.key === "Escape") {
         document.querySelectorAll('.t-modal.is-open').forEach(modal => {
             modal.classList.remove('is-open');

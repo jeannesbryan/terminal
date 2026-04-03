@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal UI - Buku Panduan Sistem</title>
+    <title>Terminal UI - System Manual</title>
     <link rel="icon" type="image/svg+xml" href="terminal-icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="terminal.css">
     
     <style>
-        /* CSS Khusus Dokumen */
+        /* Document Specific CSS */
         body { display: flex; align-items: flex-start; }
         .t-sidebar { width: 260px; height: 100vh; position: fixed; top: 0; left: 0; background: var(--bg-surface); border-right: 1px dashed var(--t-green-dim); padding: 20px; overflow-y: auto; z-index: 100; }
         
@@ -44,38 +44,38 @@
 
         <h3>> SYSTEM_INDEX</h3>
         <ul>
-            <li><a href="#intro">> 00. PENGANTAR</a></li>
+            <li><a href="#intro">> 00. INTRODUCTION</a></li>
             <li><a href="#starter">> 01. STARTER TEMPLATE</a></li>
-            <li><a href="#customization">> 02. KUSTOMISASI TEMA</a></li>
+            <li><a href="#customization">> 02. THEME CUSTOMIZATION</a></li>
             <li><a href="#utility">> 03. UTILITY CLASSES</a></li>
-            <li><a href="#responsive">> 04. RESPONSIVITAS</a></li>
+            <li><a href="#responsive">> 04. RESPONSIVENESS</a></li>
             <li><a href="#layout-modules">> 05. LAYOUT MODULES</a></li>
             <li><a href="#filters">> 06. VISUAL FILTERS</a></li>
             <li><a href="#navbar">> 07. NAVBAR (STATUS)</a></li>
             <li><a href="#center-screen">> 08. CENTER SCREEN</a></li>
             <li><a href="#grid">> 09. CONTAINER & GRID</a></li>
-            <li><a href="#layout-relay">> 10. LAYOUT SIDEBAR</a></li>
-            <li><a href="#card">> 11. KOTAK (CARDS)</a></li>
+            <li><a href="#layout-relay">> 10. SIDEBAR LAYOUT</a></li>
+            <li><a href="#card">> 11. BOXES (CARDS)</a></li>
             <li><a href="#code-block">> 12. TERMINAL WINDOW</a></li>
-            <li><a href="#form">> 13. TOMBOL & INPUT</a></li>
+            <li><a href="#form">> 13. BUTTONS & INPUTS</a></li>
             <li><a href="#form-val">> 14. FORM VALIDATION</a></li>
             <li><a href="#input-action">> 15. INPUT ACTION</a></li>
             <li><a href="#textarea-select">> 16. TEXTAREA & SELECT</a></li>
             <li><a href="#advanced-form">> 17. CHECKBOX & RADIO</a></li>
-            <li><a href="#data-nav">> 18. BREADCRUMB & PAGINATION</a></li>
-            <li><a href="#table">> 19. TABEL DATA</a></li>
-            <li><a href="#list-group">> 20. LIST GROUP</a></li>
+            <li><a href="#data-nav">> 18. BREADCRUMBS & PAGINATION</a></li>
+            <li><a href="#table">> 19. DATA TABLES</a></li>
+            <li><a href="#list-group">> 20. LIST GROUPS</a></li>
             <li><a href="#chat-ui">> 21. CHAT BUBBLES</a></li>
-            <li><a href="#badge">> 22. BADGE & PROGRESS</a></li>
-            <li><a href="#led-status">> 23. INDIKATOR LED</a></li>
+            <li><a href="#badge">> 22. BADGES & PROGRESS</a></li>
+            <li><a href="#led-status">> 23. LED INDICATORS</a></li>
             <li><a href="#alerts">> 24. ALERTS & SPINNER</a></li>
-            <li><a href="#tabs">> 25. SISTEM TABS</a></li>
+            <li><a href="#tabs">> 25. TAB SYSTEM</a></li>
             <li><a href="#accordion">> 26. ACCORDION & TOOLTIP</a></li>
-            <li><a href="#modal">> 27. SISTEM MODAL</a></li>
-            <li><a href="#toast">> 28. NOTIFIKASI (TOAST)</a></li>
+            <li><a href="#modal">> 27. MODAL SYSTEM</a></li>
+            <li><a href="#toast">> 28. NOTIFICATIONS (TOAST)</a></li>
             <li><a href="#branding">> 29. BRANDING (ICON)</a></li>
-            <li><a href="#new-modules">> 30. EKSTENSI BARU</a></li>
-            <li><a href="#media-modules">> 31. EKSTENSI MEDIA</a></li>
+            <li><a href="#new-modules">> 30. NEW EXTENSIONS</a></li>
+            <li><a href="#media-modules">> 31. MEDIA EXTENSIONS</a></li>
         </ul>
     </aside>
 
@@ -83,14 +83,14 @@
 
         <div id="intro" class="docs-section" style="border:none;">
             <h1 class="mb-2">> MAN_PAGE TERMINAL UI <span class="t-blink">_</span></h1>
-            <p class="text-muted">Buku panduan lengkap komponen CSS/JS bergaya Bunker/Retro. Terminal UI kini dilengkapi sistem modifikasi tema, validasi form, dan 30 modul antarmuka.</p>
+            <p class="text-muted">A complete manual for Bunker/Retro styled CSS/JS components. Terminal UI now features a theme modification system, form validation, and 30 interface modules.</p>
         </div>
 
         <div id="starter" class="docs-section">
             <h2 class="t-card-header">> 01. STARTER TEMPLATE (BOILERPLATE)</h2>
-            <p class="text-muted">Salin kode HTML kosong ini untuk memulai lembaran baru dengan Terminal UI.</p>
+            <p class="text-muted">Copy this empty HTML boilerplate to start fresh with Terminal UI.</p>
             <div class="docs-code"><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="id"&gt;
+&lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
@@ -102,7 +102,7 @@
 &lt;body class="t-crt"&gt;
 
     &lt;div class="t-container"&gt;
-        &lt;!-- Kode UI Anda diletakkan di sini --&gt;
+        &lt;!-- Your UI code goes here --&gt;
     &lt;/div&gt;
 
     &lt;script src="assets/terminal.js"&gt;&lt;/script&gt;
@@ -111,15 +111,15 @@
         </div>
 
         <div id="customization" class="docs-section">
-            <h2 class="t-card-header">> 02. KUSTOMISASI TEMA (CSS VARIABLES)</h2>
-            <p class="text-muted">Terminal UI dirancang untuk dimodifikasi. Anda bisa mengubah skema warna "Matrix Green" menjadi tema "Fallout Amber", "Blood Red", atau "Sci-Fi Cyan" cukup dengan menimpa variabel di file CSS khusus Anda.</p>
-            <div class="docs-code"><pre><code>/* Tambahkan ini di file CSS custom Anda atau di dalam &lt;style&gt; */
+            <h2 class="t-card-header">> 02. THEME CUSTOMIZATION (CSS VARIABLES)</h2>
+            <p class="text-muted">Terminal UI is designed to be customizable. You can change the "Matrix Green" color scheme to a "Fallout Amber", "Blood Red", or "Sci-Fi Cyan" theme simply by overriding variables in your custom CSS file.</p>
+            <div class="docs-code"><pre><code>/* Add this to your custom CSS file or inside &lt;style&gt; */
 :root {
-    /* Tema Fallout (Amber) */
-    --t-green: #ffb000;         /* Ganti warna utama menjadi Amber */
-    --t-green-dim: #996900;     /* Warna redupnya */
+    /* Fallout Theme (Amber) */
+    --t-green: #ffb000;         /* Change primary color to Amber */
+    --t-green-dim: #996900;     /* Its dimmed color */
     
-    /* Warna latar */
+    /* Background colors */
     --bg-base: #110d00;
     --bg-surface: #1f1700;
 }</code></pre></div>
@@ -127,7 +127,7 @@
 
         <div id="utility" class="docs-section">
             <h2 class="t-card-header">> 03. UTILITY CLASSES</h2>
-            <p class="text-muted">Mengadaptasi penamaan utility standar (mirip Bootstrap/Tailwind) agar Anda tidak perlu menulis CSS inline.</p>
+            <p class="text-muted">Adapting standard utility naming (similar to Bootstrap/Tailwind) so you don't need to write inline CSS.</p>
             <div class="docs-example">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="text-danger font-bold t-blink">D-FLEX & T-BLINK</div>
@@ -139,25 +139,39 @@
     &lt;div class="fs-small text-muted"&gt;FS-SMALL &amp; TEXT-MUTED&lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
             <div class="t-window mb-0 mt-3">
-                <div class="t-window-header">Daftar_Kelas_Bantuan.txt</div>
+                <div class="t-window-header">Utility_Classes_List.txt</div>
                 <div class="t-window-body" style="font-size: 12px; line-height: 2;">
                     <strong>Flexbox:</strong> <code>.d-flex</code>, <code>.flex-column</code>, <code>.justify-content-center</code>, <code>.justify-content-between</code>, <code>.align-items-center</code>, <code>.gap-2</code><br>
-                    <strong>Sizing:</strong> <code>.w-100</code>, <code>.h-100</code>, <code>.d-none</code><br>
-                    <strong>Spacing:</strong> <code>.m-0</code> s/d <code>.m-5</code>, <code>.p-0</code> s/d <code>.p-5</code>, <code>.px-3</code>, <code>.py-2</code>, dll.<br>
-                    <strong>Typografi:</strong> <code>.text-center</code>, <code>.text-right</code>, <code>.font-bold</code>, <code>.fs-small</code><br>
+                    <strong>Sizing:</strong> <code>.w-25</code>, <code>.w-50</code>, <code>.w-75</code>, <code>.w-100</code>, <code>.h-100</code>, <code>.w-auto</code><br>
+                    <strong>Spacing:</strong> <code>.m-0</code> to <code>.m-5</code>, <code>.p-0</code> to <code>.p-5</code>, <code>.px-3</code>, <code>.py-2</code>, etc.<br>
+                    <strong>Typography:</strong> <code>.text-center</code>, <code>.text-right</code>, <code>.font-bold</code>, <code>.fs-small</code><br>
                     <strong>Visual:</strong> <code>.t-glow</code>, <code>.t-flicker</code>, <code>.t-border-bottom</code>
                 </div>
             </div>
         </div>
 
         <div id="responsive" class="docs-section">
-            <h2 class="t-card-header">> 04. RESPONSIVITAS & BREAKPOINTS</h2>
-            <p class="text-muted">Terminal UI bersifat <strong>Mobile-First</strong>. Semua struktur Grid (seperti <code>.t-grid-2</code>, <code>.t-grid-3</code>, dan <code>.t-masonry</code>) akan secara otomatis menjadi 1 kolom penuh apabila diakses di perangkat berlayar kurang dari <strong>768px (Tablet/Mobile)</strong>. Anda tidak perlu menambahkan kelas CSS <em>responsive</em> ekstra.</p>
+            <h2 class="t-card-header">> 04. RESPONSIVENESS & BREAKPOINTS</h2>
+            <p class="text-muted">Terminal UI is <strong>Mobile-First</strong>. Grid structures automatically collapse into 1 full column on screens smaller than <strong>768px (Tablet/Mobile)</strong>.</p>
+            <p class="text-muted mt-2">You can also use explicit responsive utilities to show or hide elements based on screen size:</p>
+            <div class="docs-example">
+                <div class="p-3 border-dashed text-center d-none-mobile bg-surface">
+                    > VISIBLE ON DESKTOP ONLY (.d-none-mobile)
+                </div>
+                <div class="p-3 border-dashed text-center d-none-desktop text-danger" style="border-color: var(--t-red);">
+                    > VISIBLE ON MOBILE ONLY (.d-none-desktop)
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;!-- Will be hidden on mobile --&gt;
+&lt;div class="d-none-mobile"&gt;Desktop Only&lt;/div&gt;
+
+&lt;!-- Will be hidden on desktop --&gt;
+&lt;div class="d-none-desktop"&gt;Mobile Only&lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="layout-modules" class="docs-section">
             <h2 class="t-card-header">> 05. LAYOUT MODULES</h2>
-            <p class="text-muted">Modul kompleks bawaan untuk membangun aplikasi spesifik.</p>
+            <p class="text-muted">Built-in complex modules for building specific applications.</p>
             
             <h3 class="font-bold text-success mb-2 mt-4">A. KANBAN BOARD (.t-board)</h3>
             <div class="docs-example overflow-hidden">
@@ -165,14 +179,14 @@
                     <div class="t-board-column">
                         <div class="t-board-header">PENDING</div>
                         <div class="t-board-body">
-                            <div class="t-board-card">Tugas Enkripsi Data</div>
-                            <div class="t-board-card">Patching Server</div>
+                            <div class="t-board-card">Data Encryption Task</div>
+                            <div class="t-board-card">Server Patching</div>
                         </div>
                     </div>
                     <div class="t-board-column">
                         <div class="t-board-header text-danger">URGENT</div>
                         <div class="t-board-body">
-                            <div class="t-board-card t-flicker">Sistem Terobos!</div>
+                            <div class="t-board-card t-flicker">System Breached!</div>
                         </div>
                     </div>
                 </div>
@@ -181,14 +195,14 @@
     &lt;div class="t-board-column"&gt;
         &lt;div class="t-board-header"&gt;PENDING&lt;/div&gt;
         &lt;div class="t-board-body"&gt;
-            &lt;div class="t-board-card"&gt;Tugas Enkripsi Data&lt;/div&gt;
-            &lt;div class="t-board-card"&gt;Patching Server&lt;/div&gt;
+            &lt;div class="t-board-card"&gt;Data Encryption Task&lt;/div&gt;
+            &lt;div class="t-board-card"&gt;Server Patching&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class="t-board-column"&gt;
         &lt;div class="t-board-header text-danger"&gt;URGENT&lt;/div&gt;
         &lt;div class="t-board-body"&gt;
-            &lt;div class="t-board-card t-flicker"&gt;Sistem Terobos!&lt;/div&gt;
+            &lt;div class="t-board-card t-flicker"&gt;System Breached!&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
@@ -198,60 +212,70 @@
                 <div class="t-thread">
                     <div class="t-thread-item">
                         <span class="text-muted fs-small">10:00 AM</span>
-                        <p class="m-0">Satelit mengudara.</p>
+                        <p class="m-0">Satellite is airborne.</p>
                     </div>
                     <div class="t-thread-item">
                         <span class="text-muted fs-small">10:15 AM</span>
-                        <p class="m-0">Menerima transmisi dari Sektor 7.</p>
+                        <p class="m-0">Receiving transmission from Sector 7.</p>
                     </div>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-thread"&gt;
     &lt;div class="t-thread-item"&gt;
         &lt;span class="text-muted fs-small"&gt;10:00 AM&lt;/span&gt;
-        &lt;p class="m-0"&gt;Satelit mengudara.&lt;/p&gt;
+        &lt;p class="m-0"&gt;Satellite is airborne.&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class="t-thread-item"&gt;
         &lt;span class="text-muted fs-small"&gt;10:15 AM&lt;/span&gt;
-        &lt;p class="m-0"&gt;Menerima transmisi dari Sektor 7.&lt;/p&gt;
+        &lt;p class="m-0"&gt;Receiving transmission from Sector 7.&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
 
             <h3 class="font-bold text-success mt-4 mb-2">C. MARKDOWN BODY (.t-markdown)</h3>
             <div class="docs-example">
                 <div class="t-markdown">
-                    <h3>Heading Terminal</h3>
-                    <p>Teks normal dengan <code>inline_code</code> di tengahnya.</p>
-                    <blockquote>Pesan dari komandan: Pertahankan bunker!</blockquote>
+                    <h3>Terminal Heading</h3>
+                    <p>Normal text with <code>inline_code</code> in the middle.</p>
+                    <blockquote>Message from commander: Defend the bunker!</blockquote>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-markdown"&gt;
-    &lt;h3&gt;Heading Terminal&lt;/h3&gt;
-    &lt;p&gt;Teks normal dengan &lt;code&gt;inline_code&lt;/code&gt; di tengahnya.&lt;/p&gt;
-    &lt;blockquote&gt;Pesan dari komandan: Pertahankan bunker!&lt;/blockquote&gt;
+    &lt;h3&gt;Terminal Heading&lt;/h3&gt;
+    &lt;p&gt;Normal text with &lt;code&gt;inline_code&lt;/code&gt; in the middle.&lt;/p&gt;
+    &lt;blockquote&gt;Message from commander: Defend the bunker!&lt;/blockquote&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="filters" class="docs-section">
             <h2 class="t-card-header">> 06. VISUAL FILTERS</h2>
-            <p class="text-muted">Gunakan class <code>.t-retro-filter</code> pada gambar (img) atau iframe untuk mengubahnya menjadi hijau/sepia monokrom bergaya layar jadul secara instan.</p>
+            <p class="text-muted">Use the <code>.t-retro-filter</code> class on images (img) or iframes to instantly transform them into an old-school monochrome green/sepia style.</p>
             <div class="docs-example text-center">
                 <img src="terminal-icon.svg" width="100" class="t-retro-filter bg-surface border-dashed p-2" alt="Retro Filter Logo">
             </div>
-            <div class="docs-code"><pre><code>&lt;img src="gambar.jpg" class="t-retro-filter"&gt;</code></pre></div>
+            <div class="docs-code"><pre><code>&lt;img src="image.jpg" class="t-retro-filter"&gt;</code></pre></div>
         </div>
 
         <div id="navbar" class="docs-section">
             <h2 class="t-card-header">> 07. NAVBAR (STATUS BAR)</h2>
+            <p class="text-muted">Now equipped with a mobile-ready hamburger menu. Use <code>.t-nav-toggler</code> and <code>.t-nav-collapse</code> to enable it.</p>
             <div class="docs-example">
                 <nav class="t-navbar mb-0">
                     <div class="t-nav-brand">BUNKER_OS</div>
-                    <div class="t-nav-menu"><a href="#">[ HOME ]</a><a href="#">[ SYSTEM ]</a></div>
+                    <button class="t-nav-toggler d-none-desktop" onclick="Terminal.navbarToggle('demoMenu')">[ MENU ]</button>
+                    <div class="t-nav-menu t-nav-collapse" id="demoMenu">
+                        <a href="#">[ HOME ]</a>
+                        <a href="#">[ SYSTEM ]</a>
+                    </div>
                 </nav>
             </div>
-            <div class="docs-code"><pre><code>&lt;nav class="t-navbar mb-0"&gt;
+            <div class="docs-code"><pre><code>&lt;nav class="t-navbar"&gt;
     &lt;div class="t-nav-brand"&gt;BUNKER_OS&lt;/div&gt;
-    &lt;div class="t-nav-menu"&gt;
+    
+    &lt;!-- Mobile toggler button --&gt;
+    &lt;button class="t-nav-toggler d-none-desktop" onclick="Terminal.navbarToggle('demoMenu')"&gt;[ MENU ]&lt;/button&gt;
+    
+    &lt;!-- Menu wrapper with collapse class --&gt;
+    &lt;div class="t-nav-menu t-nav-collapse" id="demoMenu"&gt;
         &lt;a href="#"&gt;[ HOME ]&lt;/a&gt;
         &lt;a href="#"&gt;[ SYSTEM ]&lt;/a&gt;
     &lt;/div&gt;
@@ -279,44 +303,44 @@
         </div>
 
         <div id="grid" class="docs-section">
-            <h2 class="t-card-header">> 09. CONTAINER & GRID</h2>
-            <p class="text-muted">Pilih lebar bungkus utama halaman Anda dan bagi ke dalam kolom-kolom grid yang simetris.</p>
+            <h2 class="t-card-header">> 09. CONTAINERS & GRID</h2>
+            <p class="text-muted">Choose the main container width for your page and divide it into symmetrical grid columns.</p>
 
-            <h3 class="font-bold text-success mb-2 mt-4">A. CONTAINER (PEMBUNGKUS)</h3>
+            <h3 class="font-bold text-success mb-2 mt-4">A. CONTAINERS</h3>
             <div class="docs-example">
                 <div class="t-container border-dashed text-center p-2 mb-3" style="background: rgba(0,255,65,0.05);">
-                    .t-container (Max: 800px) - Cocok untuk bacaan/form.
+                    .t-container (Max: 800px) - Suitable for reading/forms.
                 </div>
                 <div class="t-container-fluid border-dashed text-center p-2" style="background: rgba(0,255,65,0.05);">
-                    .t-container-fluid (Max: 1200px) - Cocok untuk dashboard.
+                    .t-container-fluid (Max: 1200px) - Suitable for dashboards.
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;!-- Lebar standar (Fokus) --&gt;
+            <div class="docs-code"><pre><code>&lt;!-- Standard width (Focus) --&gt;
 &lt;div class="t-container"&gt;...&lt;/div&gt;
 
-&lt;!-- Lebar penuh (Dashboard) --&gt;
+&lt;!-- Full width (Dashboard) --&gt;
 &lt;div class="t-container-fluid"&gt;...&lt;/div&gt;</code></pre></div>
 
             <h3 class="font-bold text-success mb-2 mt-4">B. SYMMETRICAL GRID</h3>
             <div class="docs-example">
                 <div class="t-grid t-grid-2 mb-3">
-                    <div class="p-2 text-center border-dashed">KOLOM 1</div>
-                    <div class="p-2 text-center border-dashed">KOLOM 2</div>
+                    <div class="p-2 text-center border-dashed">COLUMN 1</div>
+                    <div class="p-2 text-center border-dashed">COLUMN 2</div>
                 </div>
                 <div class="t-grid t-grid-3">
-                    <div class="p-2 text-center border-dashed fs-small">KOL 1</div>
-                    <div class="p-2 text-center border-dashed fs-small">KOL 2</div>
-                    <div class="p-2 text-center border-dashed fs-small">KOL 3</div>
+                    <div class="p-2 text-center border-dashed fs-small">COL 1</div>
+                    <div class="p-2 text-center border-dashed fs-small">COL 2</div>
+                    <div class="p-2 text-center border-dashed fs-small">COL 3</div>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-grid t-grid-2"&gt;
-    &lt;div class="p-2 text-center border-dashed"&gt;KOLOM 1&lt;/div&gt;
-    &lt;div class="p-2 text-center border-dashed"&gt;KOLOM 2&lt;/div&gt;
+    &lt;div class="p-2 text-center border-dashed"&gt;COLUMN 1&lt;/div&gt;
+    &lt;div class="p-2 text-center border-dashed"&gt;COLUMN 2&lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="layout-relay" class="docs-section">
-            <h2 class="t-card-header">> 10. LAYOUT SIDEBAR (RELAY-STYLE)</h2>
+            <h2 class="t-card-header">> 10. SIDEBAR LAYOUT (RELAY-STYLE)</h2>
             <div class="docs-example">
                 <div class="t-grid-layout">
                     <div class="t-main-panel p-2 border-dashed">MAIN_PANEL (70%)</div>
@@ -330,48 +354,48 @@
         </div>
 
         <div id="card" class="docs-section">
-            <h2 class="t-card-header">> 11. KOTAK KONTEN (CARDS)</h2>
+            <h2 class="t-card-header">> 11. CONTENT BOXES (CARDS)</h2>
             <div class="docs-example">
                 <div class="t-card">
-                    <div class="t-card-header">> STATUS_SERVER</div>
-                    <p>Sistem satelit berjalan dalam kondisi optimal.</p>
+                    <div class="t-card-header">> SERVER_STATUS</div>
+                    <p>Satellite system is running in optimal condition.</p>
                 </div>
 
                 <div class="t-card warning">
                     <div class="t-card-header">> ALERT_SYSTEM</div>
-                    <p>Peringatan ringan terkait kapasitas penyimpanan.</p>
+                    <p>Minor warning regarding storage capacity.</p>
                 </div>
 
                 <div class="t-card danger mb-0">
                     <div class="t-card-header">> CRITICAL_WARNING</div>
-                    <p>Terdeteksi anomali pada firewall. <span class="t-blink">Segera!</span></p>
+                    <p>Anomaly detected in the firewall. <span class="t-blink">Urgent!</span></p>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-card"&gt;
-    &lt;div class="t-card-header"&gt;&gt; STATUS_SERVER&lt;/div&gt;
-    &lt;p&gt;Sistem satelit berjalan...&lt;/p&gt;
+    &lt;div class="t-card-header"&gt;&gt; SERVER_STATUS&lt;/div&gt;
+    &lt;p&gt;Satellite system is running...&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div class="t-card warning"&gt;
     &lt;div class="t-card-header"&gt;&gt; ALERT_SYSTEM&lt;/div&gt;
-    &lt;p&gt;Peringatan ringan.&lt;/p&gt;
+    &lt;p&gt;Minor warning.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div class="t-card danger"&gt;
     &lt;div class="t-card-header"&gt;&gt; CRITICAL_WARNING&lt;/div&gt;
-    &lt;p&gt;Terdeteksi anomali pada firewall.&lt;/p&gt;
+    &lt;p&gt;Anomaly detected in the firewall.&lt;/p&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="code-block" class="docs-section">
             <h2 class="t-card-header">> 12. TERMINAL WINDOW (CODE BLOCK)</h2>
-            <p class="text-muted">Komponen epik untuk menampilkan script atau output console.</p>
+            <p class="text-muted">Epic components for displaying scripts or console outputs.</p>
             <div class="docs-example">
                 <div class="t-window mb-0">
                     <div class="t-window-header"><span>root@bunker:~#</span><span>[ - ] [ X ]</span></div>
                     <pre class="t-window-body"><code>Ping 192.168.1.1...
 Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
-> KONEKSI STABIL.</code></pre>
+> CONNECTION STABLE.</code></pre>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-window"&gt;
@@ -381,47 +405,47 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
     &lt;/div&gt;
     &lt;pre class="t-window-body"&gt;&lt;code&gt;Ping 192.168.1.1...
 Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
-&gt; KONEKSI STABIL.&lt;/code&gt;&lt;/pre&gt;
+&gt; CONNECTION STABLE.&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="form" class="docs-section">
-            <h2 class="t-card-header">> 13. TOMBOL & INPUT FORM</h2>
+            <h2 class="t-card-header">> 13. BUTTONS & INPUTS</h2>
             <div class="docs-example">
-                <label class="t-form-label">Alamat IP Target</label>
-                <input type="text" class="t-input mb-3" placeholder="Misal: 192.168.1.1">
+                <label class="t-form-label">Target IP Address</label>
+                <input type="text" class="t-input mb-3" placeholder="E.g.: 192.168.1.1">
                 <div class="d-flex gap-2">
-                    <button class="t-btn w-100">SCAN NORMAL</button>
+                    <button class="t-btn w-100">NORMAL SCAN</button>
                     <button class="t-btn danger w-100" disabled>LOCKED</button>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;label class="t-form-label"&gt;Alamat IP Target&lt;/label&gt;
-&lt;input type="text" class="t-input mb-3" placeholder="Misal: 192.168.1.1"&gt;
+            <div class="docs-code"><pre><code>&lt;label class="t-form-label"&gt;Target IP Address&lt;/label&gt;
+&lt;input type="text" class="t-input mb-3" placeholder="E.g.: 192.168.1.1"&gt;
 &lt;div class="d-flex gap-2"&gt;
-    &lt;button class="t-btn w-100"&gt;SCAN NORMAL&lt;/button&gt;
+    &lt;button class="t-btn w-100"&gt;NORMAL SCAN&lt;/button&gt;
     &lt;button class="t-btn danger w-100" disabled&gt;LOCKED&lt;/button&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="form-val" class="docs-section">
             <h2 class="t-card-header">> 14. FORM VALIDATION</h2>
-            <p class="text-muted">Gunakan class tambahan untuk memberitahu pengguna jika input mereka salah atau berhasil diverifikasi.</p>
+            <p class="text-muted">Use additional classes to notify users if their input is incorrect or successfully verified.</p>
             <div class="docs-example">
-                <label class="t-form-label">> PASSWORD LAMA</label>
-                <input type="password" class="t-input error" value="salah123">
-                <span class="t-feedback text-danger">> SYS_ERR: Sandi tidak cocok.</span>
+                <label class="t-form-label">> OLD PASSWORD</label>
+                <input type="password" class="t-input error" value="wrong123">
+                <span class="t-feedback text-danger">> SYS_ERR: Password mismatch.</span>
                 
-                <label class="t-form-label">> PASSWORD BARU</label>
-                <input type="password" class="t-input success mb-0" value="BunkerKuat99!">
-                <span class="t-feedback text-success">> KEKUATAN SANDI: OPTIMAL.</span>
+                <label class="t-form-label">> NEW PASSWORD</label>
+                <input type="password" class="t-input success mb-0" value="BunkerStrong99!">
+                <span class="t-feedback text-success">> PASSWORD STRENGTH: OPTIMAL.</span>
             </div>
             <div class="docs-code"><pre><code>&lt;!-- Input Error --&gt;
-&lt;input type="password" class="t-input error" value="salah"&gt;
-&lt;span class="t-feedback text-danger"&gt;&gt; SYS_ERR: Sandi tidak cocok.&lt;/span&gt;
+&lt;input type="password" class="t-input error" value="wrong"&gt;
+&lt;span class="t-feedback text-danger"&gt;&gt; SYS_ERR: Password mismatch.&lt;/span&gt;
 
 &lt;!-- Input Success --&gt;
-&lt;input type="password" class="t-input success" value="benar"&gt;
-&lt;span class="t-feedback text-success"&gt;&gt; KEKUATAN SANDI: OPTIMAL.&lt;/span&gt;</code></pre></div>
+&lt;input type="password" class="t-input success" value="correct"&gt;
+&lt;span class="t-feedback text-success"&gt;&gt; PASSWORD STRENGTH: OPTIMAL.&lt;/span&gt;</code></pre></div>
         </div>
 
         <div id="input-action" class="docs-section">
@@ -439,31 +463,31 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
         </div>
 
         <div id="textarea-select" class="docs-section">
-            <h2 class="t-card-header">> 16. TEXTAREA & DROPDOWN</h2>
+            <h2 class="t-card-header">> 16. TEXTAREA & SELECT</h2>
             <div class="docs-example">
                 <select class="t-select"><option>PUBLIC_BROADCAST</option></select>
-                <textarea class="t-textarea mb-0" rows="3" placeholder="Ketik pesan sandi di sini..."></textarea>
+                <textarea class="t-textarea mb-0" rows="3" placeholder="Type encrypted message here..."></textarea>
             </div>
             <div class="docs-code"><pre><code>&lt;select class="t-select"&gt;
     &lt;option&gt;PUBLIC_BROADCAST&lt;/option&gt;
 &lt;/select&gt;
-&lt;textarea class="t-textarea" rows="3" placeholder="Ketik pesan sandi..."&gt;&lt;/textarea&gt;</code></pre></div>
+&lt;textarea class="t-textarea" rows="3" placeholder="Type encrypted message here..."&gt;&lt;/textarea&gt;</code></pre></div>
         </div>
 
         <div id="advanced-form" class="docs-section">
             <h2 class="t-card-header">> 17. CHECKBOX & RADIO</h2>
             <div class="docs-example">
-                <label class="t-checkbox-label"><input type="checkbox" checked><span class="t-checkmark"></span> Enkripsi Jalur</label>
-                <label class="t-radio-label mt-2"><input type="radio" name="opt" checked><span class="t-radiomark"></span> Node Aktif</label>
+                <label class="t-checkbox-label"><input type="checkbox" checked><span class="t-checkmark"></span> Route Encryption</label>
+                <label class="t-radio-label mt-2"><input type="radio" name="opt" checked><span class="t-radiomark"></span> Active Node</label>
             </div>
             <div class="docs-code"><pre><code>&lt;label class="t-checkbox-label"&gt;
     &lt;input type="checkbox" checked&gt;
-    &lt;span class="t-checkmark"&gt;&lt;/span&gt; Enkripsi Jalur
+    &lt;span class="t-checkmark"&gt;&lt;/span&gt; Route Encryption
 &lt;/label&gt;
 
 &lt;label class="t-radio-label mt-2"&gt;
     &lt;input type="radio" name="opt" checked&gt;
-    &lt;span class="t-radiomark"&gt;&lt;/span&gt; Node Aktif
+    &lt;span class="t-radiomark"&gt;&lt;/span&gt; Active Node
 &lt;/label&gt;</code></pre></div>
         </div>
 
@@ -497,31 +521,31 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
         </div>
 
         <div id="table" class="docs-section">
-            <h2 class="t-card-header">> 19. TABEL DATA</h2>
+            <h2 class="t-card-header">> 19. DATA TABLES</h2>
             <div class="docs-example">
                 <div class="t-table-wrapper mb-0">
                     <table class="t-table">
-                        <thead><tr><th>ID</th><th>BERKAS</th></tr></thead>
+                        <thead><tr><th>ID</th><th>FILE</th></tr></thead>
                         <tbody><tr><td>01</td><td>data.sql</td></tr></tbody>
                     </table>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-table-wrapper"&gt;
     &lt;table class="t-table"&gt;
-        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;BERKAS&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;FILE&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
         &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;01&lt;/td&gt;&lt;td&gt;data.sql&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
     &lt;/table&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="list-group" class="docs-section">
-            <h2 class="t-card-header">> 20. LIST GROUP (KONTAK)</h2>
+            <h2 class="t-card-header">> 20. LIST GROUPS (CONTACTS)</h2>
             <div class="docs-example">
                 <div class="t-list-group mb-0">
                     <a href="#" class="t-list-item active">
                         <span class="t-led-dot t-led-green"></span>
                         <span class="t-list-item-title">STATION_BRAVO</span>
-                        <span class="t-list-item-subtitle">Sektor 5</span>
+                        <span class="t-list-item-subtitle">Sector 5</span>
                     </a>
                 </div>
             </div>
@@ -529,7 +553,7 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
     &lt;a href="#" class="t-list-item active"&gt;
         &lt;span class="t-led-dot t-led-green"&gt;&lt;/span&gt;
         &lt;span class="t-list-item-title"&gt;STATION_BRAVO&lt;/span&gt;
-        &lt;span class="t-list-item-subtitle"&gt;Sektor 5&lt;/span&gt;
+        &lt;span class="t-list-item-subtitle"&gt;Sector 5&lt;/span&gt;
     &lt;/a&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
@@ -538,25 +562,25 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
             <h2 class="t-card-header">> 21. CHAT BUBBLES</h2>
             <div class="docs-example" style="background: var(--bg-base);">
                 <div class="t-chat-container">
-                    <div class="t-bubble t-bubble-them">Pesan dari luar</div>
-                    <div class="t-bubble t-bubble-me">Pesan saya</div>
+                    <div class="t-bubble t-bubble-them">Incoming message</div>
+                    <div class="t-bubble t-bubble-me">My message</div>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-chat-container"&gt;
-    &lt;div class="t-bubble t-bubble-them"&gt;Pesan dari luar&lt;/div&gt;
-    &lt;div class="t-bubble t-bubble-me"&gt;Pesan saya&lt;/div&gt;
+    &lt;div class="t-bubble t-bubble-them"&gt;Incoming message&lt;/div&gt;
+    &lt;div class="t-bubble t-bubble-me"&gt;My message&lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="badge" class="docs-section">
-            <h2 class="t-card-header">> 22. BADGE & PROGRESS BAR</h2>
+            <h2 class="t-card-header">> 22. BADGES & PROGRESS</h2>
             <div class="docs-example">
                 <span class="t-badge warning mb-3">PENDING</span>
-                <span class="t-badge danger mb-3">KRITIS</span>
+                <span class="t-badge danger mb-3">CRITICAL</span>
                 <div class="t-progress-bg mb-0"><div class="t-progress-bar" style="width: 45%;">45%</div></div>
             </div>
             <div class="docs-code"><pre><code>&lt;span class="t-badge warning"&gt;PENDING&lt;/span&gt;
-&lt;span class="t-badge danger"&gt;KRITIS&lt;/span&gt;
+&lt;span class="t-badge danger"&gt;CRITICAL&lt;/span&gt;
 
 &lt;div class="t-progress-bg"&gt;
     &lt;div class="t-progress-bar" style="width: 45%;"&gt;45%&lt;/div&gt;
@@ -564,7 +588,7 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
         </div>
 
         <div id="led-status" class="docs-section">
-            <h2 class="t-card-header">> 23. INDIKATOR LED</h2>
+            <h2 class="t-card-header">> 23. LED INDICATORS</h2>
             <div class="docs-example">
                 <span class="t-led-dot t-led-green"></span> OK &nbsp; 
                 <span class="t-led-dot t-led-yellow"></span> WAIT &nbsp;
@@ -578,28 +602,28 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
         <div id="alerts" class="docs-section">
             <h2 class="t-card-header">> 24. ALERTS & SPINNER</h2>
             <div class="docs-example">
-                <div class="t-alert danger mb-3">> PELANGGARAN KEAMANAN!</div>
+                <div class="t-alert danger mb-3">> SECURITY BREACH!</div>
                 Status: <span class="t-spinner"></span> PROCESSING
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-alert danger"&gt;&gt; PELANGGARAN KEAMANAN!&lt;/div&gt;
+            <div class="docs-code"><pre><code>&lt;div class="t-alert danger"&gt;&gt; SECURITY BREACH!&lt;/div&gt;
 Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div>
         </div>
 
         <div id="tabs" class="docs-section">
-            <h2 class="t-card-header">> 25. SISTEM TABS</h2>
+            <h2 class="t-card-header">> 25. TAB SYSTEM</h2>
             <div class="docs-example">
                 <div class="t-tabs-wrapper mb-0">
                     <div class="t-tabs-header">
                         <button class="t-tab-btn active" onclick="Terminal.tab(this, 't1')">MAIN</button>
                     </div>
-                    <div id="t1" class="t-tab-content active">Isi tab utama.</div>
+                    <div id="t1" class="t-tab-content active">Main tab content.</div>
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-tabs-wrapper"&gt;
     &lt;div class="t-tabs-header"&gt;
         &lt;button class="t-tab-btn active" onclick="Terminal.tab(this, 't1')"&gt;MAIN&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div id="t1" class="t-tab-content active"&gt;Isi tab utama.&lt;/div&gt;
+    &lt;div id="t1" class="t-tab-content active"&gt;Main tab content.&lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
@@ -607,50 +631,50 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <h2 class="t-card-header">> 26. ACCORDION & TOOLTIP</h2>
             <div class="docs-example">
                 <div class="t-accordion mb-4">
-                    <button class="t-accordion-btn" onclick="Terminal.accordion(this)">DIREKTORI</button>
-                    <div class="t-accordion-content">Isi rahasia.</div>
+                    <button class="t-accordion-btn" onclick="Terminal.accordion(this)">DIRECTORY</button>
+                    <div class="t-accordion-content">Classified content.</div>
                 </div>
-                <p>Hover ke <span data-tooltip="Koordinat rahasia">Teks Ini</span>.</p>
+                <p>Hover over <span data-tooltip="Secret coordinates">This Text</span>.</p>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-accordion"&gt;
-    &lt;button class="t-accordion-btn" onclick="Terminal.accordion(this)"&gt;DIREKTORI&lt;/button&gt;
-    &lt;div class="t-accordion-content"&gt;Isi rahasia.&lt;/div&gt;
+    &lt;button class="t-accordion-btn" onclick="Terminal.accordion(this)"&gt;DIRECTORY&lt;/button&gt;
+    &lt;div class="t-accordion-content"&gt;Classified content.&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Hover ke &lt;span data-tooltip="Koordinat rahasia"&gt;Teks Ini&lt;/span&gt;.&lt;/p&gt;</code></pre></div>
+&lt;p&gt;Hover over &lt;span data-tooltip="Secret coordinates"&gt;This Text&lt;/span&gt;.&lt;/p&gt;</code></pre></div>
         </div>
 
         <div id="modal" class="docs-section">
-            <h2 class="t-card-header">> 27. SISTEM MODAL</h2>
+            <h2 class="t-card-header">> 27. MODAL SYSTEM</h2>
             <div class="docs-example">
-                <button class="t-btn" onclick="Terminal.modal.open('contohModal')">BUKA MODAL</button>
+                <button class="t-btn" onclick="Terminal.modal.open('contohModal')">OPEN MODAL</button>
             </div>
-            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.modal.open('contohModal')"&gt;BUKA MODAL&lt;/button&gt;
+            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.modal.open('contohModal')"&gt;OPEN MODAL&lt;/button&gt;
 
-&lt;!-- Taruh struktur ini di bawah body --&gt;
+&lt;!-- Place this structure at the bottom of the body --&gt;
 &lt;div id="contohModal" class="t-modal"&gt;
     &lt;div class="t-modal-content"&gt;
-        &lt;div class="t-card-header"&gt;&gt; AKSES_SISTEM&lt;/div&gt;
-        &lt;p&gt;Sistem merespon dengan baik.&lt;/p&gt;
+        &lt;div class="t-card-header"&gt;&gt; SYSTEM_ACCESS&lt;/div&gt;
+        &lt;p&gt;System is responding well.&lt;/p&gt;
         &lt;div class="mt-4 text-right"&gt;
-            &lt;button class="t-btn danger" onclick="Terminal.modal.close('contohModal')"&gt;TUTUP [X]&lt;/button&gt;
+            &lt;button class="t-btn danger" onclick="Terminal.modal.close('contohModal')"&gt;CLOSE [X]&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
         <div id="toast" class="docs-section">
-            <h2 class="t-card-header">> 28. NOTIFIKASI (TOAST)</h2>
+            <h2 class="t-card-header">> 28. NOTIFICATIONS (TOAST)</h2>
             <div class="docs-example">
                 <div class="d-flex gap-2 flex-wrap">
-                    <button class="t-btn" onclick="Terminal.toast('Koneksi aman.', 'normal')">Normal</button>
-                    <button class="t-btn text-warning" style="border-color:var(--t-yellow);" onclick="Terminal.toast('Proses berjalan...', 'warning')">Warning</button>
-                    <button class="t-btn danger" onclick="Terminal.toast('Koneksi terputus!', 'danger')">Danger</button>
+                    <button class="t-btn" onclick="Terminal.toast('Secure connection.', 'normal')">Normal</button>
+                    <button class="t-btn text-warning" style="border-color:var(--t-yellow);" onclick="Terminal.toast('Process running...', 'warning')">Warning</button>
+                    <button class="t-btn danger" onclick="Terminal.toast('Connection lost!', 'danger')">Danger</button>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.toast('Koneksi aman.', 'normal')"&gt;Normal&lt;/button&gt;
-&lt;button class="t-btn" onclick="Terminal.toast('Proses berjalan...', 'warning')"&gt;Warning&lt;/button&gt;
-&lt;button class="t-btn danger" onclick="Terminal.toast('Koneksi terputus!', 'danger')"&gt;Danger&lt;/button&gt;</code></pre></div>
+            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.toast('Secure connection.', 'normal')"&gt;Normal&lt;/button&gt;
+&lt;button class="t-btn" onclick="Terminal.toast('Process running...', 'warning')"&gt;Warning&lt;/button&gt;
+&lt;button class="t-btn danger" onclick="Terminal.toast('Connection lost!', 'danger')"&gt;Danger&lt;/button&gt;</code></pre></div>
         </div>
 
         <div id="branding" class="docs-section">
@@ -658,20 +682,20 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <div class="docs-example text-center">
                 <img src="terminal-icon.svg" width="128" style="border: 1px solid var(--t-green-dim); padding: 10px; background: #000;" alt="Terminal UI Logo">
             </div>
-            <div class="docs-code"><pre><code>&lt;!-- Cara pasang Favicon --&gt;
+            <div class="docs-code"><pre><code>&lt;!-- How to setup Favicon --&gt;
 &lt;link rel="icon" type="image/svg+xml" href="terminal-icon.svg"&gt;</code></pre></div>
         </div>
 
         <div id="new-modules" class="docs-section">
-            <h2 class="t-card-header">> 30. EKSTENSI BARU (V1.3.0)</h2>
+            <h2 class="t-card-header">> 30. NEW EXTENSIONS (V1.3.0)</h2>
 
             <h3 class="font-bold text-success mb-2 mt-4">A. DROPDOWN MENU (.t-dropdown)</h3>
             <div class="docs-example">
                 <div class="t-dropdown">
                     <button class="t-btn t-dropdown-btn" onclick="Terminal.dropdown(this)">[ ACTION_MENU v ]</button>
                     <div class="t-dropdown-menu">
-                        <a class="t-dropdown-item" onclick="Terminal.toast('Memindai...')">> SCAN_NODE</a>
-                        <a class="t-dropdown-item" onclick="Terminal.toast('Mengekstrak...')">> EXTRACT_DATA</a>
+                        <a class="t-dropdown-item" onclick="Terminal.toast('Scanning...')">> SCAN_NODE</a>
+                        <a class="t-dropdown-item" onclick="Terminal.toast('Extracting...')">> EXTRACT_DATA</a>
                         <a class="t-dropdown-item text-danger">> PURGE_SYSTEM</a>
                     </div>
                 </div>
@@ -679,8 +703,8 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <div class="docs-code"><pre><code>&lt;div class="t-dropdown"&gt;
     &lt;button class="t-btn t-dropdown-btn" onclick="Terminal.dropdown(this)"&gt;[ ACTION_MENU v ]&lt;/button&gt;
     &lt;div class="t-dropdown-menu"&gt;
-        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Memindai...')"&gt;&gt; SCAN_NODE&lt;/a&gt;
-        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Mengekstrak...')"&gt;&gt; EXTRACT_DATA&lt;/a&gt;
+        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Scanning...')"&gt;&gt; SCAN_NODE&lt;/a&gt;
+        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Extracting...')"&gt;&gt; EXTRACT_DATA&lt;/a&gt;
         &lt;a class="t-dropdown-item text-danger"&gt;&gt; PURGE_SYSTEM&lt;/a&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
@@ -765,7 +789,7 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
         </div>
 
         <div id="media-modules" class="docs-section">
-            <h2 class="t-card-header">> 31. EKSTENSI MEDIA & STATUS</h2>
+            <h2 class="t-card-header">> 31. MEDIA & STATUS EXTENSIONS</h2>
 
             <h3 class="font-bold text-success mb-2 mt-4">A. CUSTOM FILE UPLOAD (.t-file-wrapper)</h3>
             <div class="docs-example">
@@ -782,20 +806,20 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <h3 class="font-bold text-success mb-2 mt-4">B. IMAGE LIGHTBOX (.t-lightbox)</h3>
             <div class="docs-example">
                 <img src="terminal-icon.svg" width="60" class="t-retro-filter" style="cursor: pointer; border: 1px dashed var(--t-green-dim);" onclick="Terminal.lightbox.open(this.src)" alt="Demo">
-                <span class="fs-small text-muted ml-2">&lt;- Klik logo ini</span>
+                <span class="fs-small text-muted ml-2">&lt;- Click this logo</span>
             </div>
-            <div class="docs-code"><pre><code>&lt;img src="gambar.jpg" onclick="Terminal.lightbox.open(this.src)"&gt;</code></pre></div>
+            <div class="docs-code"><pre><code>&lt;img src="image.jpg" onclick="Terminal.lightbox.open(this.src)"&gt;</code></pre></div>
 
             <h3 class="font-bold text-success mb-2 mt-4">C. EMPTY STATE (.t-empty-state)</h3>
             <div class="docs-example">
                 <div class="t-empty-state">
                     <span class="t-empty-state-icon">📡</span>
-                    [ RADAR KOSONG. TIDAK ADA SINYAL. ]
+                    [ EMPTY RADAR. NO SIGNAL. ]
                 </div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-empty-state"&gt;
     &lt;span class="t-empty-state-icon"&gt;📡&lt;/span&gt;
-    [ RADAR KOSONG. TIDAK ADA SINYAL. ]
+    [ EMPTY RADAR. NO SIGNAL. ]
 &lt;/div&gt;</code></pre></div>
 
             <h3 class="font-bold text-success mb-2 mt-4">D. SKELETON LOADER (.t-skeleton)</h3>
@@ -811,10 +835,10 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
 
     <div id="contohModal" class="t-modal">
         <div class="t-modal-content">
-            <div class="t-card-header">> AKSES_SISTEM</div>
-            <p>Sistem merespon dengan baik.</p>
+            <div class="t-card-header">> SYSTEM_ACCESS</div>
+            <p>System is responding well.</p>
             <div class="mt-4 text-right">
-                <button class="t-btn danger" onclick="Terminal.modal.close('contohModal')">TUTUP [X]</button>
+                <button class="t-btn danger" onclick="Terminal.modal.close('contohModal')">CLOSE [X]</button>
             </div>
         </div>
     </div>

@@ -57,8 +57,23 @@ body.t-crt::after {
 .align-items-start { align-items: flex-start !important; }
 .gap-1 { gap: 5px !important; } .gap-2 { gap: 10px !important; } .gap-3 { gap: 15px !important; } .gap-4 { gap: 20px !important; }
 
+/* Sizing Utilities */
+.w-25 { width: 25% !important; }
+.w-50 { width: 50% !important; }
+.w-75 { width: 75% !important; }
 .w-100 { width: 100% !important; }
+.w-auto { width: auto !important; }
 .h-100 { height: 100% !important; }
+
+/* Responsive Display Utilities */
+@media (max-width: 768px) {
+    .d-none-mobile { display: none !important; }
+    .d-block-mobile { display: block !important; }
+}
+@media (min-width: 769px) {
+    .d-none-desktop { display: none !important; }
+    .d-block-desktop { display: block !important; }
+}
 
 .m-0 { margin: 0 !important; } .mt-0 { margin-top: 0 !important; } .mb-0 { margin-bottom: 0 !important; }
 .mt-1 { margin-top: 5px !important; } .mt-2 { margin-top: 10px !important; } .mt-3 { margin-top: 15px !important; } .mt-4 { margin-top: 20px !important; } .mt-5 { margin-top: 30px !important; }
@@ -103,11 +118,23 @@ body.t-crt::after {
 .t-box-md { max-width: 650px; }
 .t-box-lg { max-width: 850px; }
 
+/* --- NAVBAR MODULE --- */
 .t-navbar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px dashed var(--t-green-dim); background: var(--bg-surface); margin-bottom: 20px; }
 .t-nav-brand { font-weight: bold; color: var(--t-green); font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
 .t-nav-menu { display: flex; gap: 15px; }
 .t-nav-menu a { color: var(--t-green-dim); text-decoration: none; font-size: 13px; transition: 0.2s; }
 .t-nav-menu a:hover { color: var(--t-green); text-shadow: 0 0 5px var(--t-green); }
+
+/* Navbar Mobile Toggler Extension */
+.t-nav-toggler { display: none; background: transparent; border: 1px solid var(--t-green-dim); color: var(--t-green); padding: 5px 10px; cursor: pointer; font-family: inherit; font-size: 12px; transition: 0.2s; }
+.t-nav-toggler:hover { background: rgba(0,255,65,0.1); }
+
+@media (max-width: 768px) {
+    .t-navbar { flex-wrap: wrap; }
+    .t-nav-toggler { display: inline-block; }
+    .t-nav-menu.t-nav-collapse { display: none; width: 100%; flex-direction: column; gap: 10px; margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--t-green-dim); }
+    .t-nav-menu.t-nav-collapse.show { display: flex; animation: fadeIn 0.3s ease; }
+}
 
 /* --- CARD MODULE --- */
 .t-card { background-color: var(--bg-surface); border: 1px solid var(--t-green-dim); padding: 20px; margin-bottom: 20px; border-top: 3px solid var(--t-green-dim); position: relative; transition: box-shadow 0.3s ease; }
@@ -252,7 +279,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-page-btn { background: transparent; border: 1px solid var(--t-green-dim); color: var(--t-green-dim); padding: 6px 12px; font-family: inherit; font-size: 12px; cursor: pointer; text-decoration: none; transition: 0.2s; }
 .t-page-btn:hover, .t-page-btn.active { border-color: var(--t-green); color: var(--t-green); background: rgba(0,255,65,0.05); }
 
-/* Filter Layar Monokrom */
+/* Monochrome Screen Filter */
 .t-retro-filter { filter: grayscale(1) sepia(0.5) hue-rotate(80deg) contrast(1.2); transition: filter 0.3s; }
 .t-retro-filter:hover { filter: grayscale(0) sepia(0) hue-rotate(0) contrast(1); }
 
@@ -320,16 +347,16 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-switch input:checked + .t-switch-slider { border-color: var(--t-green); background-color: rgba(0,255,65,0.1); box-shadow: 0 0 5px rgba(0,255,65,0.2); }
 .t-switch input:checked + .t-switch-slider:before { transform: translateX(20px); background-color: var(--t-green); box-shadow: 0 0 5px var(--t-green); }
 
-/* 3. RANGE SLIDER (KALIBRATOR) */
-.t-range { -webkit-appearance: none; width: 100%; background: transparent; height: 20px; outline: none; margin: 10px 0; }
+/* 3. RANGE SLIDER (CALIBRATOR) */
+.t-range { -webkit-appearance: none; appearance: none; width: 100%; background: transparent; height: 20px; outline: none; margin: 10px 0; }
 .t-range::-webkit-slider-runnable-track { width: 100%; height: 2px; background: repeating-linear-gradient(to right, var(--t-green-dim) 0, var(--t-green-dim) 5px, transparent 5px, transparent 10px); cursor: pointer; }
-.t-range::-webkit-slider-thumb { height: 16px; width: 10px; background: var(--t-green); cursor: pointer; -webkit-appearance: none; margin-top: -7px; border: 1px solid var(--bg-base); box-shadow: 0 0 5px var(--t-green); transition: 0.2s; }
+.t-range::-webkit-slider-thumb { height: 16px; width: 10px; background: var(--t-green); cursor: pointer; -webkit-appearance: none; appearance: none; margin-top: -7px; border: 1px solid var(--bg-base); box-shadow: 0 0 5px var(--t-green); transition: 0.2s; }
 .t-range::-webkit-slider-thumb:hover { background: var(--t-yellow); box-shadow: 0 0 8px var(--t-yellow); }
 .t-range:focus::-webkit-slider-runnable-track { background: repeating-linear-gradient(to right, var(--t-green) 0, var(--t-green) 5px, transparent 5px, transparent 10px); }
 .t-range::-moz-range-track { width: 100%; height: 2px; background: repeating-linear-gradient(to right, var(--t-green-dim) 0, var(--t-green-dim) 5px, transparent 5px, transparent 10px); cursor: pointer; }
 .t-range::-moz-range-thumb { height: 16px; width: 10px; background: var(--t-green); cursor: pointer; border: 1px solid var(--bg-base); box-shadow: 0 0 5px var(--t-green); border-radius: 0; }
 
-/* 4. TREE VIEW (PENJELAJAH BERKAS) */
+/* 4. TREE VIEW (FILE EXPLORER) */
 .t-tree { list-style-type: none; padding-left: 0; font-size: 13px; margin-bottom: 15px; }
 .t-tree ul { list-style-type: none; padding-left: 20px; border-left: 1px dashed var(--t-green-dim); margin-left: 5px; display: none; }
 .t-tree ul.active { display: block; animation: fadeIn 0.2s ease; }
