@@ -75,6 +75,7 @@
             <li><a href="#toast">> 28. NOTIFIKASI (TOAST)</a></li>
             <li><a href="#branding">> 29. BRANDING (ICON)</a></li>
             <li><a href="#new-modules">> 30. EKSTENSI BARU</a></li>
+            <li><a href="#media-modules">> 31. EKSTENSI MEDIA</a></li>
         </ul>
     </aside>
 
@@ -761,6 +762,49 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             </div>
             <div class="docs-code"><pre><code>&lt;div id="tw-demo" class="mb-3 text-warning font-bold" style="min-height: 25px;"&gt;&lt;/div&gt;
 &lt;button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '&gt; INCOMING TRANSMISSION INTERCEPTED...', 50)"&gt;[ PLAY_EFFECT ]&lt;/button&gt;</code></pre></div>
+        </div>
+
+        <div id="media-modules" class="docs-section">
+            <h2 class="t-card-header">> 31. EKSTENSI MEDIA & STATUS</h2>
+
+            <h3 class="font-bold text-success mb-2 mt-4">A. CUSTOM FILE UPLOAD (.t-file-wrapper)</h3>
+            <div class="docs-example">
+                <div class="t-file-wrapper">
+                    <span class="t-file-btn" id="file-label">> SELECT_FILE</span>
+                    <input type="file" id="file-input" onchange="Terminal.fileInput('file-input', 'file-label')">
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-file-wrapper"&gt;
+    &lt;span class="t-file-btn" id="file-label"&gt;&gt; SELECT_FILE&lt;/span&gt;
+    &lt;input type="file" id="file-input" onchange="Terminal.fileInput('file-input', 'file-label')"&gt;
+&lt;/div&gt;</code></pre></div>
+            
+            <h3 class="font-bold text-success mb-2 mt-4">B. IMAGE LIGHTBOX (.t-lightbox)</h3>
+            <div class="docs-example">
+                <img src="terminal-icon.svg" width="60" class="t-retro-filter" style="cursor: pointer; border: 1px dashed var(--t-green-dim);" onclick="Terminal.lightbox.open(this.src)" alt="Demo">
+                <span class="fs-small text-muted ml-2">&lt;- Klik logo ini</span>
+            </div>
+            <div class="docs-code"><pre><code>&lt;img src="gambar.jpg" onclick="Terminal.lightbox.open(this.src)"&gt;</code></pre></div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">C. EMPTY STATE (.t-empty-state)</h3>
+            <div class="docs-example">
+                <div class="t-empty-state">
+                    <span class="t-empty-state-icon">📡</span>
+                    [ RADAR KOSONG. TIDAK ADA SINYAL. ]
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-empty-state"&gt;
+    &lt;span class="t-empty-state-icon"&gt;📡&lt;/span&gt;
+    [ RADAR KOSONG. TIDAK ADA SINYAL. ]
+&lt;/div&gt;</code></pre></div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">D. SKELETON LOADER (.t-skeleton)</h3>
+            <div class="docs-example">
+                <div class="t-skeleton"></div>
+                <div class="t-skeleton" style="width: 70%;"></div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-skeleton"&gt;&lt;/div&gt;
+&lt;div class="t-skeleton" style="width: 70%;"&gt;&lt;/div&gt;</code></pre></div>
         </div>
 
     </main>

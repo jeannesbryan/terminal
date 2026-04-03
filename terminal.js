@@ -135,6 +135,40 @@ const Terminal = {
                 }, customDelay);
             }
         }
+    },
+
+    lightbox: {
+        open: function(imgSrc) {
+            let box = document.getElementById('t-lightbox-container');
+            if (!box) {
+                box = document.createElement('div');
+                box.id = 't-lightbox-container';
+                box.className = 't-lightbox';
+                // Tutup jika area luar diklik
+                box.onclick = function(e) { if(e.target === box) Terminal.lightbox.close(); };
+                box.innerHTML = '<span class="t-lightbox-close" onclick="Terminal.lightbox.close()">[ X ]</span><img id="t-lightbox-img" src="">';
+                document.body.appendChild(box);
+            }
+            document.getElementById('t-lightbox-img').src = imgSrc;
+            box.classList.add('active');
+        },
+        close: function() {
+            const box = document.getElementById('t-lightbox-container');
+            if (box) box.classList.remove('active');
+        }
+    },
+
+    fileInput: function(inputId, labelId) {
+        const input = document.getElementById(inputId);
+        const label = document.getElementById(labelId);
+        if (input && label) {
+            input.addEventListener('change', function(e) {
+                let fileName = e.target.files[0] ? e.target.files[0].name : '[ NO_MEDIA ]';
+                // Potong nama file jika terlalu panjang
+                if (fileName.length > 20) fileName = fileName.substring(0, 17) + '...';
+                label.innerText = '> ' + fileName;
+            });
+        }
     }
 };
 
