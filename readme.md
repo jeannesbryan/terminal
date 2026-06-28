@@ -7,22 +7,6 @@ Torminal stays strict for Tor and zero-JS environments; Terminal UI is allowed t
 
 ---
 
-## About
-
-**Recommended GitHub About:**
-
-```text
-Dependency-free CSS/JS framework for retro terminal-inspired web interfaces.
-```
-
-Alternative with more cyberpunk flavor:
-
-```text
-Vanilla CSS/JS framework for cyberpunk dashboards and terminal-inspired web apps.
-```
-
----
-
 ## Key Features
 
 - **Zero runtime dependencies:** no React, jQuery, Bootstrap, or build step.
@@ -131,18 +115,6 @@ Register links as commands:
 
 ```html
 <a href="docs.html" data-t-command="Open documentation">Docs</a>
-```
-
----
-
-## Files
-
-```text
-terminal.css   # Core CSS framework
-terminal.js    # Vanilla JS helpers
-index.html     # Landing page
-docs.html      # Component documentation
-README.md      # Project README
 ```
 
 ---
