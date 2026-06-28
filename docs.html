@@ -5,41 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal UI - System Manual</title>
     <link rel="icon" type="image/svg+xml" href="terminal-icon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="terminal.css">
-    
-    <style>
-        /* Document Specific CSS */
-        body { display: flex; align-items: flex-start; }
-        .t-sidebar { width: 260px; height: 100vh; position: fixed; top: 0; left: 0; background: var(--bg-surface); border-right: 1px dashed var(--t-green-dim); padding: 20px; overflow-y: auto; z-index: 100; }
-        
-        .sidebar-logo { text-align: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px double var(--t-green-dim); }
-        
-        .t-sidebar h3 { font-size: 14px; margin-bottom: 20px; color: var(--t-green); border-bottom: 1px dashed var(--t-green); padding-bottom: 10px; }
-        .t-sidebar ul { list-style: none; padding: 0; margin: 0; }
-        .t-sidebar li { margin-bottom: 5px; }
-        .t-sidebar a { color: var(--t-green-dim); text-decoration: none; font-size: 12px; transition: 0.2s; display: block; padding: 5px; border-left: 2px solid transparent; }
-        .t-sidebar a:hover, .t-sidebar a.active { color: var(--t-green); border-left-color: var(--t-green); background: rgba(0, 255, 65, 0.05); padding-left: 10px; }
-
-        .t-main-content { margin-left: 260px; padding: 30px; width: calc(100% - 260px); max-width: 900px; }
-        .docs-section { margin-bottom: 70px; padding-top: 20px; border-top: 1px solid #111; }
-        .docs-example { padding: 25px; border: 1px dashed var(--t-green-dim); background: rgba(0, 255, 65, 0.02); position: relative; margin-bottom: -1px; }
-        .docs-example::before { content: "PREVIEW"; position: absolute; top: 0; left: 0; background: var(--t-green-dim); color: #000; font-size: 10px; padding: 2px 6px; font-weight: bold; }
-        .docs-code { background: #000; padding: 15px; border: 1px solid var(--t-green-dim); overflow-x: auto; font-size: 12px; color: #a8ffb7; }
-        
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .t-sidebar { width: 100%; height: 250px; position: relative; border-right: none; border-bottom: 1px dashed var(--t-green-dim); padding: 15px; }
-            .t-main-content { margin-left: 0; width: 100%; padding: 15px; }
-        }
-    </style>
 </head>
-<body class="t-crt">
+<body class="t-crt t-docs-body">
 
     <aside class="t-sidebar">
         <div class="sidebar-logo">
-            <img src="terminal-icon.svg" alt="Logo" width="70" style="background: #000; padding: 5px; border: 1px solid var(--t-green-dim);">
-            <div class="mt-2 font-bold" style="color: var(--t-green);">TERMINAL UI</div>
+            <img src="terminal-icon.svg" alt="Logo" width="70" class="t-logo-frame">
+            <div class="mt-2 font-bold text-success">TERMINAL UI</div>
         </div>
 
         <h3>> SYSTEM_INDEX</h3>
@@ -81,22 +54,21 @@
 
     <main class="t-main-content">
 
-        <div id="intro" class="docs-section" style="border:none;">
+        <div id="intro" class="docs-section no-border">
             <h1 class="mb-2">> MAN_PAGE TERMINAL UI <span class="t-blink">_</span></h1>
-            <p class="text-muted">A complete manual for Bunker/Retro styled CSS/JS components. Terminal UI now features a theme modification system, form validation, and 30 interface modules.</p>
+            <p class="text-muted">A complete manual for retro terminal CSS/JS components. Terminal UI adds data-attribute helpers, command palette, theme presets, safer JS defaults, and reusable docs/landing modules.</p>
         </div>
 
         <div id="starter" class="docs-section">
             <h2 class="t-card-header">> 01. STARTER TEMPLATE (BOILERPLATE)</h2>
             <p class="text-muted">Copy this empty HTML boilerplate to start fresh with Terminal UI.</p>
             <div class="docs-code"><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
+&lt;html lang="en" data-terminal-theme="green"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
     &lt;title&gt;Bunker OS&lt;/title&gt;
     &lt;link rel="icon" type="image/svg+xml" href="assets/terminal-icon.svg"&gt;
-    &lt;link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"&gt;
     &lt;link rel="stylesheet" href="assets/terminal.css"&gt;
 &lt;/head&gt;
 &lt;body class="t-crt"&gt;
@@ -140,7 +112,7 @@
 &lt;/div&gt;</code></pre></div>
             <div class="t-window mb-0 mt-3">
                 <div class="t-window-header">Utility_Classes_List.txt</div>
-                <div class="t-window-body" style="font-size: 12px; line-height: 2;">
+                <div class="t-window-body t-docs-utility-list">
                     <strong>Flexbox:</strong> <code>.d-flex</code>, <code>.flex-column</code>, <code>.justify-content-center</code>, <code>.justify-content-between</code>, <code>.align-items-center</code>, <code>.gap-2</code><br>
                     <strong>Sizing:</strong> <code>.w-25</code>, <code>.w-50</code>, <code>.w-75</code>, <code>.w-100</code>, <code>.h-100</code>, <code>.w-auto</code><br>
                     <strong>Spacing:</strong> <code>.m-0</code> to <code>.m-5</code>, <code>.p-0</code> to <code>.p-5</code>, <code>.px-3</code>, <code>.py-2</code>, etc.<br>
@@ -158,7 +130,7 @@
                 <div class="p-3 border-dashed text-center d-none-mobile bg-surface">
                     > VISIBLE ON DESKTOP ONLY (.d-none-mobile)
                 </div>
-                <div class="p-3 border-dashed text-center d-none-desktop text-danger" style="border-color: var(--t-red);">
+                <div class="p-3 border-dashed border-danger text-center d-none-desktop text-danger">
                     > VISIBLE ON MOBILE ONLY (.d-none-desktop)
                 </div>
             </div>
@@ -284,8 +256,8 @@
 
         <div id="center-screen" class="docs-section">
             <h2 class="t-card-header">> 08. CENTER SCREEN (LOGIN/INSTALL)</h2>
-            <div class="docs-example" style="height: 250px; position: relative; overflow: hidden; background: var(--bg-base);">
-                <div class="t-center-screen" style="min-height: 100%;">
+            <div class="docs-example t-docs-center-demo">
+                <div class="t-center-screen t-center-screen-demo">
                     <div class="t-center-box t-card mb-0">
                         <div class="t-card-header">> SYSTEM_LOGIN</div>
                         <input type="password" class="t-input text-center" placeholder="PASSCODE">
@@ -308,10 +280,10 @@
 
             <h3 class="font-bold text-success mb-2 mt-4">A. CONTAINERS</h3>
             <div class="docs-example">
-                <div class="t-container border-dashed text-center p-2 mb-3" style="background: rgba(0,255,65,0.05);">
+                <div class="t-container border-dashed text-center p-2 mb-3 t-demo-strip">
                     .t-container (Max: 800px) - Suitable for reading/forms.
                 </div>
-                <div class="t-container-fluid border-dashed text-center p-2" style="background: rgba(0,255,65,0.05);">
+                <div class="t-container-fluid border-dashed text-center p-2 t-demo-strip">
                     .t-container-fluid (Max: 1200px) - Suitable for dashboards.
                 </div>
             </div>
@@ -560,7 +532,7 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
 
         <div id="chat-ui" class="docs-section">
             <h2 class="t-card-header">> 21. CHAT BUBBLES</h2>
-            <div class="docs-example" style="background: var(--bg-base);">
+            <div class="docs-example" class="bg-base">
                 <div class="t-chat-container">
                     <div class="t-bubble t-bubble-them">Incoming message</div>
                     <div class="t-bubble t-bubble-me">My message</div>
@@ -577,13 +549,13 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
             <div class="docs-example">
                 <span class="t-badge warning mb-3">PENDING</span>
                 <span class="t-badge danger mb-3">CRITICAL</span>
-                <div class="t-progress-bg mb-0"><div class="t-progress-bar" style="width: 45%;">45%</div></div>
+                <div class="t-progress-bg mb-0"><div class="t-progress-bar" class="t-demo-half">45%</div></div>
             </div>
             <div class="docs-code"><pre><code>&lt;span class="t-badge warning"&gt;PENDING&lt;/span&gt;
 &lt;span class="t-badge danger"&gt;CRITICAL&lt;/span&gt;
 
 &lt;div class="t-progress-bg"&gt;
-    &lt;div class="t-progress-bar" style="width: 45%;"&gt;45%&lt;/div&gt;
+    &lt;div class="t-progress-bar" class="t-demo-half"&gt;45%&lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
         </div>
 
@@ -668,7 +640,7 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <div class="docs-example">
                 <div class="d-flex gap-2 flex-wrap">
                     <button class="t-btn" onclick="Terminal.toast('Secure connection.', 'normal')">Normal</button>
-                    <button class="t-btn text-warning" style="border-color:var(--t-yellow);" onclick="Terminal.toast('Process running...', 'warning')">Warning</button>
+                    <button class="t-btn text-warning" class="border-warning" onclick="Terminal.toast('Process running...', 'warning')">Warning</button>
                     <button class="t-btn danger" onclick="Terminal.toast('Connection lost!', 'danger')">Danger</button>
                 </div>
             </div>
@@ -680,7 +652,7 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
         <div id="branding" class="docs-section">
             <h2 class="t-card-header">> 29. BRANDING (ICON)</h2>
             <div class="docs-example text-center">
-                <img src="terminal-icon.svg" width="128" style="border: 1px solid var(--t-green-dim); padding: 10px; background: #000;" alt="Terminal UI Logo">
+                <img src="terminal-icon.svg" width="128" class="t-logo-frame" alt="Terminal UI Logo">
             </div>
             <div class="docs-code"><pre><code>&lt;!-- How to setup Favicon --&gt;
 &lt;link rel="icon" type="image/svg+xml" href="terminal-icon.svg"&gt;</code></pre></div>
@@ -781,10 +753,10 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
 
             <h3 class="font-bold text-success mb-2 mt-4">E. JS TYPEWRITER EFFECT</h3>
             <div class="docs-example">
-                <div id="tw-demo" class="mb-3 text-warning font-bold" style="min-height: 25px;"></div>
+                <div id="tw-demo" class="mb-3 text-warning font-bold" class="t-demo-min-h"></div>
                 <button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '> INCOMING TRANSMISSION INTERCEPTED...', 50)">[ PLAY_EFFECT ]</button>
             </div>
-            <div class="docs-code"><pre><code>&lt;div id="tw-demo" class="mb-3 text-warning font-bold" style="min-height: 25px;"&gt;&lt;/div&gt;
+            <div class="docs-code"><pre><code>&lt;div id="tw-demo" class="mb-3 text-warning font-bold" class="t-demo-min-h"&gt;&lt;/div&gt;
 &lt;button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '&gt; INCOMING TRANSMISSION INTERCEPTED...', 50)"&gt;[ PLAY_EFFECT ]&lt;/button&gt;</code></pre></div>
         </div>
 
@@ -805,7 +777,7 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             
             <h3 class="font-bold text-success mb-2 mt-4">B. IMAGE LIGHTBOX (.t-lightbox)</h3>
             <div class="docs-example">
-                <img src="terminal-icon.svg" width="60" class="t-retro-filter" style="cursor: pointer; border: 1px dashed var(--t-green-dim);" onclick="Terminal.lightbox.open(this.src)" alt="Demo">
+                <img src="terminal-icon.svg" width="60" class="t-retro-filter" class="t-clickable-demo" onclick="Terminal.lightbox.open(this.src)" alt="Demo">
                 <span class="fs-small text-muted ml-2">&lt;- Click this logo</span>
             </div>
             <div class="docs-code"><pre><code>&lt;img src="image.jpg" onclick="Terminal.lightbox.open(this.src)"&gt;</code></pre></div>
@@ -825,10 +797,10 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <h3 class="font-bold text-success mb-2 mt-4">D. SKELETON LOADER (.t-skeleton)</h3>
             <div class="docs-example">
                 <div class="t-skeleton"></div>
-                <div class="t-skeleton" style="width: 70%;"></div>
+                <div class="t-skeleton" class="t-demo-width-70"></div>
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-skeleton"&gt;&lt;/div&gt;
-&lt;div class="t-skeleton" style="width: 70%;"&gt;&lt;/div&gt;</code></pre></div>
+&lt;div class="t-skeleton" class="t-demo-width-70"&gt;&lt;/div&gt;</code></pre></div>
         </div>
 
     </main>
@@ -844,14 +816,5 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
     </div>
 
     <script src="terminal.js"></script>
-    <script>
-        const sidebarLinks = document.querySelectorAll('.t-sidebar a');
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                sidebarLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
 </body>
 </html>

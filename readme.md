@@ -1,82 +1,158 @@
 # 📡 Terminal UI Framework
 
-> A lightweight, dependency-free CSS/JS framework for building Retro, Cyberpunk, Bunker, or Satellite Terminal-themed web interfaces.
+> A dependency-free CSS/JS framework for building retro terminal-inspired web interfaces.
 
-**Terminal UI** is extracted from the *Bunker OS* project and optimized specifically for the **Relay Station** ecosystem with a *Continuous Improvement* philosophy. This framework offers a high-contrast design, CRT (cathode-ray tube) visual effects, and dozens of highly easy-to-implement modular components.
-
----
-
-## ⚙️ Key Features
-
-- **Zero Dependencies:** Requires no jQuery, Bootstrap, or React. Pure HTML, CSS, and Vanilla JS.
-- **Ultra Lightweight & Fast:** Served globally via the jsDelivr CDN.
-- **Retro Aesthetic:** Equipped with automatic *scanlines* effects, blinking cursors, and a *phosphor green* color scheme.
-- **Relay-Ready:** Includes application-specific components (Chat Bubbles, Glowing LEDs, Asymmetric Sidebars, Terminal Code Blocks).
-- **Perfectly Responsive:** Fluid container system, center-screen utilities, and scrollable tables for mobile screens.
+**Terminal UI** is the clearnet-friendly parent of **Torminal CSS**.  
+Torminal stays strict for Tor and zero-JS environments; Terminal UI is allowed to use Vanilla JavaScript for richer interaction: modals, tabs, toasts, dropdowns, lightbox, copy helpers, theme switching, and a command palette.
 
 ---
 
-## 🔌 Installation via CDN (Recommended)
+## About
 
-The fastest way to use Terminal UI is via the jsDelivr CDN. You don't need to download any *files*.
+**Recommended GitHub About:**
 
-Insert these *tags* inside your HTML `<head>`:
-```html
-<link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap)" rel="stylesheet">
-<link rel="stylesheet" href="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css)">
+```text
+Dependency-free CSS/JS framework for retro terminal-inspired web interfaces.
 ```
 
-Insert this *tag* right before the closing `</body>`:
-```html
-<script src="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js)"></script>
+Alternative with more cyberpunk flavor:
+
+```text
+Vanilla CSS/JS framework for cyberpunk dashboards and terminal-inspired web apps.
 ```
 
 ---
 
-## 📖 Documentation (Man Page)
+## Key Features
 
-This framework has comprehensive documentation in the form of a "System Directory" covering visual examples and HTML codes for all Component Modules. 
-
-Download or open the **`docs.html`** file in this repository via your *browser* to see the full guide, which includes:
-1. **Layout & Grid:** Utilities, Symmetrical Grid, Asymmetrical Sidebar, and Center Screen.
-2. **Forms & Input:** Input Actions (Show/Hide), Dropdowns (Select), Textareas, Checkboxes, and Retro-styled Radios.
-3. **Data Display:** Data Tables, List Groups, Chat Bubbles, Breadcrumbs, and Pagination.
-4. **System Indicators:** LED Glowing Dots, Badges, Alert Callouts, Progress Bars, and Terminal Spinners.
-5. **Navigation & Pop-ups:** Tabs, Accordions, Tooltips, Modal Boxes, and Toast Notifications.
+- **Zero runtime dependencies:** no React, jQuery, Bootstrap, or build step.
+- **Vanilla JS enhancements:** modal, tabs, accordion, dropdown, toast, lightbox, file labels, copy-to-clipboard, theme switcher, and command palette.
+- **Reusable CSS primitives:** cards, windows, status lines, toolbar, grid, forms, tables, lists, chat bubbles, badges, progress bars, LED indicators, and dashboard metrics.
+- **Theme presets:** green, amber, cyan, and red via `data-terminal-theme`.
+- **Progressive enhancement:** older inline `onclick="Terminal.*"` usage still works, but new components can use `data-t-*` attributes.
+- **Accessibility improvements:** keyboard focus states, Escape-to-close modals, reduced-motion support, and safer text rendering in JS helpers.
 
 ---
 
-## 🖥️ Boilerplate Structure
+## Terminal vs Torminal
 
-Here is the pure HTML boilerplate to start *coding* instantly in the terminal style:
+| Project | Target | JavaScript | Best for |
+|---|---:|---:|---|
+| **Terminal UI** | Clearnet / normal web | Allowed | Dashboards, docs, apps, demos, interactive tools |
+| **Torminal CSS** | Tor Browser / safest environments | Avoided | Onion services, zero-JS interfaces, privacy-first apps |
+
+---
+
+## Quick Start
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-terminal-theme="green">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunker System</title>
-    <link href="[https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap)" rel="stylesheet">
-    <link rel="stylesheet" href="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.css)">
+    <title>Terminal App</title>
+    <link rel="stylesheet" href="terminal.css">
 </head>
-<body class="t-crt"> 
-    <div class="t-center-screen">
-        <div class="t-center-box t-card">
+<body class="t-crt">
+    <main class="t-container">
+        <div class="t-card">
             <div class="t-card-header">> SYSTEM_INIT <span class="t-blink">_</span></div>
-            <p class="text-muted">Welcome to Terminal OS.</p>
-            <button class="t-btn mt-3" onclick="Terminal.toast('Secure Connection', 'normal')">TEST CONNECTION</button>
+            <p class="text-muted">Welcome to Terminal UI.</p>
+            <button class="t-btn" onclick="Terminal.toast('Connection stable')">TEST TOAST</button>
         </div>
-    </div>
+    </main>
 
-    <script src="[https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js](https://cdn.jsdelivr.net/gh/jeannesbryan/terminal/terminal.js)"></script>
+    <script src="terminal.js"></script>
 </body>
 </html>
 ```
 
 ---
 
-## ⚖️ License & Attribution
+## Data Attribute API
 
-- Developed by: **Jeannes Bryan**
-- Built for the *Open Source* community. Feel free to use, modify, and integrate it into your dApps, P2P *Nodes*, or *Cyberpunk* projects.
+You can still call `Terminal.*` functions directly, but v10 adds a cleaner HTML-first API.
+
+### Modal
+
+```html
+<button class="t-btn" data-t-modal-open="demo-modal">OPEN MODAL</button>
+
+<div id="demo-modal" class="t-modal">
+    <div class="t-modal-content">
+        <div class="t-card-header">> MODAL</div>
+        <p>Hello from Terminal UI.</p>
+        <button class="t-btn danger" data-t-modal-close="demo-modal">CLOSE</button>
+    </div>
+</div>
+```
+
+### Theme switcher
+
+```html
+<button class="t-btn" data-t-theme="green">GREEN</button>
+<button class="t-btn warning" data-t-theme="amber">AMBER</button>
+<button class="t-btn info" data-t-theme="cyan">CYAN</button>
+<button class="t-btn danger" data-t-theme="red">RED</button>
+```
+
+### Copy helper
+
+```html
+<pre id="install-code" class="t-code">npm install terminal-ui</pre>
+<button class="t-btn t-btn-sm" data-t-copy="install-code">COPY</button>
+```
+
+### Navbar toggle
+
+```html
+<button class="t-nav-toggler" data-t-navbar-toggle="main-menu">[ MENU ]</button>
+<div id="main-menu" class="t-nav-menu t-nav-collapse">
+    <a href="#">[ HOME ]</a>
+</div>
+```
+
+### Command palette
+
+Press:
+
+```text
+Ctrl + K
+```
+
+or on macOS:
+
+```text
+⌘ + K
+```
+
+Register links as commands:
+
+```html
+<a href="docs.html" data-t-command="Open documentation">Docs</a>
+```
+
+---
+
+## Files
+
+```text
+terminal.css   # Core CSS framework
+terminal.js    # Vanilla JS helpers
+index.html     # Landing page
+docs.html      # Component documentation
+README.md      # Project README
+```
+
+---
+
+## Documentation
+
+Open `docs.html` in a browser to view the full component manual.
+
+---
+
+## License & Attribution
+
+Developed by **Jeannes Bryan** for open-source terminal-inspired interfaces.

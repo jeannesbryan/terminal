@@ -1,78 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-terminal-theme="green">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal UI Framework</title>
-    
+    <meta name="description" content="A dependency-free CSS/JS framework for retro terminal-inspired web interfaces.">
     <link rel="icon" type="image/svg+xml" href="terminal-icon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="terminal.css">
-    
-    <style>
-        .hero-section { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .hero-title { font-size: 3rem; color: var(--t-green); margin-bottom: 10px; text-shadow: 0 0 15px rgba(0, 255, 65, 0.3); }
-        .hero-subtitle { font-size: 1.2rem; color: var(--t-green-dim); max-width: 700px; margin-bottom: 40px; line-height: 1.6; }
-        @media (max-width: 768px) { .hero-title { font-size: 2rem; } }
-    </style>
 </head>
 <body class="t-crt">
 
     <div id="t-splash-screen" class="t-splash">
-        <img src="terminal-icon.svg" width="80" class="mb-3" style="filter: drop-shadow(0 0 10px var(--t-green));">
+        <img src="terminal-icon.svg" width="80" class="mb-3 t-logo-glow" alt="Terminal UI logo">
         <div class="font-bold">> INIT_SYSTEM</div>
-        <div class="text-muted mt-2">Loading CSS Kernel<span class="t-loading-dots"></span></div>
+        <div id="splash-text" class="text-muted mt-2">Loading Interface Kernel<span class="t-loading-dots"></span></div>
     </div>
 
     <nav class="t-navbar m-0">
         <div class="t-nav-brand d-flex align-items-center gap-2">
-            <img src="terminal-icon.svg" width="24" alt="Logo">
+            <img src="terminal-icon.svg" width="24" alt="Terminal UI logo">
             TERMINAL_UI
         </div>
-        <div class="t-nav-menu">
-            <a href="docs.html">[ MAN_PAGE ]</a>
-            <a href="https://github.com/jeannesbryan/terminal" target="_blank">[ GITHUB ]</a>
+        <button class="t-nav-toggler d-none-desktop" data-t-navbar-toggle="main-menu">[ MENU ]</button>
+        <div class="t-nav-menu t-nav-collapse" id="main-menu">
+            <a href="docs.html" data-t-command="Open documentation">[ MAN_PAGE ]</a>
+            <a href="https://github.com/jeannesbryan/terminal" target="_blank" rel="noopener" data-t-command="Open GitHub repository">[ GITHUB ]</a>
+            <a href="#" data-t-theme="amber">[ AMBER ]</a>
+            <a href="#" data-t-theme="cyan">[ CYAN ]</a>
         </div>
     </nav>
 
-    <div class="t-container mt-4">
-        
-        <section class="hero-section">
-            <img src="terminal-icon.svg" width="120" class="mb-4 t-retro-filter" style="filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));">
-            <h1 class="hero-title">> TERMINAL UI <span class="t-blink">_</span></h1>
-            <p class="hero-subtitle">
-                A pure dependency-free UI framework for building system simulations, functional dashboards, and <i>cyberpunk</i> ecosystems. Lightweight, responsive, and designed with a sovereign computing philosophy.
+    <main class="t-container mt-4">
+        <section class="t-hero">
+            <img src="terminal-icon.svg" width="120" class="mb-4 t-retro-filter t-logo-glow" alt="Terminal UI logo">
+            <h1 class="t-hero-title">> TERMINAL UI <span class="t-blink">_</span></h1>
+            <p class="t-hero-subtitle">
+                A dependency-free CSS/JS framework for building retro terminal dashboards,
+                system panels, cyberpunk interfaces, and interactive web tools on the clearnet.
             </p>
             <div class="d-flex justify-content-center flex-wrap gap-3">
-                <a href="docs.html" class="t-btn">READ DOCUMENTATION</a>
-                <a href="https://github.com/jeannesbryan/terminal" class="t-btn danger" target="_blank">FORK REPOSITORY</a>
+                <a href="docs.html" class="t-btn" data-t-command="Read documentation">READ DOCUMENTATION</a>
+                <a href="https://github.com/jeannesbryan/terminal" class="t-btn danger" target="_blank" rel="noopener" data-t-command="Fork repository">FORK REPOSITORY</a>
+                <button class="t-btn ghost" data-t-modal-open="demo-modal">LIVE DEMO</button>
             </div>
         </section>
 
         <section class="mb-5">
+            <div class="t-statusline">
+                <span><strong>VERSION</strong> v10 Signal Edition</span>
+                <span><strong>CORE</strong> CSS + Vanilla JS</span>
+                <span><strong>DEPS</strong> 0 runtime dependencies</span>
+            </div>
+
             <h2 class="t-card-header text-center mb-4">> SYSTEM_SPECIFICATIONS</h2>
             <div class="t-grid t-grid-3">
                 <div class="t-card text-center mb-0">
-                    <h3 class="font-bold mb-2">ZERO DEPENDENCY</h3>
-                    <p class="text-muted fs-small">Requires no React, jQuery, or other external libraries. Pure HTML, CSS, and Vanilla JavaScript.</p>
+                    <h3 class="font-bold mb-2">ZERO RUNTIME DEPS</h3>
+                    <p class="text-muted fs-small">No React, jQuery, Bootstrap, or build step. Just HTML, CSS, and Vanilla JavaScript.</p>
                 </div>
                 <div class="t-card text-center mb-0">
-                    <h3 class="font-bold mb-2">RETRO AESTHETIC</h3>
-                    <p class="text-muted fs-small">Features visual CRT scanlines, typewriter cursor animations, and color contrast akin to classic satellite terminals.</p>
+                    <h3 class="font-bold mb-2">JS-ENHANCED</h3>
+                    <p class="text-muted fs-small">Includes modals, tabs, toasts, dropdowns, lightbox, copy helpers, theme switching, and command palette.</p>
                 </div>
                 <div class="t-card text-center mb-0">
-                    <h3 class="font-bold mb-2">MODULAR & AGILE</h3>
-                    <p class="text-muted fs-small">Equipped with intuitive layout utility classes and 30+ enterprise-grade interface modules ready to assemble.</p>
+                    <h3 class="font-bold mb-2">RETRO MODULAR</h3>
+                    <p class="text-muted fs-small">Terminal windows, cards, grids, lists, tables, forms, status LEDs, progress bars, and dashboard primitives.</p>
                 </div>
             </div>
         </section>
 
         <footer class="text-center text-muted border-dashed p-4 mt-5">
-            <p>> ENCRYPTED CONNECTION. // TERMINAL UI FRAMEWORK.</p>
+            <p>> CONNECTION ESTABLISHED. // TERMINAL UI FRAMEWORK.</p>
             <p class="fs-small mt-2">Developed by Jeannes Bryan</p>
         </footer>
+    </main>
 
+    <div id="demo-modal" class="t-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+        <div class="t-modal-content">
+            <div id="demo-modal-title" class="t-card-header">> SIGNAL_TEST</div>
+            <p class="text-muted mb-3">Terminal UI is online. Try <span class="t-kbd">Ctrl</span> + <span class="t-kbd">K</span> for the command palette.</p>
+            <div class="d-flex gap-2 justify-content-end">
+                <button class="t-btn ghost" data-t-theme="green">GREEN</button>
+                <button class="t-btn warning" data-t-theme="amber">AMBER</button>
+                <button class="t-btn info" data-t-theme="cyan">CYAN</button>
+                <button class="t-btn danger" data-t-modal-close="demo-modal">CLOSE</button>
+            </div>
+        </div>
     </div>
+
     <script src="terminal.js"></script>
 </body>
 </html>
