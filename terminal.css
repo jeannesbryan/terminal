@@ -2,6 +2,10 @@
    TERMINAL UI FRAMEWORK
    ========================================= */
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg-base: #030303;
     --bg-surface: #0a0a0a;
