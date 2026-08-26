@@ -49,6 +49,7 @@
             <li><a href="#branding">> 29. BRANDING (ICON)</a></li>
             <li><a href="#new-modules">> 30. NEW EXTENSIONS</a></li>
             <li><a href="#media-modules">> 31. MEDIA EXTENSIONS</a></li>
+            <li><a href="#social-modules">> 32. SOCIAL & APP</a></li>
         </ul>
     </aside>
 
@@ -801,6 +802,170 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             </div>
             <div class="docs-code"><pre><code>&lt;div class="t-skeleton"&gt;&lt;/div&gt;
 &lt;div class="t-skeleton" class="t-demo-width-70"&gt;&lt;/div&gt;</code></pre></div>
+        </div>
+
+        <div id="social-modules" class="docs-section">
+            <h2 class="t-card-header">> 32. SOCIAL & APP</h2>
+            <p class="text-muted">Advanced modules designed specifically to build communication, telemetry, or social applications within Terminal UI.</p>
+            
+            <h3 class="font-bold text-success mb-2 mt-4">A. AVATAR & SPOILER (.t-avatar, .t-spoiler)</h3>
+            <div class="docs-example d-flex align-items-center gap-3">
+                <div class="t-avatar"><img src="terminal-icon.svg" alt="Avatar"></div>
+                <div class="t-avatar t-avatar-lg">?</div>
+                <div class="p-3 border-dashed t-spoiler bg-surface">
+                    > CLASSIFIED_INFO
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-avatar"&gt;&lt;img src="user.png"&gt;&lt;/div&gt;
+&lt;div class="t-avatar t-avatar-lg"&gt;?&lt;/div&gt;
+
+&lt;div class="t-spoiler"&gt;&gt; CLASSIFIED_INFO&lt;/div&gt;</code></pre></div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">B. EDITOR / COMPOSER (.t-editor-card)</h3>
+            <div class="docs-example">
+                <div class="t-editor-card mb-0">
+                    <div class="t-editor-toolbar">
+                        <button class="t-editor-btn">[ B ]</button>
+                        <button class="t-editor-btn">[ I ]</button>
+                        <button class="t-editor-btn">[ LINK ]</button>
+                    </div>
+                    <textarea class="t-editor-textarea" rows="3" placeholder="Compose message..."></textarea>
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-editor-card"&gt;
+    &lt;div class="t-editor-toolbar"&gt;
+        &lt;button class="t-editor-btn"&gt;[ B ]&lt;/button&gt;
+        &lt;button class="t-editor-btn"&gt;[ I ]&lt;/button&gt;
+        &lt;button class="t-editor-btn"&gt;[ LINK ]&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;textarea class="t-editor-textarea" rows="3" placeholder="Compose message..."&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre></div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">C. TIMELINE FEED (.t-feed-card)</h3>
+            <div class="docs-example">
+                <div class="t-feed-card mb-0">
+                    <div class="t-avatar"><img src="terminal-icon.svg" alt="User"></div>
+                    <div class="t-feed-main">
+                        <div class="t-feed-header">
+                            <a href="#" class="t-feed-author">@commander</a>
+                            <span class="t-feed-meta">2 mins ago via Satellite</span>
+                        </div>
+                        <div class="t-feed-content">
+                            Target locked. Waiting for your signal to execute the protocol.
+                            <div class="t-media-grid">
+                                <div class="t-media-item"><img src="terminal-icon.svg" alt="Scan"></div>
+                                <div class="t-media-item"><img src="terminal-icon.svg" alt="Map"></div>
+                            </div>
+                        </div>
+                        <div class="t-feed-actions">
+                            <button class="t-feed-btn">[ ACKNOWLEDGE ]</button>
+                            <button class="t-feed-btn text-muted">[ REPOST ]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>&lt;div class="t-feed-card"&gt;
+    &lt;div class="t-avatar"&gt;&lt;img src="avatar.jpg"&gt;&lt;/div&gt;
+    &lt;div class="t-feed-main"&gt;
+        &lt;div class="t-feed-header"&gt;
+            &lt;a href="#" class="t-feed-author"&gt;@commander&lt;/a&gt;
+            &lt;span class="t-feed-meta"&gt;2 mins ago&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="t-feed-content"&gt;
+            Target locked. 
+            &lt;div class="t-media-grid"&gt;
+                &lt;div class="t-media-item"&gt;&lt;img src="img1.jpg"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="t-feed-actions"&gt;
+            &lt;button class="t-feed-btn"&gt;[ REPOST ]&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">D. ACTIVITY METRICS (TELEMETRY)</h3>
+            <div class="docs-example">
+                <div class="t-feed-card mb-0">
+                    <div class="t-avatar"><img src="terminal-icon.svg" alt="User"></div>
+                    <div class="t-feed-main">
+                        <div class="t-feed-header">
+                            <a href="#" class="t-feed-author text-success font-bold fs-3">Jean</a>
+                            <span class="t-feed-meta">@jeannesbryan · jeannesbryan.my.id · 5 days ago</span>
+                        </div>
+                        
+                        <div class="t-activity-header mt-3">
+                            <div class="border-dashed p-2 font-bold fs-3">[BIKE]</div>
+                            <div>
+                                <h4 class="t-activity-title text-success">CYCLING SESSION</h4>
+                                <span class="t-activity-type text-success">CYCLING</span>
+                            </div>
+                        </div>
+
+                        <div class="t-activity-metrics mb-4 mt-2">
+                            <div class="t-metric-box w-100 mb-4">
+                                <div class="t-metric-val t-metric-large">36.33 <span class="t-metric-unit">km</span></div>
+                                <span class="t-metric-lbl text-success">DISTANCE</span>
+                            </div>
+                            <div class="d-flex gap-4 flex-wrap">
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2">02:43:34</div>
+                                    <span class="t-metric-lbl text-success">DURATION</span>
+                                </div>
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2">13.33 <span class="t-metric-unit fs-small">km/h</span></div>
+                                    <span class="t-metric-lbl text-success">AVG SPEED</span>
+                                </div>
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2">620 <span class="t-metric-unit fs-small">m</span></div>
+                                    <span class="t-metric-lbl text-success">ELEVATION GAIN</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="t-feed-content mb-4 text-success">
+                            After not cycling for a long time
+                        </div>
+                        
+                        <div class="t-feed-actions d-flex justify-content-between align-items-center w-100 mt-2">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="t-feed-btn text-success">[r] 0</button>
+                                <button class="t-feed-btn text-success">[b] save</button>
+                                <button class="t-feed-btn text-success">[t] 0</button>
+                                <button class="t-feed-btn text-success">[+] 0</button>
+                                <button class="t-feed-btn text-success">[q]</button>
+                                <button class="t-feed-btn text-success">[raw]</button>
+                                <button class="t-feed-btn text-success">[link]</button>
+                            </div>
+                        </div>
+                        <div class="text-right fs-small text-muted mt-2">
+                            > tracker_data / via Gaspool
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="docs-code"><pre><code>
+&lt;div class="t-feed-card"&gt;
+    &lt;div class="t-avatar"&gt;&lt;img src="avatar.jpg"&gt;&lt;/div&gt;
+    &lt;div class="t-feed-main"&gt;
+        &lt;div class="t-feed-header"&gt;
+            &lt;a href="#" class="t-feed-author text-success font-bold"&gt;Jean&lt;/a&gt;
+            &lt;span class="t-feed-meta"&gt;@jeannesbryan · 5 days ago&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="t-activity-header mt-3"&gt;
+            &lt;div class="border-dashed p-2 font-bold fs-3"&gt;[BIKE]&lt;/div&gt;
+            &lt;div&gt;
+                &lt;h4 class="t-activity-title text-success"&gt;CYCLING SESSION&lt;/h4&gt;
+                &lt;span class="t-activity-type text-success"&gt;CYCLING&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="t-activity-metrics mb-4"&gt;
+            &lt;!-- Insert Metric Boxes --&gt;
+        &lt;/div&gt;
+        &lt;div class="t-feed-actions"&gt;
+            &lt;button class="t-feed-btn text-success"&gt;[b] save&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
         </div>
 
     </main>

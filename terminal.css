@@ -40,7 +40,6 @@ html {
 
 a { color: inherit; }
 
-
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-base); border-left: 1px dashed var(--t-green-dim); }
 ::-webkit-scrollbar-thumb { background: var(--t-green-dim); border-radius: 0; transition: background 0.2s; }
@@ -425,6 +424,62 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 /* 11. SKELETON / SENTINEL LOADER */
 .t-skeleton { background: repeating-linear-gradient(45deg, rgba(0, 255, 65, 0.05), rgba(0, 255, 65, 0.05) 10px, transparent 10px, transparent 20px); height: 20px; width: 100%; border: 1px solid var(--t-green-dim); animation: t-skeleton-scroll 1.5s linear infinite; margin-bottom: 15px; }
 @keyframes t-skeleton-scroll { 100% { background-position: 40px 0; } }
+
+/* =========================================
+   12. PHOSPHOR SOCIAL/APP MODULES
+   ========================================= */
+
+/* 12.1 Avatar Module */
+.t-avatar { width: 48px; height: 48px; border: 1px dashed var(--t-green-dim); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold; font-size: 1.2em; overflow: hidden; background: var(--bg-base); transition: opacity 0.2s; }
+.t-avatar:hover { opacity: 0.8; }
+.t-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) sepia(0.5); }
+.t-avatar-lg { width: 80px; height: 80px; font-size: 1.8em; }
+
+/* 12.2 Blur & Spoiler Module */
+.t-spoiler { filter: blur(15px) grayscale(1) !important; cursor: pointer !important; transition: filter 0.3s ease; }
+.t-spoiler:hover { filter: blur(10px) grayscale(0.5) !important; }
+
+/* 12.3 Editor & Composer Module */
+.t-editor-card { border: 2px dashed var(--t-green-dim); padding: 15px; margin-bottom: 25px; display: flex; flex-direction: column; }
+.t-editor-toolbar { display: flex; gap: 5px; border: 1px dashed var(--t-green-dim); border-bottom: none; padding: 5px; background: rgba(0,255,65,0.02); flex-wrap: wrap; }
+.t-editor-btn { background: transparent; color: inherit; border: 1px solid transparent; cursor: pointer; font-family: inherit; padding: 4px 8px; font-size: 0.9em; font-weight: bold; }
+.t-editor-btn:hover { background: var(--t-green); color: var(--bg-base); border: 1px solid var(--t-green); }
+.t-editor-textarea { width: 100%; background: transparent; color: var(--t-green); border: 1px dashed var(--t-green-dim); border-top: none; padding: 15px; font-family: inherit; font-size: 14px; outline: none; resize: vertical; margin: 0; }
+.t-editor-textarea:focus { box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.05); }
+
+/* 12.4 Media Grid Module */
+.t-media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+.t-media-item { border: 1px dashed var(--t-green-dim); padding: 3px; overflow: hidden; cursor: pointer; background: rgba(0,255,65,0.02); display: block; max-width: 250px; height: 160px; }
+.t-media-grid .t-media-item { max-width: 100%; height: 100%; aspect-ratio: 16/9; margin: 0; }
+.t-media-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) sepia(0.3); display: block; transition: transform 0.2s; }
+.t-media-item:hover img { transform: scale(1.03); }
+.t-video-item { width: 100%; max-width: 350px; margin-top: 10px; margin-bottom: 12px; border: 1px dashed var(--t-green-dim); display: block; background: rgba(0,255,65,0.02); }
+
+/* 12.5 Feed Card (Timeline) Module */
+.t-feed-card { display: flex; border: 1px solid var(--t-green-dim); padding: 15px; margin-bottom: 15px; background: transparent; }
+.t-feed-main { margin-left: 15px; flex-grow: 1; min-width: 0; }
+.t-feed-header { margin-bottom: 8px; display: flex; flex-direction: column; }
+.t-feed-author { font-size: 1.1em; font-weight: bold; text-decoration: none; color: inherit; transition: color 0.2s; }
+.t-feed-author:hover { color: var(--t-green); }
+.t-feed-meta { font-size: 0.8em; opacity: 0.7; margin-top: 2px; word-break: break-all; }
+.t-feed-content { margin-bottom: 12px; line-height: 1.4; word-break: break-word; overflow-wrap: anywhere; }
+.t-feed-actions { display: flex; justify-content: flex-start; gap: 12px; max-width: 500px; margin-top: 10px; flex-wrap: wrap; }
+.t-feed-btn { background: transparent !important; border: none; color: inherit; cursor: pointer; font-family: inherit; padding: 5px 8px; text-decoration: none !important; display: inline-block; transition: background 0.2s, color 0.2s; }
+.t-feed-btn:hover { background: var(--t-green) !important; color: var(--bg-base) !important; }
+
+/* 12.6 Activity Metrics Dashboard Module */
+.t-activity-card { border: 2px dashed var(--t-green); background: rgba(0,255,65,0.02); padding: 15px; margin-bottom: 20px; }
+.t-activity-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px dashed var(--t-green-dim); padding-bottom: 10px; }
+.t-activity-icon { font-size: 1.5em; border: 1px solid var(--t-green-dim); padding: 5px 10px; background: var(--bg-base); }
+.t-activity-title { font-size: 1.2em; font-weight: bold; text-transform: uppercase; margin: 0; }
+.t-activity-type { font-size: 0.8em; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; display: block; }
+.t-activity-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+.t-metric-box { display: flex; flex-direction: column; }
+.t-metric-val { font-size: 1.4em; font-weight: bold; }
+.t-metric-large { font-size: 2.5em; color: var(--t-green); line-height: 1; }
+.t-metric-unit { font-size: 0.5em; opacity: 0.8; font-weight: normal; vertical-align: baseline; }
+.t-metric-lbl { font-size: 0.7em; opacity: 0.6; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
+
 /* =========================================
    TERMINAL UI ADDITIONS
    -----------------------------------------
