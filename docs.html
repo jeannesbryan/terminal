@@ -14,7 +14,6 @@
             <img src="terminal-icon.svg" alt="Logo" width="70" class="t-logo-frame">
             <div class="mt-2 font-bold text-success">TERMINAL UI</div>
         </div>
-
         <h3>> SYSTEM_INDEX</h3>
         <ul>
             <li><a href="#intro">> 00. INTRODUCTION</a></li>
@@ -48,13 +47,12 @@
             <li><a href="#toast">> 28. NOTIFICATIONS (TOAST)</a></li>
             <li><a href="#branding">> 29. BRANDING (ICON)</a></li>
             <li><a href="#new-modules">> 30. NEW EXTENSIONS</a></li>
-            <li><a href="#media-modules">> 31. MEDIA EXTENSIONS</a></li>
+            <li><a href="#media-modules">> 31. MEDIA & STATUS</a></li>
             <li><a href="#social-modules">> 32. SOCIAL & APP</a></li>
         </ul>
     </aside>
 
     <main class="t-main-content">
-
         <div id="intro" class="docs-section no-border">
             <h1 class="mb-2">> MAN_PAGE TERMINAL UI <span class="t-blink">_</span></h1>
             <p class="text-muted">A complete manual for retro terminal CSS/JS components. Terminal UI adds data-attribute helpers, command palette, theme presets, safer JS defaults, and reusable docs/landing modules.</p>
@@ -63,7 +61,8 @@
         <div id="starter" class="docs-section">
             <h2 class="t-card-header">> 01. STARTER TEMPLATE (BOILERPLATE)</h2>
             <p class="text-muted">Copy this empty HTML boilerplate to start fresh with Terminal UI.</p>
-            <div class="docs-code"><pre><code>&lt;!DOCTYPE html&gt;
+            <div class="docs-code">
+<pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en" data-terminal-theme="green"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -73,44 +72,42 @@
     &lt;link rel="stylesheet" href="assets/terminal.css"&gt;
 &lt;/head&gt;
 &lt;body class="t-crt"&gt;
-
     &lt;div class="t-container"&gt;
         &lt;!-- Your UI code goes here --&gt;
     &lt;/div&gt;
-
     &lt;script src="assets/terminal.js"&gt;&lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre></div>
+&lt;/html&gt;</code></pre>
+            </div>
         </div>
 
         <div id="customization" class="docs-section">
-            <h2 class="t-card-header">> 02. THEME CUSTOMIZATION (CSS VARIABLES)</h2>
-            <p class="text-muted">Terminal UI is designed to be customizable. You can change the "Matrix Green" color scheme to a "Fallout Amber", "Blood Red", or "Sci-Fi Cyan" theme simply by overriding variables in your custom CSS file.</p>
-            <div class="docs-code"><pre><code>/* Add this to your custom CSS file or inside &lt;style&gt; */
-:root {
-    /* Fallout Theme (Amber) */
-    --t-green: #ffb000;         /* Change primary color to Amber */
-    --t-green-dim: #996900;     /* Its dimmed color */
-    
-    /* Background colors */
+            <h2 class="t-card-header">> 02. THEME CUSTOMIZATION</h2>
+            <p class="text-muted">Terminal UI is designed to be customizable. Change the scheme by overriding variables in your custom CSS.</p>
+            <div class="docs-code">
+<pre><code>:root {
+    --t-green: #ffb000; /* Amber */
+    --t-green-dim: #996900;
     --bg-base: #110d00;
     --bg-surface: #1f1700;
-}</code></pre></div>
+}</code></pre>
+            </div>
         </div>
 
         <div id="utility" class="docs-section">
             <h2 class="t-card-header">> 03. UTILITY CLASSES</h2>
-            <p class="text-muted">Adapting standard utility naming (similar to Bootstrap/Tailwind) so you don't need to write inline CSS.</p>
             <div class="docs-example">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="text-danger font-bold t-blink">D-FLEX & T-BLINK</div>
                     <div class="fs-small text-muted">FS-SMALL & TEXT-MUTED</div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="d-flex justify-content-between align-items-center mb-3"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="d-flex justify-content-between align-items-center mb-3"&gt;
     &lt;div class="text-danger font-bold t-blink"&gt;D-FLEX &amp; T-BLINK&lt;/div&gt;
     &lt;div class="fs-small text-muted"&gt;FS-SMALL &amp; TEXT-MUTED&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+            </div>
             <div class="t-window mb-0 mt-3">
                 <div class="t-window-header">Utility_Classes_List.txt</div>
                 <div class="t-window-body t-docs-utility-list">
@@ -125,60 +122,39 @@
 
         <div id="responsive" class="docs-section">
             <h2 class="t-card-header">> 04. RESPONSIVENESS & BREAKPOINTS</h2>
-            <p class="text-muted">Terminal UI is <strong>Mobile-First</strong>. Grid structures automatically collapse into 1 full column on screens smaller than <strong>768px (Tablet/Mobile)</strong>.</p>
-            <p class="text-muted mt-2">You can also use explicit responsive utilities to show or hide elements based on screen size:</p>
             <div class="docs-example">
-                <div class="p-3 border-dashed text-center d-none-mobile bg-surface">
-                    > VISIBLE ON DESKTOP ONLY (.d-none-mobile)
-                </div>
-                <div class="p-3 border-dashed border-danger text-center d-none-desktop text-danger">
-                    > VISIBLE ON MOBILE ONLY (.d-none-desktop)
-                </div>
+                <div class="p-3 border-dashed text-center d-none-mobile bg-surface">> VISIBLE ON DESKTOP ONLY (.d-none-mobile)</div>
+                <div class="p-3 border-dashed border-danger text-center d-none-desktop text-danger">> VISIBLE ON MOBILE ONLY (.d-none-desktop)</div>
             </div>
-            <div class="docs-code"><pre><code>&lt;!-- Will be hidden on mobile --&gt;
-&lt;div class="d-none-mobile"&gt;Desktop Only&lt;/div&gt;
-
-&lt;!-- Will be hidden on desktop --&gt;
-&lt;div class="d-none-desktop"&gt;Mobile Only&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="d-none-mobile"&gt;Desktop Only&lt;/div&gt;
+&lt;div class="d-none-desktop"&gt;Mobile Only&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="layout-modules" class="docs-section">
             <h2 class="t-card-header">> 05. LAYOUT MODULES</h2>
-            <p class="text-muted">Built-in complex modules for building specific applications.</p>
-            
             <h3 class="font-bold text-success mb-2 mt-4">A. KANBAN BOARD (.t-board)</h3>
             <div class="docs-example overflow-hidden">
                 <div class="t-board">
                     <div class="t-board-column">
                         <div class="t-board-header">PENDING</div>
-                        <div class="t-board-body">
-                            <div class="t-board-card">Data Encryption Task</div>
-                            <div class="t-board-card">Server Patching</div>
-                        </div>
+                        <div class="t-board-body"><div class="t-board-card">Data Task</div></div>
                     </div>
                     <div class="t-board-column">
                         <div class="t-board-header text-danger">URGENT</div>
-                        <div class="t-board-body">
-                            <div class="t-board-card t-flicker">System Breached!</div>
-                        </div>
+                        <div class="t-board-body"><div class="t-board-card t-flicker">System Breached!</div></div>
                     </div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-board"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-board"&gt;
     &lt;div class="t-board-column"&gt;
         &lt;div class="t-board-header"&gt;PENDING&lt;/div&gt;
-        &lt;div class="t-board-body"&gt;
-            &lt;div class="t-board-card"&gt;Data Encryption Task&lt;/div&gt;
-            &lt;div class="t-board-card"&gt;Server Patching&lt;/div&gt;
-        &lt;/div&gt;
+        &lt;div class="t-board-body"&gt;&lt;div class="t-board-card"&gt;Data Task&lt;/div&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="t-board-column"&gt;
-        &lt;div class="t-board-header text-danger"&gt;URGENT&lt;/div&gt;
-        &lt;div class="t-board-body"&gt;
-            &lt;div class="t-board-card t-flicker"&gt;System Breached!&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+            </div>
 
             <h3 class="font-bold text-success mt-4 mb-2">B. THREAD CONNECTOR (.t-thread)</h3>
             <div class="docs-example">
@@ -187,50 +163,45 @@
                         <span class="text-muted fs-small">10:00 AM</span>
                         <p class="m-0">Satellite is airborne.</p>
                     </div>
-                    <div class="t-thread-item">
-                        <span class="text-muted fs-small">10:15 AM</span>
-                        <p class="m-0">Receiving transmission from Sector 7.</p>
-                    </div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-thread"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-thread"&gt;
     &lt;div class="t-thread-item"&gt;
         &lt;span class="text-muted fs-small"&gt;10:00 AM&lt;/span&gt;
         &lt;p class="m-0"&gt;Satellite is airborne.&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="t-thread-item"&gt;
-        &lt;span class="text-muted fs-small"&gt;10:15 AM&lt;/span&gt;
-        &lt;p class="m-0"&gt;Receiving transmission from Sector 7.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+            </div>
 
             <h3 class="font-bold text-success mt-4 mb-2">C. MARKDOWN BODY (.t-markdown)</h3>
             <div class="docs-example">
                 <div class="t-markdown">
                     <h3>Terminal Heading</h3>
-                    <p>Normal text with <code>inline_code</code> in the middle.</p>
-                    <blockquote>Message from commander: Defend the bunker!</blockquote>
+                    <p>Text with <code>inline_code</code>.</p>
+                    <blockquote>Message: Defend the bunker!</blockquote>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-markdown"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-markdown"&gt;
     &lt;h3&gt;Terminal Heading&lt;/h3&gt;
-    &lt;p&gt;Normal text with &lt;code&gt;inline_code&lt;/code&gt; in the middle.&lt;/p&gt;
-    &lt;blockquote&gt;Message from commander: Defend the bunker!&lt;/blockquote&gt;
-&lt;/div&gt;</code></pre></div>
+    &lt;p&gt;Text with &lt;code&gt;inline_code&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="filters" class="docs-section">
             <h2 class="t-card-header">> 06. VISUAL FILTERS</h2>
-            <p class="text-muted">Use the <code>.t-retro-filter</code> class on images (img) or iframes to instantly transform them into an old-school monochrome green/sepia style.</p>
             <div class="docs-example text-center">
-                <img src="terminal-icon.svg" width="100" class="t-retro-filter bg-surface border-dashed p-2" alt="Retro Filter Logo">
+                <img src="terminal-icon.svg" width="100" class="t-retro-filter bg-surface border-dashed p-2" alt="Retro Filter">
             </div>
-            <div class="docs-code"><pre><code>&lt;img src="image.jpg" class="t-retro-filter"&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;img src="image.jpg" class="t-retro-filter"&gt;</code></pre>
+            </div>
         </div>
 
         <div id="navbar" class="docs-section">
             <h2 class="t-card-header">> 07. NAVBAR (STATUS BAR)</h2>
-            <p class="text-muted">Now equipped with a mobile-ready hamburger menu. Use <code>.t-nav-toggler</code> and <code>.t-nav-collapse</code> to enable it.</p>
             <div class="docs-example">
                 <nav class="t-navbar mb-0">
                     <div class="t-nav-brand">BUNKER_OS</div>
@@ -241,22 +212,19 @@
                     </div>
                 </nav>
             </div>
-            <div class="docs-code"><pre><code>&lt;nav class="t-navbar"&gt;
+            <div class="docs-code">
+<pre><code>&lt;nav class="t-navbar"&gt;
     &lt;div class="t-nav-brand"&gt;BUNKER_OS&lt;/div&gt;
-    
-    &lt;!-- Mobile toggler button --&gt;
-    &lt;button class="t-nav-toggler d-none-desktop" onclick="Terminal.navbarToggle('demoMenu')"&gt;[ MENU ]&lt;/button&gt;
-    
-    &lt;!-- Menu wrapper with collapse class --&gt;
+    &lt;button class="t-nav-toggler d-none-desktop" data-t-navbar-toggle="demoMenu"&gt;[ MENU ]&lt;/button&gt;
     &lt;div class="t-nav-menu t-nav-collapse" id="demoMenu"&gt;
         &lt;a href="#"&gt;[ HOME ]&lt;/a&gt;
-        &lt;a href="#"&gt;[ SYSTEM ]&lt;/a&gt;
     &lt;/div&gt;
-&lt;/nav&gt;</code></pre></div>
+&lt;/nav&gt;</code></pre>
+            </div>
         </div>
 
         <div id="center-screen" class="docs-section">
-            <h2 class="t-card-header">> 08. CENTER SCREEN (LOGIN/INSTALL)</h2>
+            <h2 class="t-card-header">> 08. CENTER SCREEN</h2>
             <div class="docs-example t-docs-center-demo">
                 <div class="t-center-screen t-center-screen-demo">
                     <div class="t-center-box t-card mb-0">
@@ -266,159 +234,99 @@
                     </div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-center-screen"&gt;
-    &lt;div class="t-center-box t-card"&gt;
-        &lt;div class="t-card-header"&gt;&gt; SYSTEM_LOGIN&lt;/div&gt;
-        &lt;input type="password" class="t-input text-center" placeholder="PASSCODE"&gt;
-        &lt;button class="t-btn mt-2 w-100"&gt;ENTER&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-center-screen"&gt;
+    &lt;div class="t-center-box t-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="grid" class="docs-section">
             <h2 class="t-card-header">> 09. CONTAINERS & GRID</h2>
-            <p class="text-muted">Choose the main container width for your page and divide it into symmetrical grid columns.</p>
-
-            <h3 class="font-bold text-success mb-2 mt-4">A. CONTAINERS</h3>
-            <div class="docs-example">
-                <div class="t-container border-dashed text-center p-2 mb-3 t-demo-strip">
-                    .t-container (Max: 800px) - Suitable for reading/forms.
-                </div>
-                <div class="t-container-fluid border-dashed text-center p-2 t-demo-strip">
-                    .t-container-fluid (Max: 1200px) - Suitable for dashboards.
-                </div>
-            </div>
-            <div class="docs-code"><pre><code>&lt;!-- Standard width (Focus) --&gt;
-&lt;div class="t-container"&gt;...&lt;/div&gt;
-
-&lt;!-- Full width (Dashboard) --&gt;
-&lt;div class="t-container-fluid"&gt;...&lt;/div&gt;</code></pre></div>
-
-            <h3 class="font-bold text-success mb-2 mt-4">B. SYMMETRICAL GRID</h3>
             <div class="docs-example">
                 <div class="t-grid t-grid-2 mb-3">
-                    <div class="p-2 text-center border-dashed">COLUMN 1</div>
-                    <div class="p-2 text-center border-dashed">COLUMN 2</div>
-                </div>
-                <div class="t-grid t-grid-3">
-                    <div class="p-2 text-center border-dashed fs-small">COL 1</div>
-                    <div class="p-2 text-center border-dashed fs-small">COL 2</div>
-                    <div class="p-2 text-center border-dashed fs-small">COL 3</div>
+                    <div class="p-2 text-center border-dashed">COL 1</div>
+                    <div class="p-2 text-center border-dashed">COL 2</div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-grid t-grid-2"&gt;
-    &lt;div class="p-2 text-center border-dashed"&gt;COLUMN 1&lt;/div&gt;
-    &lt;div class="p-2 text-center border-dashed"&gt;COLUMN 2&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-grid t-grid-2"&gt;
+    &lt;div&gt;COL 1&lt;/div&gt;
+    &lt;div&gt;COL 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="layout-relay" class="docs-section">
-            <h2 class="t-card-header">> 10. SIDEBAR LAYOUT (RELAY-STYLE)</h2>
+            <h2 class="t-card-header">> 10. SIDEBAR LAYOUT</h2>
             <div class="docs-example">
                 <div class="t-grid-layout">
                     <div class="t-main-panel p-2 border-dashed">MAIN_PANEL (70%)</div>
                     <div class="t-side-panel p-2 border-dashed">SIDEBAR (30%)</div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-grid-layout"&gt;
-    &lt;div class="t-main-panel"&gt;MAIN_PANEL (70%)&lt;/div&gt;
-    &lt;div class="t-side-panel"&gt;SIDEBAR (30%)&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-grid-layout"&gt;
+    &lt;div class="t-main-panel"&gt;MAIN (70%)&lt;/div&gt;
+    &lt;div class="t-side-panel"&gt;SIDE (30%)&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="card" class="docs-section">
             <h2 class="t-card-header">> 11. CONTENT BOXES (CARDS)</h2>
             <div class="docs-example">
-                <div class="t-card">
-                    <div class="t-card-header">> SERVER_STATUS</div>
-                    <p>Satellite system is running in optimal condition.</p>
-                </div>
-
-                <div class="t-card warning">
-                    <div class="t-card-header">> ALERT_SYSTEM</div>
-                    <p>Minor warning regarding storage capacity.</p>
-                </div>
-
                 <div class="t-card danger mb-0">
-                    <div class="t-card-header">> CRITICAL_WARNING</div>
-                    <p>Anomaly detected in the firewall. <span class="t-blink">Urgent!</span></p>
+                    <div class="t-card-header">> CRITICAL</div>
+                    <p>System error.</p>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-card"&gt;
-    &lt;div class="t-card-header"&gt;&gt; SERVER_STATUS&lt;/div&gt;
-    &lt;p&gt;Satellite system is running...&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="t-card warning"&gt;
-    &lt;div class="t-card-header"&gt;&gt; ALERT_SYSTEM&lt;/div&gt;
-    &lt;p&gt;Minor warning.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="t-card danger"&gt;
-    &lt;div class="t-card-header"&gt;&gt; CRITICAL_WARNING&lt;/div&gt;
-    &lt;p&gt;Anomaly detected in the firewall.&lt;/p&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-card danger"&gt;
+    &lt;div class="t-card-header"&gt;&gt; CRITICAL&lt;/div&gt;
+    &lt;p&gt;Error.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="code-block" class="docs-section">
-            <h2 class="t-card-header">> 12. TERMINAL WINDOW (CODE BLOCK)</h2>
-            <p class="text-muted">Epic components for displaying scripts or console outputs.</p>
+            <h2 class="t-card-header">> 12. TERMINAL WINDOW</h2>
             <div class="docs-example">
                 <div class="t-window mb-0">
                     <div class="t-window-header"><span>root@bunker:~#</span><span>[ - ] [ X ]</span></div>
-                    <pre class="t-window-body"><code>Ping 192.168.1.1...
-Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
-> CONNECTION STABLE.</code></pre>
+                    <pre class="t-window-body"><code>Ping 192.168.1.1...</code></pre>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-window"&gt;
-    &lt;div class="t-window-header"&gt;
-        &lt;span&gt;root@bunker:~#&lt;/span&gt;
-        &lt;span&gt;[ - ] [ X ]&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;pre class="t-window-body"&gt;&lt;code&gt;Ping 192.168.1.1...
-Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
-&gt; CONNECTION STABLE.&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-window"&gt;
+    &lt;div class="t-window-header"&gt;&lt;span&gt;root@bunker:~#&lt;/span&gt;&lt;/div&gt;
+    &lt;pre class="t-window-body"&gt;&lt;code&gt;Ping 192.168.1.1...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="form" class="docs-section">
             <h2 class="t-card-header">> 13. BUTTONS & INPUTS</h2>
             <div class="docs-example">
-                <label class="t-form-label">Target IP Address</label>
-                <input type="text" class="t-input mb-3" placeholder="E.g.: 192.168.1.1">
-                <div class="d-flex gap-2">
-                    <button class="t-btn w-100">NORMAL SCAN</button>
-                    <button class="t-btn danger w-100" disabled>LOCKED</button>
-                </div>
+                <input type="text" class="t-input mb-3" placeholder="Target IP">
+                <button class="t-btn w-100">SCAN</button>
             </div>
-            <div class="docs-code"><pre><code>&lt;label class="t-form-label"&gt;Target IP Address&lt;/label&gt;
-&lt;input type="text" class="t-input mb-3" placeholder="E.g.: 192.168.1.1"&gt;
-&lt;div class="d-flex gap-2"&gt;
-    &lt;button class="t-btn w-100"&gt;NORMAL SCAN&lt;/button&gt;
-    &lt;button class="t-btn danger w-100" disabled&gt;LOCKED&lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;input type="text" class="t-input" placeholder="IP"&gt;
+&lt;button class="t-btn"&gt;SCAN&lt;/button&gt;</code></pre>
+            </div>
         </div>
 
         <div id="form-val" class="docs-section">
             <h2 class="t-card-header">> 14. FORM VALIDATION</h2>
-            <p class="text-muted">Use additional classes to notify users if their input is incorrect or successfully verified.</p>
             <div class="docs-example">
-                <label class="t-form-label">> OLD PASSWORD</label>
                 <input type="password" class="t-input error" value="wrong123">
-                <span class="t-feedback text-danger">> SYS_ERR: Password mismatch.</span>
-                
-                <label class="t-form-label">> NEW PASSWORD</label>
-                <input type="password" class="t-input success mb-0" value="BunkerStrong99!">
-                <span class="t-feedback text-success">> PASSWORD STRENGTH: OPTIMAL.</span>
+                <span class="t-feedback text-danger">> SYS_ERR.</span>
             </div>
-            <div class="docs-code"><pre><code>&lt;!-- Input Error --&gt;
-&lt;input type="password" class="t-input error" value="wrong"&gt;
-&lt;span class="t-feedback text-danger"&gt;&gt; SYS_ERR: Password mismatch.&lt;/span&gt;
-
-&lt;!-- Input Success --&gt;
-&lt;input type="password" class="t-input success" value="correct"&gt;
-&lt;span class="t-feedback text-success"&gt;&gt; PASSWORD STRENGTH: OPTIMAL.&lt;/span&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;input type="password" class="t-input error"&gt;
+&lt;span class="t-feedback text-danger"&gt;ERR&lt;/span&gt;</code></pre>
+            </div>
         </div>
 
         <div id="input-action" class="docs-section">
@@ -429,39 +337,37 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
                     <button class="t-input-action-btn" onclick="Terminal.toggleInputAction('passToken', this)">[ SHOW ]</button>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-input-group"&gt;
-    &lt;input type="password" id="passToken" class="t-input" placeholder="Passcode..."&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-input-group"&gt;
+    &lt;input type="password" id="passToken" class="t-input"&gt;
     &lt;button class="t-input-action-btn" onclick="Terminal.toggleInputAction('passToken', this)"&gt;[ SHOW ]&lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="textarea-select" class="docs-section">
             <h2 class="t-card-header">> 16. TEXTAREA & SELECT</h2>
             <div class="docs-example">
                 <select class="t-select"><option>PUBLIC_BROADCAST</option></select>
-                <textarea class="t-textarea mb-0" rows="3" placeholder="Type encrypted message here..."></textarea>
+                <textarea class="t-textarea mb-0" rows="3" placeholder="Message..."></textarea>
             </div>
-            <div class="docs-code"><pre><code>&lt;select class="t-select"&gt;
-    &lt;option&gt;PUBLIC_BROADCAST&lt;/option&gt;
-&lt;/select&gt;
-&lt;textarea class="t-textarea" rows="3" placeholder="Type encrypted message here..."&gt;&lt;/textarea&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;select class="t-select"&gt;&lt;option&gt;PUBLIC&lt;/option&gt;&lt;/select&gt;
+&lt;textarea class="t-textarea"&gt;&lt;/textarea&gt;</code></pre>
+            </div>
         </div>
 
         <div id="advanced-form" class="docs-section">
             <h2 class="t-card-header">> 17. CHECKBOX & RADIO</h2>
             <div class="docs-example">
-                <label class="t-checkbox-label"><input type="checkbox" checked><span class="t-checkmark"></span> Route Encryption</label>
-                <label class="t-radio-label mt-2"><input type="radio" name="opt" checked><span class="t-radiomark"></span> Active Node</label>
+                <label class="t-checkbox-label"><input type="checkbox" checked><span class="t-checkmark"></span> Enable</label>
+                <label class="t-radio-label mt-2"><input type="radio" name="opt" checked><span class="t-radiomark"></span> Node</label>
             </div>
-            <div class="docs-code"><pre><code>&lt;label class="t-checkbox-label"&gt;
-    &lt;input type="checkbox" checked&gt;
-    &lt;span class="t-checkmark"&gt;&lt;/span&gt; Route Encryption
-&lt;/label&gt;
-
-&lt;label class="t-radio-label mt-2"&gt;
-    &lt;input type="radio" name="opt" checked&gt;
-    &lt;span class="t-radiomark"&gt;&lt;/span&gt; Active Node
-&lt;/label&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;label class="t-checkbox-label"&gt;
+    &lt;input type="checkbox" checked&gt;&lt;span class="t-checkmark"&gt;&lt;/span&gt; Enable
+&lt;/label&gt;</code></pre>
+            </div>
         </div>
 
         <div id="data-nav" class="docs-section">
@@ -469,28 +375,23 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
             <div class="docs-example">
                 <ul class="t-breadcrumb">
                     <li><a href="#">ROOT</a></li>
-                    <li><a href="#">SYSTEM</a></li>
                     <li class="active">LOGS.TXT</li>
                 </ul>
                 <div class="t-pagination mt-4">
                     <button class="t-page-btn">[ PREV ]</button>
                     <button class="t-page-btn active">1</button>
-                    <button class="t-page-btn">2</button>
                     <button class="t-page-btn">[ NEXT ]</button>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;ul class="t-breadcrumb"&gt;
+            <div class="docs-code">
+<pre><code>&lt;ul class="t-breadcrumb"&gt;
     &lt;li&gt;&lt;a href="#"&gt;ROOT&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="#"&gt;SYSTEM&lt;/a&gt;&lt;/li&gt;
     &lt;li class="active"&gt;LOGS.TXT&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;div class="t-pagination"&gt;
-    &lt;button class="t-page-btn"&gt;[ PREV ]&lt;/button&gt;
-    &lt;button class="t-page-btn active"&gt;1&lt;/button&gt;
-    &lt;button class="t-page-btn"&gt;2&lt;/button&gt;
-    &lt;button class="t-page-btn"&gt;[ NEXT ]&lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
+    &lt;button class="t-page-btn"&gt;1&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="table" class="docs-section">
@@ -503,32 +404,31 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
                     </table>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-table-wrapper"&gt;
-    &lt;table class="t-table"&gt;
-        &lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;FILE&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-        &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;01&lt;/td&gt;&lt;td&gt;data.sql&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;table class="t-table"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;01&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
         </div>
 
         <div id="list-group" class="docs-section">
-            <h2 class="t-card-header">> 20. LIST GROUPS (CONTACTS)</h2>
+            <h2 class="t-card-header">> 20. LIST GROUPS</h2>
             <div class="docs-example">
                 <div class="t-list-group mb-0">
                     <a href="#" class="t-list-item active">
                         <span class="t-led-dot t-led-green"></span>
                         <span class="t-list-item-title">STATION_BRAVO</span>
-                        <span class="t-list-item-subtitle">Sector 5</span>
                     </a>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-list-group"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-list-group"&gt;
     &lt;a href="#" class="t-list-item active"&gt;
-        &lt;span class="t-led-dot t-led-green"&gt;&lt;/span&gt;
-        &lt;span class="t-list-item-title"&gt;STATION_BRAVO&lt;/span&gt;
-        &lt;span class="t-list-item-subtitle"&gt;Sector 5&lt;/span&gt;
+        &lt;span class="t-list-item-title"&gt;STATION&lt;/span&gt;
     &lt;/a&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="chat-ui" class="docs-section">
@@ -539,37 +439,39 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
                     <div class="t-bubble t-bubble-me">My message</div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-chat-container"&gt;
-    &lt;div class="t-bubble t-bubble-them"&gt;Incoming message&lt;/div&gt;
-    &lt;div class="t-bubble t-bubble-me"&gt;My message&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-chat-container"&gt;
+    &lt;div class="t-bubble t-bubble-them"&gt;Incoming&lt;/div&gt;
+    &lt;div class="t-bubble t-bubble-me"&gt;My&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="badge" class="docs-section">
             <h2 class="t-card-header">> 22. BADGES & PROGRESS</h2>
             <div class="docs-example">
                 <span class="t-badge warning mb-3">PENDING</span>
-                <span class="t-badge danger mb-3">CRITICAL</span>
-                <div class="t-progress-bg mb-0"><div class="t-progress-bar" class="t-demo-half">45%</div></div>
+                <div class="t-progress-bg mb-0">
+                    <div class="t-progress-bar w-50">50%</div>
+                </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;span class="t-badge warning"&gt;PENDING&lt;/span&gt;
-&lt;span class="t-badge danger"&gt;CRITICAL&lt;/span&gt;
-
+            <div class="docs-code">
+<pre><code>&lt;span class="t-badge warning"&gt;PENDING&lt;/span&gt;
 &lt;div class="t-progress-bg"&gt;
-    &lt;div class="t-progress-bar" class="t-demo-half"&gt;45%&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+    &lt;div class="t-progress-bar w-50"&gt;50%&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="led-status" class="docs-section">
             <h2 class="t-card-header">> 23. LED INDICATORS</h2>
             <div class="docs-example">
                 <span class="t-led-dot t-led-green"></span> OK &nbsp; 
-                <span class="t-led-dot t-led-yellow"></span> WAIT &nbsp;
                 <span class="t-led-dot t-led-red"></span> FAIL
             </div>
-            <div class="docs-code"><pre><code>&lt;span class="t-led-dot t-led-green"&gt;&lt;/span&gt; OK
-&lt;span class="t-led-dot t-led-yellow"&gt;&lt;/span&gt; WAIT
-&lt;span class="t-led-dot t-led-red"&gt;&lt;/span&gt; FAIL</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;span class="t-led-dot t-led-green"&gt;&lt;/span&gt; OK</code></pre>
+            </div>
         </div>
 
         <div id="alerts" class="docs-section">
@@ -578,8 +480,10 @@ Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=64
                 <div class="t-alert danger mb-3">> SECURITY BREACH!</div>
                 Status: <span class="t-spinner"></span> PROCESSING
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-alert danger"&gt;&gt; SECURITY BREACH!&lt;/div&gt;
-Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-alert danger"&gt;&gt; BREACH!&lt;/div&gt; 
+&lt;span class="t-spinner"&gt;&lt;/span&gt;</code></pre>
+            </div>
         </div>
 
         <div id="tabs" class="docs-section">
@@ -587,100 +491,89 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
             <div class="docs-example">
                 <div class="t-tabs-wrapper mb-0">
                     <div class="t-tabs-header">
-                        <button class="t-tab-btn active" onclick="Terminal.tab(this, 't1')">MAIN</button>
+                        <button class="t-tab-btn active" data-t-tab="t1">MAIN</button>
                     </div>
                     <div id="t1" class="t-tab-content active">Main tab content.</div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-tabs-wrapper"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-tabs-wrapper"&gt;
     &lt;div class="t-tabs-header"&gt;
-        &lt;button class="t-tab-btn active" onclick="Terminal.tab(this, 't1')"&gt;MAIN&lt;/button&gt;
+        &lt;button class="t-tab-btn active" data-t-tab="t1"&gt;MAIN&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div id="t1" class="t-tab-content active"&gt;Main tab content.&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+    &lt;div id="t1" class="t-tab-content active"&gt;Content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="accordion" class="docs-section">
             <h2 class="t-card-header">> 26. ACCORDION & TOOLTIP</h2>
             <div class="docs-example">
                 <div class="t-accordion mb-4">
-                    <button class="t-accordion-btn" onclick="Terminal.accordion(this)">DIRECTORY</button>
+                    <button class="t-accordion-btn" data-t-accordion>DIRECTORY</button>
                     <div class="t-accordion-content">Classified content.</div>
                 </div>
-                <p>Hover over <span data-tooltip="Secret coordinates">This Text</span>.</p>
+                <p>Hover <span data-tooltip="Secret">Text</span>.</p>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-accordion"&gt;
-    &lt;button class="t-accordion-btn" onclick="Terminal.accordion(this)"&gt;DIRECTORY&lt;/button&gt;
-    &lt;div class="t-accordion-content"&gt;Classified content.&lt;/div&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-accordion"&gt;
+    &lt;button class="t-accordion-btn" data-t-accordion&gt;DIR&lt;/button&gt;
 &lt;/div&gt;
-
-&lt;p&gt;Hover over &lt;span data-tooltip="Secret coordinates"&gt;This Text&lt;/span&gt;.&lt;/p&gt;</code></pre></div>
+&lt;span data-tooltip="Info"&gt;Hover&lt;/span&gt;</code></pre>
+            </div>
         </div>
 
         <div id="modal" class="docs-section">
             <h2 class="t-card-header">> 27. MODAL SYSTEM</h2>
             <div class="docs-example">
-                <button class="t-btn" onclick="Terminal.modal.open('contohModal')">OPEN MODAL</button>
+                <button class="t-btn" data-t-modal-open="contohModal">OPEN MODAL</button>
             </div>
-            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.modal.open('contohModal')"&gt;OPEN MODAL&lt;/button&gt;
-
-&lt;!-- Place this structure at the bottom of the body --&gt;
-&lt;div id="contohModal" class="t-modal"&gt;
-    &lt;div class="t-modal-content"&gt;
-        &lt;div class="t-card-header"&gt;&gt; SYSTEM_ACCESS&lt;/div&gt;
-        &lt;p&gt;System is responding well.&lt;/p&gt;
-        &lt;div class="mt-4 text-right"&gt;
-            &lt;button class="t-btn danger" onclick="Terminal.modal.close('contohModal')"&gt;CLOSE [X]&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;button class="t-btn" data-t-modal-open="myModal"&gt;OPEN&lt;/button&gt;
+&lt;div id="myModal" class="t-modal"&gt;
+    &lt;div class="t-modal-content"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
 
         <div id="toast" class="docs-section">
             <h2 class="t-card-header">> 28. NOTIFICATIONS (TOAST)</h2>
             <div class="docs-example">
-                <div class="d-flex gap-2 flex-wrap">
-                    <button class="t-btn" onclick="Terminal.toast('Secure connection.', 'normal')">Normal</button>
-                    <button class="t-btn text-warning" class="border-warning" onclick="Terminal.toast('Process running...', 'warning')">Warning</button>
-                    <button class="t-btn danger" onclick="Terminal.toast('Connection lost!', 'danger')">Danger</button>
-                </div>
+                <button class="t-btn" onclick="Terminal.toast('Secure.', 'normal')">Normal</button>
             </div>
-            <div class="docs-code"><pre><code>&lt;button class="t-btn" onclick="Terminal.toast('Secure connection.', 'normal')"&gt;Normal&lt;/button&gt;
-&lt;button class="t-btn" onclick="Terminal.toast('Process running...', 'warning')"&gt;Warning&lt;/button&gt;
-&lt;button class="t-btn danger" onclick="Terminal.toast('Connection lost!', 'danger')"&gt;Danger&lt;/button&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;button class="t-btn" onclick="Terminal.toast('Secure.', 'normal')"&gt;Toast&lt;/button&gt;</code></pre>
+            </div>
         </div>
 
         <div id="branding" class="docs-section">
             <h2 class="t-card-header">> 29. BRANDING (ICON)</h2>
             <div class="docs-example text-center">
-                <img src="terminal-icon.svg" width="128" class="t-logo-frame" alt="Terminal UI Logo">
+                <img src="terminal-icon.svg" width="128" class="t-logo-frame" alt="Logo">
             </div>
-            <div class="docs-code"><pre><code>&lt;!-- How to setup Favicon --&gt;
-&lt;link rel="icon" type="image/svg+xml" href="terminal-icon.svg"&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;link rel="icon" type="image/svg+xml" href="terminal-icon.svg"&gt;</code></pre>
+            </div>
         </div>
 
         <div id="new-modules" class="docs-section">
-            <h2 class="t-card-header">> 30. NEW EXTENSIONS (V1.3.0)</h2>
-
+            <h2 class="t-card-header">> 30. NEW EXTENSIONS</h2>
+            
             <h3 class="font-bold text-success mb-2 mt-4">A. DROPDOWN MENU (.t-dropdown)</h3>
             <div class="docs-example">
                 <div class="t-dropdown">
-                    <button class="t-btn t-dropdown-btn" onclick="Terminal.dropdown(this)">[ ACTION_MENU v ]</button>
+                    <button class="t-btn t-dropdown-btn" data-t-dropdown>[ MENU v ]</button>
                     <div class="t-dropdown-menu">
-                        <a class="t-dropdown-item" onclick="Terminal.toast('Scanning...')">> SCAN_NODE</a>
-                        <a class="t-dropdown-item" onclick="Terminal.toast('Extracting...')">> EXTRACT_DATA</a>
-                        <a class="t-dropdown-item text-danger">> PURGE_SYSTEM</a>
+                        <a class="t-dropdown-item">> SCAN</a>
                     </div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-dropdown"&gt;
-    &lt;button class="t-btn t-dropdown-btn" onclick="Terminal.dropdown(this)"&gt;[ ACTION_MENU v ]&lt;/button&gt;
-    &lt;div class="t-dropdown-menu"&gt;
-        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Scanning...')"&gt;&gt; SCAN_NODE&lt;/a&gt;
-        &lt;a class="t-dropdown-item" onclick="Terminal.toast('Extracting...')"&gt;&gt; EXTRACT_DATA&lt;/a&gt;
-        &lt;a class="t-dropdown-item text-danger"&gt;&gt; PURGE_SYSTEM&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-dropdown"&gt;
+    &lt;button class="t-btn" data-t-dropdown&gt;[ v ]&lt;/button&gt;
+    &lt;div class="t-dropdown-menu"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
             
             <h3 class="font-bold text-success mb-2 mt-4">B. TOGGLE SWITCH (.t-switch)</h3>
             <div class="docs-example d-flex align-items-center gap-3">
@@ -688,24 +581,23 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
                     <input type="checkbox" checked>
                     <span class="t-switch-slider"></span>
                 </label>
-                <span class="text-muted">> MAIN_RADAR_POWER</span>
+                <span>> POWER</span>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="d-flex align-items-center gap-3"&gt;
-    &lt;label class="t-switch"&gt;
-        &lt;input type="checkbox" checked&gt;
-        &lt;span class="t-switch-slider"&gt;&lt;/span&gt;
-    &lt;/label&gt;
-    &lt;span class="text-muted"&gt;&gt; MAIN_RADAR_POWER&lt;/span&gt;
-&lt;/div&gt;</code></pre></div>
-
+            <div class="docs-code">
+<pre><code>&lt;label class="t-switch"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="t-switch-slider"&gt;&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+            </div>
+            
             <h3 class="font-bold text-success mb-2 mt-4">C. RANGE SLIDER (.t-range)</h3>
             <div class="docs-example">
-                <label class="t-form-label">> FREQUENCY_CALIBRATOR (MHz)</label>
                 <input type="range" min="1" max="100" value="50" class="t-range">
             </div>
-            <div class="docs-code"><pre><code>&lt;label class="t-form-label"&gt;&gt; FREQUENCY_CALIBRATOR (MHz)&lt;/label&gt;
-&lt;input type="range" min="1" max="100" value="50" class="t-range"&gt;</code></pre></div>
-
+            <div class="docs-code">
+<pre><code>&lt;input type="range" class="t-range"&gt;</code></pre>
+            </div>
+            
             <h3 class="font-bold text-success mb-2 mt-4">D. TREE VIEW (.t-tree)</h3>
             <div class="docs-example">
                 <ul class="t-tree">
@@ -713,269 +605,263 @@ Status: &lt;span class="t-spinner"&gt;&lt;/span&gt; PROCESSING</code></pre></div
                         <span class="t-tree-folder" onclick="Terminal.treeToggle(this)">sys_root</span>
                         <ul>
                             <li><a href="#" class="t-tree-file">kernel.bin</a></li>
-                            <li><a href="#" class="t-tree-file">config.ini</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="t-tree-folder" onclick="Terminal.treeToggle(this)">vault_data</span>
-                        <ul>
-                            <li><a href="#" class="t-tree-file">passwords.enc</a></li>
-                            <li>
-                                <span class="t-tree-folder" onclick="Terminal.treeToggle(this)">archives</span>
-                                <ul>
-                                    <li><a href="#" class="t-tree-file">log_2026.txt</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
-            <div class="docs-code"><pre><code>&lt;ul class="t-tree"&gt;
+            <div class="docs-code">
+<pre><code>&lt;ul class="t-tree"&gt;
     &lt;li&gt;
-        &lt;span class="t-tree-folder" onclick="Terminal.treeToggle(this)"&gt;sys_root&lt;/span&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#" class="t-tree-file"&gt;kernel.bin&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#" class="t-tree-file"&gt;config.ini&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
+        &lt;span class="t-tree-folder" onclick="Terminal.treeToggle(this)"&gt;root&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li&gt;
-        &lt;span class="t-tree-folder" onclick="Terminal.treeToggle(this)"&gt;vault_data&lt;/span&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#" class="t-tree-file"&gt;passwords.enc&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;
-                &lt;span class="t-tree-folder" onclick="Terminal.treeToggle(this)"&gt;archives&lt;/span&gt;
-                &lt;ul&gt;
-                    &lt;li&gt;&lt;a href="#" class="t-tree-file"&gt;log_2026.txt&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;</code></pre></div>
-
-            <h3 class="font-bold text-success mb-2 mt-4">E. JS TYPEWRITER EFFECT</h3>
-            <div class="docs-example">
-                <div id="tw-demo" class="mb-3 text-warning font-bold" class="t-demo-min-h"></div>
-                <button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '> INCOMING TRANSMISSION INTERCEPTED...', 50)">[ PLAY_EFFECT ]</button>
+&lt;/ul&gt;</code></pre>
             </div>
-            <div class="docs-code"><pre><code>&lt;div id="tw-demo" class="mb-3 text-warning font-bold" class="t-demo-min-h"&gt;&lt;/div&gt;
-&lt;button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '&gt; INCOMING TRANSMISSION INTERCEPTED...', 50)"&gt;[ PLAY_EFFECT ]&lt;/button&gt;</code></pre></div>
+            
+            <h3 class="font-bold text-success mb-2 mt-4">E. JS TYPEWRITER</h3>
+            <div class="docs-example">
+                <div id="tw-demo" class="mb-3 text-warning font-bold t-demo-min-h"></div>
+                <button class="t-btn t-btn-sm" onclick="Terminal.typewrite('tw-demo', '> INCOMING...', 50)">[ PLAY ]</button>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;button onclick="Terminal.typewrite('demo', 'TEXT', 50)"&gt;PLAY&lt;/button&gt;</code></pre>
+            </div>
         </div>
 
         <div id="media-modules" class="docs-section">
-            <h2 class="t-card-header">> 31. MEDIA & STATUS EXTENSIONS</h2>
-
-            <h3 class="font-bold text-success mb-2 mt-4">A. CUSTOM FILE UPLOAD (.t-file-wrapper)</h3>
+            <h2 class="t-card-header">> 31. MEDIA EXTENSIONS</h2>
+            
+            <h3 class="font-bold text-success mb-2 mt-4">A. CUSTOM FILE UPLOAD</h3>
             <div class="docs-example">
                 <div class="t-file-wrapper">
-                    <span class="t-file-btn" id="file-label">> SELECT_FILE</span>
+                    <span class="t-file-btn" id="file-label">> FILE</span>
                     <input type="file" id="file-input" onchange="Terminal.fileInput('file-input', 'file-label')">
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-file-wrapper"&gt;
-    &lt;span class="t-file-btn" id="file-label"&gt;&gt; SELECT_FILE&lt;/span&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-file-wrapper"&gt;
+    &lt;span class="t-file-btn" id="file-label"&gt;&gt; FILE&lt;/span&gt;
     &lt;input type="file" id="file-input" onchange="Terminal.fileInput('file-input', 'file-label')"&gt;
-&lt;/div&gt;</code></pre></div>
-            
-            <h3 class="font-bold text-success mb-2 mt-4">B. IMAGE LIGHTBOX (.t-lightbox)</h3>
-            <div class="docs-example">
-                <img src="terminal-icon.svg" width="60" class="t-retro-filter" class="t-clickable-demo" onclick="Terminal.lightbox.open(this.src)" alt="Demo">
-                <span class="fs-small text-muted ml-2">&lt;- Click this logo</span>
+&lt;/div&gt;</code></pre>
             </div>
-            <div class="docs-code"><pre><code>&lt;img src="image.jpg" onclick="Terminal.lightbox.open(this.src)"&gt;</code></pre></div>
 
-            <h3 class="font-bold text-success mb-2 mt-4">C. EMPTY STATE (.t-empty-state)</h3>
+            <h3 class="font-bold text-success mb-2 mt-4">B. IMAGE LIGHTBOX</h3>
+            <div class="docs-example">
+                <img src="terminal-icon.svg" width="60" class="t-retro-filter" data-t-lightbox alt="Demo">
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;img src="terminal-icon.svg" width="60" class="t-retro-filter" data-t-lightbox alt="Demo"&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">C. EMPTY STATE</h3>
             <div class="docs-example">
                 <div class="t-empty-state">
                     <span class="t-empty-state-icon">📡</span>
-                    [ EMPTY RADAR. NO SIGNAL. ]
+                    [ EMPTY ]
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-empty-state"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-empty-state"&gt;
     &lt;span class="t-empty-state-icon"&gt;📡&lt;/span&gt;
-    [ EMPTY RADAR. NO SIGNAL. ]
-&lt;/div&gt;</code></pre></div>
+    [ EMPTY ]
+&lt;/div&gt;</code></pre>
+            </div>
 
-            <h3 class="font-bold text-success mb-2 mt-4">D. SKELETON LOADER (.t-skeleton)</h3>
+            <h3 class="font-bold text-success mb-2 mt-4">D. SKELETON LOADER</h3>
             <div class="docs-example">
                 <div class="t-skeleton"></div>
-                <div class="t-skeleton" class="t-demo-width-70"></div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-skeleton"&gt;&lt;/div&gt;
-&lt;div class="t-skeleton" class="t-demo-width-70"&gt;&lt;/div&gt;</code></pre></div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-skeleton"&gt;&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3 class="font-bold text-success mb-2 mt-4">E. BILINGUAL COMMAND</h3>
+            <p class="text-muted">A CSS-only text swap primitive. Defaults to the primary language and reveals the alt text on hover.</p>
+            <div class="docs-example d-flex gap-2">
+                <button class="t-btn t-bilingual-btn">
+                    <span class="t-lang-default">[ OK ]</span>
+                    <span class="t-lang-alt">[ SETUJU ]</span>
+                </button>
+                <button class="t-btn danger t-bilingual-btn">
+                    <span class="t-lang-default">[ EXIT ]</span>
+                    <span class="t-lang-alt">[ KELUAR ]</span>
+                </button>
+                <span class="text-muted t-bilingual mt-2 ml-3">> <span class="t-lang-default">HOVER_ME</span><span class="t-lang-alt">BILINGUAL_TEST</span></span>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;button class="t-btn t-bilingual-btn"&gt;
+    &lt;span class="t-lang-default"&gt;[ OK ]&lt;/span&gt;
+    &lt;span class="t-lang-alt"&gt;[ SETUJU ]&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+            </div>
         </div>
 
         <div id="social-modules" class="docs-section">
             <h2 class="t-card-header">> 32. SOCIAL & APP</h2>
-            <p class="text-muted">Advanced modules designed specifically to build communication, telemetry, or social applications within Terminal UI.</p>
             
-            <h3 class="font-bold text-success mb-2 mt-4">A. AVATAR & SPOILER (.t-avatar, .t-spoiler)</h3>
-            <div class="docs-example d-flex align-items-center gap-3">
-                <div class="t-avatar"><img src="terminal-icon.svg" alt="Avatar"></div>
-                <div class="t-avatar t-avatar-lg">?</div>
-                <div class="p-3 border-dashed t-spoiler bg-surface">
-                    > CLASSIFIED_INFO
-                </div>
+            <h3 class="font-bold text-success mb-2 mt-4">A. AVATAR & SPOILER</h3>
+            <div class="docs-example d-flex gap-3">
+                <div class="t-avatar">?</div>
+                <div class="p-3 border-dashed t-spoiler bg-surface">> CLASSIFIED</div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-avatar"&gt;&lt;img src="user.png"&gt;&lt;/div&gt;
-&lt;div class="t-avatar t-avatar-lg"&gt;?&lt;/div&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="d-flex gap-3"&gt;
+    &lt;div class="t-avatar"&gt;?&lt;/div&gt;
+    &lt;div class="p-3 border-dashed t-spoiler bg-surface"&gt;&gt; CLASSIFIED&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
 
-&lt;div class="t-spoiler"&gt;&gt; CLASSIFIED_INFO&lt;/div&gt;</code></pre></div>
-
-            <h3 class="font-bold text-success mb-2 mt-4">B. EDITOR / COMPOSER (.t-editor-card)</h3>
+            <h3 class="font-bold text-success mb-2 mt-4">B. EDITOR / COMPOSER</h3>
             <div class="docs-example">
                 <div class="t-editor-card mb-0">
                     <div class="t-editor-toolbar">
                         <button class="t-editor-btn">[ B ]</button>
                         <button class="t-editor-btn">[ I ]</button>
                         <button class="t-editor-btn">[ LINK ]</button>
+                        <button class="t-editor-btn">[ IMG ]</button>
                     </div>
-                    <textarea class="t-editor-textarea" rows="3" placeholder="Compose message..."></textarea>
+                    <textarea class="t-editor-textarea" rows="2"></textarea>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-editor-card"&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-editor-card mb-0"&gt;
     &lt;div class="t-editor-toolbar"&gt;
         &lt;button class="t-editor-btn"&gt;[ B ]&lt;/button&gt;
         &lt;button class="t-editor-btn"&gt;[ I ]&lt;/button&gt;
         &lt;button class="t-editor-btn"&gt;[ LINK ]&lt;/button&gt;
+        &lt;button class="t-editor-btn"&gt;[ IMG ]&lt;/button&gt;
     &lt;/div&gt;
-    &lt;textarea class="t-editor-textarea" rows="3" placeholder="Compose message..."&gt;&lt;/textarea&gt;
-&lt;/div&gt;</code></pre></div>
+    &lt;textarea class="t-editor-textarea" rows="2"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+            </div>
 
-            <h3 class="font-bold text-success mb-2 mt-4">C. TIMELINE FEED (.t-feed-card)</h3>
+            <h3 class="font-bold text-success mb-2 mt-4">C. TIMELINE FEED</h3>
             <div class="docs-example">
                 <div class="t-feed-card mb-0">
                     <div class="t-avatar"><img src="terminal-icon.svg" alt="User"></div>
                     <div class="t-feed-main">
                         <div class="t-feed-header">
-                            <a href="#" class="t-feed-author">@commander</a>
-                            <span class="t-feed-meta">2 mins ago via Satellite</span>
+                            <a href="#" class="t-feed-author text-success font-bold">Jean</a>
+                            <span class="t-feed-meta text-muted">@jeannesbryan · 12 hours ago</span>
                         </div>
-                        <div class="t-feed-content">
-                            Target locked. Waiting for your signal to execute the protocol.
-                            <div class="t-media-grid">
-                                <div class="t-media-item"><img src="terminal-icon.svg" alt="Scan"></div>
-                                <div class="t-media-item"><img src="terminal-icon.svg" alt="Map"></div>
-                            </div>
-                        </div>
-                        <div class="t-feed-actions">
-                            <button class="t-feed-btn">[ ACKNOWLEDGE ]</button>
-                            <button class="t-feed-btn text-muted">[ REPOST ]</button>
+                        <div class="t-feed-content text-success">Target locked.</div>
+                        <div class="t-feed-actions mt-3 pt-2 border-top">
+                            <button class="t-feed-btn">[ REPLY ]</button>
+                            <button class="t-feed-btn">[ REPOST ]</button>
+                            <button class="t-feed-btn text-warning">[ FAV ]</button>
+                            <button class="t-feed-btn">[ MARK ]</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="docs-code"><pre><code>&lt;div class="t-feed-card"&gt;
-    &lt;div class="t-avatar"&gt;&lt;img src="avatar.jpg"&gt;&lt;/div&gt;
-    &lt;div class="t-feed-main"&gt;
-        &lt;div class="t-feed-header"&gt;
-            &lt;a href="#" class="t-feed-author"&gt;@commander&lt;/a&gt;
-            &lt;span class="t-feed-meta"&gt;2 mins ago&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div class="t-feed-content"&gt;
-            Target locked. 
-            &lt;div class="t-media-grid"&gt;
-                &lt;div class="t-media-item"&gt;&lt;img src="img1.jpg"&gt;&lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="t-feed-actions"&gt;
-            &lt;button class="t-feed-btn"&gt;[ REPOST ]&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
-
-            <h3 class="font-bold text-success mb-2 mt-4">D. ACTIVITY METRICS (TELEMETRY)</h3>
-            <div class="docs-example">
-                <div class="t-feed-card mb-0">
-                    <div class="t-avatar"><img src="terminal-icon.svg" alt="User"></div>
-                    <div class="t-feed-main">
-                        <div class="t-feed-header">
-                            <a href="#" class="t-feed-author text-success font-bold fs-3">Jean</a>
-                            <span class="t-feed-meta">@jeannesbryan · jeannesbryan.my.id · 5 days ago</span>
-                        </div>
-                        
-                        <div class="t-activity-header mt-3">
-                            <div class="border-dashed p-2 font-bold fs-3">[BIKE]</div>
-                            <div>
-                                <h4 class="t-activity-title text-success">CYCLING SESSION</h4>
-                                <span class="t-activity-type text-success">CYCLING</span>
-                            </div>
-                        </div>
-
-                        <div class="t-activity-metrics mb-4 mt-2">
-                            <div class="t-metric-box w-100 mb-4">
-                                <div class="t-metric-val t-metric-large">36.33 <span class="t-metric-unit">km</span></div>
-                                <span class="t-metric-lbl text-success">DISTANCE</span>
-                            </div>
-                            <div class="d-flex gap-4 flex-wrap">
-                                <div class="t-metric-box">
-                                    <div class="t-metric-val fs-2">02:43:34</div>
-                                    <span class="t-metric-lbl text-success">DURATION</span>
-                                </div>
-                                <div class="t-metric-box">
-                                    <div class="t-metric-val fs-2">13.33 <span class="t-metric-unit fs-small">km/h</span></div>
-                                    <span class="t-metric-lbl text-success">AVG SPEED</span>
-                                </div>
-                                <div class="t-metric-box">
-                                    <div class="t-metric-val fs-2">620 <span class="t-metric-unit fs-small">m</span></div>
-                                    <span class="t-metric-lbl text-success">ELEVATION GAIN</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="t-feed-content mb-4 text-success">
-                            After not cycling for a long time
-                        </div>
-                        
-                        <div class="t-feed-actions d-flex justify-content-between align-items-center w-100 mt-2">
-                            <div class="d-flex gap-2 flex-wrap">
-                                <button class="t-feed-btn text-success">[r] 0</button>
-                                <button class="t-feed-btn text-success">[b] save</button>
-                                <button class="t-feed-btn text-success">[t] 0</button>
-                                <button class="t-feed-btn text-success">[+] 0</button>
-                                <button class="t-feed-btn text-success">[q]</button>
-                                <button class="t-feed-btn text-success">[raw]</button>
-                                <button class="t-feed-btn text-success">[link]</button>
-                            </div>
-                        </div>
-                        <div class="text-right fs-small text-muted mt-2">
-                            > tracker_data / via Gaspool
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="docs-code"><pre><code>
-&lt;div class="t-feed-card"&gt;
-    &lt;div class="t-avatar"&gt;&lt;img src="avatar.jpg"&gt;&lt;/div&gt;
+            <div class="docs-code">
+<pre><code>&lt;div class="t-feed-card mb-0"&gt;
+    &lt;div class="t-avatar"&gt;&lt;img src="terminal-icon.svg" alt="User"&gt;&lt;/div&gt;
     &lt;div class="t-feed-main"&gt;
         &lt;div class="t-feed-header"&gt;
             &lt;a href="#" class="t-feed-author text-success font-bold"&gt;Jean&lt;/a&gt;
-            &lt;span class="t-feed-meta"&gt;@jeannesbryan · 5 days ago&lt;/span&gt;
+            &lt;span class="t-feed-meta text-muted"&gt;@jeannesbryan · 12 hours ago&lt;/span&gt;
         &lt;/div&gt;
-        &lt;div class="t-activity-header mt-3"&gt;
-            &lt;div class="border-dashed p-2 font-bold fs-3"&gt;[BIKE]&lt;/div&gt;
-            &lt;div&gt;
-                &lt;h4 class="t-activity-title text-success"&gt;CYCLING SESSION&lt;/h4&gt;
-                &lt;span class="t-activity-type text-success"&gt;CYCLING&lt;/span&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="t-activity-metrics mb-4"&gt;
-            &lt;!-- Insert Metric Boxes --&gt;
-        &lt;/div&gt;
-        &lt;div class="t-feed-actions"&gt;
-            &lt;button class="t-feed-btn text-success"&gt;[b] save&lt;/button&gt;
+        &lt;div class="t-feed-content text-success"&gt;Target locked.&lt;/div&gt;
+        &lt;div class="t-feed-actions mt-3 pt-2 border-top"&gt;
+            &lt;button class="t-feed-btn"&gt;[ REPLY ]&lt;/button&gt;
+            &lt;button class="t-feed-btn"&gt;[ REPOST ]&lt;/button&gt;
+            &lt;button class="t-feed-btn text-warning"&gt;[ FAV ]&lt;/button&gt;
+            &lt;button class="t-feed-btn"&gt;[ MARK ]&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
-        </div>
+&lt;/div&gt;</code></pre>
+            </div>
 
+            <h3 class="font-bold text-success mb-2 mt-4">D. ACTIVITY METRICS</h3>
+            <div class="docs-example">
+                <div class="t-feed-card mb-0">
+                    <div class="t-avatar"><img src="terminal-icon.svg" alt="User"></div>
+                    <div class="t-feed-main">
+                        <div class="t-feed-header">
+                            <a href="#" class="t-feed-author text-success font-bold">Jean</a>
+                            <span class="t-feed-meta text-muted">@jeannesbryan · jeannesbryan.my.id · 12 hours ago</span>
+                        </div>
+                        <div class="t-activity-header mt-3 d-flex align-items-center gap-3">
+                            <div class="border-dashed p-2 font-bold fs-3 text-success">[BIKE]</div>
+                            <div>
+                                <h4 class="t-activity-title text-success m-0">KAMIS MENGKIS</h4>
+                                <span class="t-activity-type text-muted">CYCLING</span>
+                            </div>
+                        </div>
+                        <hr class="t-divider">
+                        <div class="t-activity-metrics mb-4 mt-3">
+                            <div class="t-metric-box w-100 mb-4">
+                                <div class="t-metric-val t-metric-large text-success">80.94 <span class="t-metric-unit">km</span></div>
+                                <span class="t-metric-lbl text-muted">DISTANCE</span>
+                            </div>
+                            <div class="d-flex gap-4 flex-wrap">
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2 text-success">06:39:28</div>
+                                    <span class="t-metric-lbl text-muted">DURATION</span>
+                                </div>
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2 text-success">12.16 <span class="t-metric-unit fs-small">km/h</span></div>
+                                    <span class="t-metric-lbl text-muted">AVG SPEED</span>
+                                </div>
+                                <div class="t-metric-box">
+                                    <div class="t-metric-val fs-2 text-success">1546 <span class="t-metric-unit fs-small">m</span></div>
+                                    <span class="t-metric-lbl text-muted">ELEVATION GAIN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="t-feed-content text-success">Completed a 80.94 km cycling in 06:39:28.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;div class="t-feed-card mb-0"&gt;
+    &lt;div class="t-avatar"&gt;&lt;img src="terminal-icon.svg" alt="User"&gt;&lt;/div&gt;
+    &lt;div class="t-feed-main"&gt;
+        &lt;div class="t-feed-header"&gt;
+            &lt;a href="#" class="t-feed-author text-success font-bold"&gt;Jean&lt;/a&gt;
+            &lt;span class="t-feed-meta text-muted"&gt;@jeannesbryan · jeannesbryan.my.id · 12 hours ago&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="t-activity-header mt-3 d-flex align-items-center gap-3"&gt;
+            &lt;div class="border-dashed p-2 font-bold fs-3 text-success"&gt;[BIKE]&lt;/div&gt;
+            &lt;div&gt;
+                &lt;h4 class="t-activity-title text-success m-0"&gt;KAMIS MENGKIS&lt;/h4&gt;
+                &lt;span class="t-activity-type text-muted"&gt;CYCLING&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;hr class="t-divider"&gt;
+        &lt;div class="t-activity-metrics mb-4 mt-3"&gt;
+            &lt;div class="t-metric-box w-100 mb-4"&gt;
+                &lt;div class="t-metric-val t-metric-large text-success"&gt;80.94 &lt;span class="t-metric-unit"&gt;km&lt;/span&gt;&lt;/div&gt;
+                &lt;span class="t-metric-lbl text-muted"&gt;DISTANCE&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="d-flex gap-4 flex-wrap"&gt;
+                &lt;div class="t-metric-box"&gt;
+                    &lt;div class="t-metric-val fs-2 text-success"&gt;06:39:28&lt;/div&gt;
+                    &lt;span class="t-metric-lbl text-muted"&gt;DURATION&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="t-metric-box"&gt;
+                    &lt;div class="t-metric-val fs-2 text-success"&gt;12.16 &lt;span class="t-metric-unit fs-small"&gt;km/h&lt;/span&gt;&lt;/div&gt;
+                    &lt;span class="t-metric-lbl text-muted"&gt;AVG SPEED&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class="t-metric-box"&gt;
+                    &lt;div class="t-metric-val fs-2 text-success"&gt;1546 &lt;span class="t-metric-unit fs-small"&gt;m&lt;/span&gt;&lt;/div&gt;
+                    &lt;span class="t-metric-lbl text-muted"&gt;ELEVATION GAIN&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="t-feed-content text-success"&gt;Completed a 80.94 km cycling in 06:39:28.&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
     </main>
 
     <div id="contohModal" class="t-modal">
         <div class="t-modal-content">
-            <div class="t-card-header">> SYSTEM_ACCESS</div>
-            <p>System is responding well.</p>
+            <div class="t-card-header">> ACCESS</div>
+            <p>System responding.</p>
             <div class="mt-4 text-right">
-                <button class="t-btn danger" onclick="Terminal.modal.close('contohModal')">CLOSE [X]</button>
+                <button class="t-btn danger" data-t-modal-close="contohModal">CLOSE [X]</button>
             </div>
         </div>
     </div>

@@ -658,3 +658,59 @@ html[data-terminal-theme="red"] {
     .t-main-content { margin-left: 0 !important; width: 100% !important; max-width: none !important; }
     .t-card, .docs-example, .docs-code, .t-window { border-color: #000 !important; color: #000 !important; background: #fff !important; }
 }
+
+/* =========================================
+   13. BILINGUAL / TEXT SWAP MODULE
+   ========================================= */
+
+.t-bilingual,
+.t-bilingual-btn,
+.t-bilingual-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* Fixed width to prevent wobbling during text swap */
+.t-bilingual-btn,
+.t-bilingual-tab {
+    min-width: 110px;
+    max-width: 110px;
+}
+
+/* Default state */
+.t-lang-default { display: inline; }
+.t-lang-alt { display: none; }
+
+/* Swap state on hover, focus, or active */
+.t-bilingual:hover .t-lang-default,
+.t-bilingual:focus .t-lang-default,
+.t-bilingual.active .t-lang-default,
+.t-bilingual-btn:hover .t-lang-default,
+.t-bilingual-btn:focus .t-lang-default,
+.t-bilingual-btn.active .t-lang-default,
+.t-bilingual-tab:hover .t-lang-default,
+.t-bilingual-tab:focus .t-lang-default,
+.t-bilingual-tab.active .t-lang-default { 
+    display: none; 
+}
+
+.t-bilingual:hover .t-lang-alt,
+.t-bilingual:focus .t-lang-alt,
+.t-bilingual.active .t-lang-alt,
+.t-bilingual-btn:hover .t-lang-alt,
+.t-bilingual-btn:focus .t-lang-alt,
+.t-bilingual-btn.active .t-lang-alt,
+.t-bilingual-tab:hover .t-lang-alt,
+.t-bilingual-tab:focus .t-lang-alt,
+.t-bilingual-tab.active .t-lang-alt { 
+    display: inline; 
+}
+
+/* Ensure color contrast remains when active */
+.t-bilingual.active .t-lang-alt,
+.t-bilingual-btn.active .t-lang-alt,
+.t-bilingual-tab.active .t-lang-alt {
+    color: inherit;
+}
