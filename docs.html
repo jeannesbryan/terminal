@@ -86,11 +86,24 @@
             <p class="text-muted">Terminal UI is designed to be customizable. Change the scheme by overriding variables in your custom CSS.</p>
             <div class="docs-code">
 <pre><code>:root {
-    --t-green: #ffb000; /* Amber */
-    --t-green-dim: #996900;
+    --t-green: #ffb000;           /* foreground */
+    --t-green-dim: #996900;       /* foreground, dimmed */
+    --t-accent-rgb: 255, 176, 0;  /* same colour as R, G, B - see note */
     --bg-base: #110d00;
     --bg-surface: #1f1700;
 }</code></pre>
+            </div>
+            <div class="docs-example">
+                <p class="mb-0"><strong>--t-accent-rgb must match --t-green.</strong> Every translucent accent wash
+                &mdash; hover glows, tinted panels, dashed borders, the dot grid, focus rings, box shadows &mdash;
+                is written as <code>rgba(var(--t-accent-rgb), &lt;alpha&gt;)</code>. Override
+                <code>--t-green</code> on its own and the solid foreground changes while roughly fifty washes
+                behind it stay on the old colour, which reads as a colour bleed.</p>
+                <p class="mb-0 fs-small">Optional, for full control: <code>--t-white</code> (near-white text, keep a
+                faint cast of the theme) and <code>--t-code-fg</code> (code foreground). Both have sensible green
+                defaults. Legacy comma syntax is required in
+                <code>--t-accent-rgb</code>: <code>rgba(var(--x), 0.05)</code> is supported everywhere, whereas
+                <code>color-mix()</code> and the modern slash syntax are not.</p>
             </div>
         </div>
 
