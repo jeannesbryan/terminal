@@ -49,6 +49,10 @@
             <li><a href="#new-modules">> 30. NEW EXTENSIONS</a></li>
             <li><a href="#media-modules">> 31. MEDIA & STATUS</a></li>
             <li><a href="#social-modules">> 32. SOCIAL & APP</a></li>
+            <li><a href="#layer-scale">> 33. LAYER SCALE</a></li>
+            <li><a href="#accordion-native">> 34. NATIVE ACCORDION</a></li>
+            <li><a href="#stepper">> 35. STEPPER</a></li>
+            <li><a href="#chips">> 36. CHIPS</a></li>
         </ul>
     </aside>
 
@@ -94,8 +98,8 @@
 }</code></pre>
             </div>
             <div class="docs-example">
-                <p class="mb-0"><strong>--t-accent-rgb must match --t-green.</strong> Every translucent accent wash
-                &mdash; hover glows, tinted panels, dashed borders, the dot grid, focus rings, box shadows &mdash;
+                <p class="mb-0"><strong>--t-accent-rgb must match --t-green.</strong> Every translucent accent wash,
+                including hover glows, tinted panels, dashed borders, the dot grid, focus rings and box shadows,
                 is written as <code>rgba(var(--t-accent-rgb), &lt;alpha&gt;)</code>. Override
                 <code>--t-green</code> on its own and the solid foreground changes while roughly fifty washes
                 behind it stay on the old colour, which reads as a colour bleed.</p>
@@ -865,6 +869,94 @@
         &lt;div class="t-feed-content text-success"&gt;Completed a 80.94 km cycling in 06:39:28.&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <div id="layer-scale" class="docs-section">
+            <h2 class="t-card-header">> 33. LAYER SCALE</h2>
+            <div class="docs-example">
+                <p>Every component takes its stacking order from a named token, so
+                adding one never becomes a bidding war over who gets the biggest
+                number. Override a token to move a whole layer at once.</p>
+                <p class="t-metric mono-label">--t-z-base 1 &nbsp; --t-z-raised 2 &nbsp; --t-z-toolbar 100 &nbsp; --t-z-dropdown 1000</p>
+                <p class="t-metric mono-label">--t-z-modal 10000 &nbsp; --t-z-toast 9999 &nbsp; --t-z-palette 99999 &nbsp; --t-z-lightbox 999999</p>
+            </div>
+            <div class="docs-code">
+<pre><code>:root { --t-z-modal: 20000; }   /* lifts every modal at once */
+
+.t-my-thing { z-index: var(--t-z-dropdown); }</code></pre>
+            </div>
+        </div>
+
+        <div id="accordion-native" class="docs-section">
+            <h2 class="t-card-header">> 34. NATIVE ACCORDION</h2>
+            <div class="docs-example">
+                <details class="t-accordion-native">
+                    <summary>Native disclosure, no script</summary>
+                    <div class="t-accordion-body">Works with JavaScript disabled.
+                    No height ceiling either, so a long panel is not reduced to a
+                    scroll box, and closed text is still reachable with the
+                    browser's own find in page.</div>
+                </details>
+                <details class="t-accordion-native" open>
+                    <summary>Open by default</summary>
+                    <div class="t-accordion-body">Add the <code>open</code> attribute.</div>
+                </details>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;details class="t-accordion-native"&gt;
+    &lt;summary&gt;Title&lt;/summary&gt;
+    &lt;div class="t-accordion-body"&gt;Body&lt;/div&gt;
+&lt;/details&gt;</code></pre>
+            </div>
+        </div>
+
+        <div id="stepper" class="docs-section">
+            <h2 class="t-card-header">> 35. STEPPER</h2>
+            <div class="docs-example">
+                <ol class="t-stepper">
+                    <li class="done">Build</li>
+                    <li aria-current="step">Verify</li>
+                    <li>Ship</li>
+                </ol>
+                <p class="mt-3">Pure CSS. Numbers come from a counter, the connector
+                from a pseudo element, and the current step from
+                <code>aria-current="step"</code>, which is what a screen reader
+                announces anyway. Add <code>class="done"</code> to mark a finished
+                step.</p>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;ol class="t-stepper"&gt;
+    &lt;li class="done"&gt;Build&lt;/li&gt;
+    &lt;li aria-current="step"&gt;Verify&lt;/li&gt;
+    &lt;li&gt;Ship&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+        </div>
+
+        <div id="chips" class="docs-section">
+            <h2 class="t-card-header">> 36. CHIPS</h2>
+            <div class="docs-example">
+                <div class="t-chip-group mb-3">
+                    <label class="t-chip"><input type="checkbox" checked><span>Tor</span></label>
+                    <label class="t-chip"><input type="checkbox"><span>Nginx</span></label>
+                    <label class="t-chip"><input type="checkbox"><span>Onion</span></label>
+                </div>
+                <div class="t-chip-group">
+                    <span class="t-chip">Dismissable<button class="t-chip-x" aria-label="Remove"></button></span>
+                </div>
+                <p class="mt-3"><code>.t-badge</code> is a passive label. A chip is a
+                control: it can be selected, and it can be dismissed. Both stay
+                CSS-only by wrapping a hidden checkbox in the label.</p>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;label class="t-chip"&gt;
+    &lt;input type="checkbox" checked&gt;&lt;span&gt;Tor&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;span class="t-chip"&gt;Tag
+    &lt;button class="t-chip-x" aria-label="Remove"&gt;&lt;/button&gt;
+&lt;/span&gt;</code></pre>
             </div>
         </div>
     </main>

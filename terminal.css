@@ -29,10 +29,30 @@ html {
     --t-accent-rgb: 0, 255, 65;
     --t-grid-dot: rgba(var(--t-accent-rgb), 0.08);
     --t-code-fg: #a8ffb7;
+    /* Hook for third-party embeds that draw their own frame, currently the
+       YouTube player in nostr-embed.js. Kept here rather than in a consuming
+       site so the frame colour follows the theme in one place. */
+    --yt-border: var(--t-green-dim);
     --t-shadow-soft: rgba(var(--t-accent-rgb), 0.18);
     --t-shadow-strong: rgba(var(--t-accent-rgb), 0.35);
     --t-radius: 0;
     --t-font: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    /* Layer scale. Every component below takes its stacking order from here
+       instead of writing a bare number, so adding a component never becomes a
+       bidding war. Values are arbitrary but the ORDER is the contract:
+       within-component levels first, then page furniture, then overlays. */
+    --t-z-base: 1;
+    --t-z-raised: 2;
+    --t-z-toolbar: 100;
+    --t-z-dropdown: 1000;
+    --t-z-drawer: 1030;
+    --t-z-modal: 10000;
+    --t-z-toast: 9999;
+    --t-z-palette: 99999;
+    --t-z-splash: 99999;
+    --t-z-lightbox: 999999;
+    --t-z-overlay: 100000;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -71,7 +91,7 @@ body {
 body.t-crt::after {
     content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 100000; background-size: 100% 2px, 3px 100%; pointer-events: none;
+    z-index: var(--t-z-overlay); background-size: 100% 2px, 3px 100%; pointer-events: none;
 }
 
 /* --- UTILITIES --- */
@@ -107,11 +127,19 @@ body.t-crt::after {
 .m-0 { margin: 0 !important; } .mt-0 { margin-top: 0 !important; } .mb-0 { margin-bottom: 0 !important; }
 .mt-1 { margin-top: 5px !important; } .mt-2 { margin-top: 10px !important; } .mt-3 { margin-top: 15px !important; } .mt-4 { margin-top: 20px !important; } .mt-5 { margin-top: 30px !important; }
 .mb-1 { margin-bottom: 5px !important; } .mb-2 { margin-bottom: 10px !important; } .mb-3 { margin-bottom: 15px !important; } .mb-4 { margin-bottom: 20px !important; } .mb-5 { margin-bottom: 30px !important; }
-.my-1 { margin-top: 5px !important; margin-bottom: 5px !important; } .my-2 { margin-top: 10px !important; margin-bottom: 10px !important; } .my-3 { margin-top: 15px !important; margin-bottom: 15px !important; }
+.my-1 { margin-top: 5px !important; margin-bottom: 5px !important; } .my-2 { margin-top: 10px !important; margin-bottom: 10px !important; } .my-3 { margin-top: 15px !important; margin-bottom: 15px !important; } .my-4 { margin-top: 20px !important; margin-bottom: 20px !important; } .my-5 { margin-top: 30px !important; margin-bottom: 30px !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.mx-1 { margin-left: 5px !important; margin-right: 5px !important; } .mx-2 { margin-left: 10px !important; margin-right: 10px !important; } .mx-3 { margin-left: 15px !important; margin-right: 15px !important; }
 
-.p-0 { padding: 0 !important; } .p-1 { padding: 5px !important; } .p-2 { padding: 10px !important; } .p-3 { padding: 15px !important; } .p-4 { padding: 20px !important; }
-.py-1 { padding-top: 5px !important; padding-bottom: 5px !important; } .py-2 { padding-top: 10px !important; padding-bottom: 10px !important; } .py-3 { padding-top: 15px !important; padding-bottom: 15px !important; }
-.px-1 { padding-left: 5px !important; padding-right: 5px !important; } .px-2 { padding-left: 10px !important; padding-right: 10px !important; } .px-3 { padding-left: 15px !important; padding-right: 15px !important; }
+.p-0 { padding: 0 !important; } .p-1 { padding: 5px !important; } .p-2 { padding: 10px !important; } .p-3 { padding: 15px !important; } .p-4 { padding: 20px !important; } .p-5 { padding: 30px !important; }
+.py-1 { padding-top: 5px !important; padding-bottom: 5px !important; } .py-2 { padding-top: 10px !important; padding-bottom: 10px !important; } .py-3 { padding-top: 15px !important; padding-bottom: 15px !important; } .py-4 { padding-top: 20px !important; padding-bottom: 20px !important; } .py-5 { padding-top: 30px !important; padding-bottom: 30px !important; }
+.px-1 { padding-left: 5px !important; padding-right: 5px !important; } .px-2 { padding-left: 10px !important; padding-right: 10px !important; } .px-3 { padding-left: 15px !important; padding-right: 15px !important; } .px-4 { padding-left: 20px !important; padding-right: 20px !important; } .px-5 { padding-left: 30px !important; padding-right: 30px !important; }
+
+/* Single-edge padding. These were missing while docs pages already wrote pt-2
+   and pb-3, so the bottom rules on those pages sat flush against their content
+   and the declared spacing did nothing. Added to match the mt/mb scale. */
+.pt-1 { padding-top: 5px !important; } .pt-2 { padding-top: 10px !important; } .pt-3 { padding-top: 15px !important; } .pt-4 { padding-top: 20px !important; } .pt-5 { padding-top: 30px !important; }
+.pb-1 { padding-bottom: 5px !important; } .pb-2 { padding-bottom: 10px !important; } .pb-3 { padding-bottom: 15px !important; } .pb-4 { padding-bottom: 20px !important; } .pb-5 { padding-bottom: 30px !important; }
 
 .t-border-bottom { border-bottom: 1px dashed var(--t-green-dim) !important; }
 .t-border-top { border-top: 1px dashed var(--t-green-dim) !important; }
@@ -132,6 +160,12 @@ body.t-crt::after {
 .t-glow { text-shadow: 0 0 10px var(--t-green), 0 0 20px rgba(var(--t-accent-rgb), 0.4) !important; }
 .t-flicker { animation: t-flicker-anim 0.3s infinite alternate; }
 @keyframes t-flicker-anim { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 0.95; } }
+
+/* Six rules in this file already asked for `fadeIn` (nav menu, tab content,
+   dropdown, tree, pane, lightbox) but the keyframes were never written, so
+   every one of those animations silently did nothing. Defined here with the
+   name the callers use, which fixes all six at once. */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* --- LAYOUTS --- */
 .t-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; }
@@ -277,15 +311,95 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 .t-accordion-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; font-size: 13px; color: var(--t-green-dim); }
 .t-accordion-content.active { padding: 15px; max-height: 500px; border-top: 1px dashed var(--t-green-dim); overflow-y: auto; }
 
+/* --- 11. NATIVE ACCORDION ---
+   The JS accordion above needs .active toggled by script and clips its body at
+   max-height: 500px, which turns long documentation into a scroll box, and
+   hides closed panels from the browser's own find-in-page. <details> solves all
+   three: no script, no height ceiling, and Ctrl+F can still reach closed text
+   because the DOM keeps it. Use this for documentation, keep the JS one for
+   places that genuinely need animated height. */
+details.t-accordion-native { border: 1px solid var(--t-green-dim); margin-bottom: 10px; background: transparent; }
+details.t-accordion-native > summary {
+    padding: 12px 15px; cursor: pointer; color: var(--t-green-dim);
+    font-size: 13px; text-transform: uppercase; list-style: none;
+}
+/* Marker removal needs all three: the standard ::marker, and both vendor
+   pseudo-elements, because Firefox and older WebKit do not honour ::marker
+   on summary. */
+details.t-accordion-native > summary::marker { content: ""; }
+details.t-accordion-native > summary::-webkit-details-marker { display: none; }
+details.t-accordion-native > summary::-moz-list-bullet { list-style-type: none; }
+details.t-accordion-native > summary::before { content: "[+] "; margin-right: 10px; }
+details.t-accordion-native > summary:hover { color: var(--t-green); background: rgba(var(--t-accent-rgb), 0.05); }
+details.t-accordion-native > summary:focus-visible { outline: 2px solid var(--t-green); outline-offset: -2px; }
+details.t-accordion-native[open] > summary {
+    border-bottom: 1px dashed var(--t-green-dim); color: var(--t-green);
+    background: rgba(var(--t-accent-rgb), 0.05);
+}
+details.t-accordion-native[open] > summary::before { content: "[-] "; }
+.t-accordion-body { padding: 15px; color: var(--t-green-dim); font-size: 13px; animation: fadeIn 0.3s ease; }
+/* Printing a page with a collapsed panel would silently drop its contents. */
+@media print {
+    details.t-accordion-native > .t-accordion-body { display: block !important; }
+    details.t-accordion-native:not([open]) > .t-accordion-body { display: block !important; }
+}
+
+/* --- 12. STEPPER ---
+   Pure CSS, no script. The connector between steps is a ::after on every step
+   except the last, so a stepper of any length needs no extra markup. Progress
+   is expressed with aria-current="step", which is what a screen reader
+   announces anyway. */
+.t-stepper { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; counter-reset: t-step; }
+.t-stepper > li { display: flex; align-items: center; gap: 8px; color: var(--t-green-dim); font-size: 12px; text-transform: uppercase; }
+.t-stepper > li::before {
+    counter-increment: t-step; content: "[" counter(t-step) "]";
+    color: var(--t-green-dim); font-weight: 700;
+}
+.t-stepper > li:not(:last-child)::after { content: "----"; color: var(--t-green-dim); opacity: 0.5; }
+.t-stepper > li[aria-current="step"] { color: var(--t-green); }
+.t-stepper > li[aria-current="step"]::before { color: var(--bg-base); background: var(--t-green); padding: 0 4px; }
+.t-stepper > li.done { color: var(--t-green); }
+.t-stepper > li.done::before { content: "[x]"; color: var(--t-green); }
+.t-stepper > li.done:not(:last-child)::after { content: "----"; color: var(--t-green); opacity: 0.8; }
+
+/* --- 13. CHIPS ---
+   Unlike .t-badge, which is a passive label, a chip is a control: it can be
+   selected, and it can be dismissed. Both variants stay CSS-only by leaning on
+   a hidden checkbox or radio that the label wraps. */
+.t-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--t-green-dim); padding: 3px 10px;
+    font-size: 11px; text-transform: uppercase; color: var(--t-green-dim);
+    background: transparent; cursor: pointer; transition: 0.2s;
+    user-select: none;
+}
+.t-chip:hover { color: var(--t-green); border-color: var(--t-green); background: rgba(var(--t-accent-rgb), 0.05); }
+.t-chip:focus-within { outline: 2px solid var(--t-green); outline-offset: 1px; }
+.t-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.t-chip:has(input:checked) { color: var(--bg-base); background: var(--t-green); border-color: var(--t-green); }
+.t-chip:has(input:focus-visible) { outline: 2px solid var(--t-green); outline-offset: 1px; }
+/* Dismiss button. Kept as a real <button> so it is reachable by keyboard; the
+   page decides what removing a chip means. */
+.t-chip-x { border: 0; background: transparent; color: inherit; cursor: pointer; font: inherit; line-height: 1; padding: 0 0 0 2px; opacity: 0.7; }
+.t-chip-x:hover, .t-chip-x:focus-visible { opacity: 1; color: var(--t-red); }
+.t-chip-x::before { content: "x"; }
+.t-chip-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+/* Fallback for engines without :has(): the chip stays readable, just without
+   the filled selected state. Nothing breaks, so this is a graceful floor
+   rather than a polyfill. */
+@supports not selector(:has(*)) {
+    .t-chip input:checked + span { color: var(--t-green); font-weight: 700; }
+}
+
 [data-tooltip] { position: relative; cursor: help; border-bottom: 1px dotted var(--t-green-dim); }
-[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 5px 10px; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 0 10px rgba(var(--t-accent-rgb), 0.2); z-index: 1000; }
+[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 5px 10px; font-size: 11px; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 0 10px rgba(var(--t-accent-rgb), 0.2); z-index: var(--t-z-dropdown); }
 [data-tooltip]:hover::after { opacity: 1; bottom: 130%; }
 
-.t-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px; }
+.t-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; z-index: var(--t-z-modal); padding: 20px; }
 .t-modal.is-open { display: flex; }
 .t-modal-content { background: var(--bg-surface); border: 1px solid var(--t-green); width: 100%; max-width: 500px; padding: 20px; box-shadow: 0 0 15px rgba(var(--t-accent-rgb), 0.1); max-height: 90vh; overflow-y: auto; }
 
-.t-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+.t-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: var(--t-z-toast); display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
 .t-toast { background: var(--bg-surface); border: 1px solid var(--t-green); color: var(--t-green); padding: 12px 20px; box-shadow: 0 0 15px rgba(var(--t-accent-rgb), 0.15); animation: slideIn 0.3s forwards; min-width: 250px; font-size: 13px; pointer-events: auto; }
 .t-toast.danger { border-color: var(--t-red); color: var(--t-red); box-shadow: 0 0 15px rgba(255,0,60,0.15); }
 .t-toast.warning { border-color: var(--t-yellow); color: var(--t-yellow); box-shadow: 0 0 15px rgba(255,204,0,0.15); }
@@ -319,7 +433,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
     background-image: radial-gradient(var(--t-grid-dot) 1px, transparent 1px);
     background-size: 18px 18px;
     background-position: 0 0;
-    z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; 
+    z-index: var(--t-z-splash); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; opacity: 1; 
 }
 .t-splash.hidden { opacity: 0; pointer-events: none; }
 .t-loading-dots::after { content: "."; animation: loadingDots 1.5s infinite steps(4, end); }
@@ -362,7 +476,7 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 
 /* 1. DROPDOWN MENU */
 .t-dropdown { position: relative; display: inline-block; }
-.t-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background-color: var(--bg-surface); min-width: 160px; border: 1px solid var(--t-green); box-shadow: 0 8px 16px rgba(var(--t-accent-rgb), 0.15); z-index: 1000; margin-top: 5px; }
+.t-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; background-color: var(--bg-surface); min-width: 160px; border: 1px solid var(--t-green); box-shadow: 0 8px 16px rgba(var(--t-accent-rgb), 0.15); z-index: var(--t-z-dropdown); margin-top: 5px; }
 .t-dropdown-menu.show { display: block; animation: fadeIn 0.2s ease; }
 .t-dropdown-item { color: var(--t-green-dim); padding: 10px 15px; text-decoration: none; display: block; font-size: 13px; border-bottom: 1px dashed var(--t-green-dim); transition: 0.2s; cursor: pointer; }
 .t-dropdown-item:last-child { border-bottom: none; }
@@ -421,12 +535,12 @@ hr.t-divider { border: 0; border-top: 1px dashed var(--t-green-dim); margin: 20p
 
 /* 8. CUSTOM FILE INPUT */
 .t-file-wrapper { position: relative; overflow: hidden; display: inline-flex; align-items: center; }
-.t-file-wrapper input[type="file"] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; height: 100%; width: 100%; z-index: 2; }
-.t-file-btn { display: inline-block; border: 1px dashed var(--t-green-dim); padding: 8px 15px; color: var(--t-green-dim); font-size: 13px; text-transform: uppercase; transition: 0.2s; z-index: 1; }
+.t-file-wrapper input[type="file"] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; height: 100%; width: 100%; z-index: var(--t-z-raised); }
+.t-file-btn { display: inline-block; border: 1px dashed var(--t-green-dim); padding: 8px 15px; color: var(--t-green-dim); font-size: 13px; text-transform: uppercase; transition: 0.2s; z-index: var(--t-z-base); }
 .t-file-wrapper:hover .t-file-btn { color: var(--t-green); border-color: var(--t-green); background: rgba(var(--t-accent-rgb), 0.05); text-shadow: 0 0 5px var(--t-green); }
 
 /* 9. IMAGE LIGHTBOX (MEDIA VIEWER) */
-.t-lightbox { display: none; position: fixed; z-index: 999999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.t-lightbox { display: none; position: fixed; z-index: var(--t-z-lightbox); left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
 .t-lightbox.active { display: flex; animation: fadeIn 0.3s; }
 .t-lightbox img { max-width: 90%; max-height: 90vh; border: 1px dashed var(--t-green); box-shadow: 0 0 20px rgba(var(--t-accent-rgb), 0.2); }
 .t-lightbox-close { position: absolute; top: 20px; right: 30px; color: var(--t-green); font-size: 24px; font-weight: bold; cursor: pointer; text-shadow: 0 0 10px var(--t-green); transition: 0.2s; }
@@ -623,7 +737,7 @@ html[data-terminal-theme="red"] {
 
 /* --- DOCS PAGE MODULES --- */
 .t-docs-body { display: flex; align-items: flex-start; }
-.t-sidebar { width: 260px; height: 100vh; position: fixed; top: 0; left: 0; background: var(--bg-surface); border-right: 1px dashed var(--t-green-dim); padding: 20px; overflow-y: auto; z-index: 100; }
+.t-sidebar { width: 260px; height: 100vh; position: fixed; top: 0; left: 0; background: var(--bg-surface); border-right: 1px dashed var(--t-green-dim); padding: 20px; overflow-y: auto; z-index: var(--t-z-toolbar); }
 .t-sidebar h3 { font-size: 14px; margin-bottom: 20px; color: var(--t-green); border-bottom: 1px dashed var(--t-green); padding-bottom: 10px; }
 .t-sidebar ul { list-style: none; padding: 0; margin: 0; }
 .t-sidebar li { margin-bottom: 5px; }
@@ -652,7 +766,7 @@ html[data-terminal-theme="red"] {
 }
 
 /* --- COMMAND PALETTE --- */
-.t-command-palette { position: fixed; inset: 0; display: none; align-items: flex-start; justify-content: center; background: rgba(0,0,0,0.72); z-index: 99999; padding: 10vh 20px 20px; backdrop-filter: blur(4px); }
+.t-command-palette { position: fixed; inset: 0; display: none; align-items: flex-start; justify-content: center; background: rgba(0,0,0,0.72); z-index: var(--t-z-palette); padding: 10vh 20px 20px; backdrop-filter: blur(4px); }
 .t-command-palette.is-open { display: flex; }
 .t-command-palette-box { width: min(720px, 100%); background: var(--bg-surface); border: 1px solid var(--t-green); box-shadow: 0 0 25px var(--t-shadow-soft); padding: 15px; }
 .t-command-palette-list { list-style: none; margin: 10px 0 0; padding: 0; max-height: 45vh; overflow: auto; border-top: 1px dashed var(--t-green-dim); }
