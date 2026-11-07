@@ -53,6 +53,7 @@
             <li><a href="#accordion-native">> 34. NATIVE ACCORDION</a></li>
             <li><a href="#stepper">> 35. STEPPER</a></li>
             <li><a href="#chips">> 36. CHIPS</a></li>
+            <li><a href="#navbar-priority">> 37. NAVBAR PRIORITY+</a></li>
         </ul>
     </aside>
 
@@ -959,6 +960,53 @@
 &lt;/span&gt;</code></pre>
             </div>
         </div>
+        <div id="navbar-priority" class="docs-section">
+            <h2 class="t-card-header">> 37. NAVBAR PRIORITY+</h2>
+            <div class="docs-example">
+                <nav class="t-navbar t-nav-priority mb-0">
+                    <div class="t-nav-brand">BUNKER_OS</div>
+                    <div class="t-nav-menu">
+                        <a href="#navbar-priority">[ HOME ]</a>
+                        <a href="#navbar-priority">[ SYSTEM ]</a>
+                        <a href="#navbar-priority">[ NETWORK ]</a>
+                        <a href="#navbar-priority">[ TOR ]</a>
+                        <a href="#navbar-priority">[ ONION ]</a>
+                        <a href="#navbar-priority">[ LOGS ]</a>
+                        <a href="#navbar-priority">[ SETTINGS ]</a>
+                        <a href="#navbar-priority">[ ABOUT ]</a>
+                    </div>
+                </nav>
+                <p class="mt-3">Perkecil jendela dan item paling kanan pindah sendiri ke
+                menu <code>[ +N ]</code>. Lebarkan lagi, semuanya kembali. Susunan
+                asli disimpan JS, jadi tidak ada item yang hilang.</p>
+                <p>Nomor urut dipertahankan: yang dipindah selalu dari kanan, karena
+                itulah yang dianggap paling tidak penting.</p>
+            </div>
+            <div class="docs-code">
+<pre><code>&lt;nav class="t-navbar t-nav-priority"&gt;
+    &lt;div class="t-nav-brand"&gt;BUNKER_OS&lt;/div&gt;
+    &lt;div class="t-nav-menu"&gt;
+        &lt;a href="#"&gt;[ HOME ]&lt;/a&gt;
+        &lt;a href="#"&gt;[ SYSTEM ]&lt;/a&gt;
+        &lt;a href="#"&gt;[ NETWORK ]&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;!-- Tidak perlu HTML tambahan. Terminal.navbarPriority() membuat
+     tombol [ +N ] dan daftarnya sendiri saat init. --&gt;</code></pre>
+            </div>
+            <div class="docs-example">
+                <p><strong>Tanpa JavaScript.</strong> Kalau JS gagal dimuat, kelas
+                <code>.t-nav-priority</code> tetap membuat menu bisa digulir
+                mendatar, jadi seluruh tautan masih terjangkau. Yang hilang hanya
+                kenyamanan, bukan akses.</p>
+                <p><strong>Di layar sempit.</strong> Di bawah 768px Priority+
+                dimatikan karena navbar sudah memakai tombol
+                <code>[ MENU ]</code> dan menu collapse. Dua mekanisme itu tidak
+                pernah aktif bersamaan.</p>
+            </div>
+        </div>
+
     </main>
 
     <div id="contohModal" class="t-modal">

@@ -199,6 +199,33 @@ body.t-crt::after {
     .t-nav-menu.t-nav-collapse.show { display: flex; animation: fadeIn 0.3s ease; }
 }
 
+/* --- NAVBAR PRIORITY+ OVERFLOW ---
+   Opt-in lewat class .t-nav-priority pada .t-navbar. Item yang tidak muat
+   dipindahkan JS (Terminal.navbarPriority) ke menu [ +N ]. Tanpa JS, semua
+   item tetap tampil dan bisa digulir mendatar, jadi tidak ada yang hilang. */
+.t-nav-priority { gap: 15px; }
+/* justify-content HARUS flex-start. Dengan flex-end pada container yang bisa
+   overflow, item meluber ke KIRI, scrollWidth dilaporkan sama dengan clientWidth,
+   dan item pertama jadi tidak terjangkau sama sekali. Rata kanan dicapai lewat
+   margin-left: auto, yang otomatis jadi 0 begitu ruang habis. */
+.t-nav-priority .t-nav-menu { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; margin-left: auto; scrollbar-width: none; }
+.t-nav-priority .t-nav-menu::-webkit-scrollbar { display: none; }
+.t-nav-priority .t-nav-menu a { white-space: nowrap; flex: 0 0 auto; }
+.t-nav-more { position: relative; display: none; flex: 0 0 auto; }
+.t-nav-more.is-visible { display: block; }
+.t-nav-more-btn { background: transparent; border: 1px solid var(--t-green-dim); color: var(--t-green); padding: 4px 8px; cursor: pointer; font-family: inherit; font-size: 12px; transition: 0.2s; white-space: nowrap; }
+.t-nav-more-btn:hover { background: rgba(var(--t-accent-rgb), 0.1); }
+.t-nav-more-list { display: none; position: absolute; right: 0; top: calc(100% + 6px); min-width: 170px; background: var(--bg-surface); border: 1px solid var(--t-green-dim); padding: 6px 0; z-index: var(--t-z-dropdown); flex-direction: column; }
+.t-nav-more.open .t-nav-more-list { display: flex; animation: fadeIn 0.15s ease; }
+.t-nav-more-list a { padding: 7px 12px; color: var(--t-green-dim); text-decoration: none; font-size: 13px; white-space: nowrap; transition: 0.2s; }
+.t-nav-more-list a:hover, .t-nav-more-list a:focus { color: var(--t-green); background: rgba(var(--t-accent-rgb), 0.1); text-shadow: 0 0 5px var(--t-green); }
+
+/* Di layar sempit menu sudah jadi collapse, jadi Priority+ dimatikan. */
+@media (max-width: 768px) {
+    .t-nav-priority .t-nav-menu { overflow-x: visible; }
+    .t-nav-more { display: none !important; }
+}
+
 /* --- CARD MODULE --- */
 .t-card { background-color: var(--bg-surface); border: 1px solid var(--t-green-dim); padding: 20px; margin-bottom: 20px; border-top: 3px solid var(--t-green-dim); position: relative; transition: box-shadow 0.3s ease; }
 .t-card-header { border-bottom: 1px dashed var(--t-green-dim); padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; }

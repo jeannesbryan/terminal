@@ -44,6 +44,7 @@
             Terminal.splash.close();
             Terminal.bindDataAPI();
             Terminal.bindSidebarActive();
+            Terminal.navbarPriority();
             Terminal.theme.load();
         },
 
@@ -337,6 +338,125 @@
         navbarToggle: function (menuId) {
             const menu = byId(menuId);
             if (menu) menu.classList.toggle('show');
+        },
+
+        // Priority+ overflow: pindahkan item navigasi yang tidak muat ke menu [ +N ].
+        // Opt-in lewat class .t-nav-priority pada .t-navbar. Aman tanpa JS: CSS
+        // membiarkan menu bisa digulir mendatar, jadi tidak ada item yang hilang.
+        navbarPriority: function (root = document) {
+            const navs = qsa('.t-navbar.t-nav-priority', root);
+
+            navs.forEach(function (nav) {
+                if (nav.__tNavPriority) return; // sudah dipasang
+                nav.__tNavPriority = true;
+
+                const menu = nav.querySelector('.t-nav-menu');
+                if (!menu) return;
+
+                // Simpan susunan asli supaya bisa dipulihkan saat layar melebar.
+                const original = Array.prototype.slice.call(menu.querySelectorAll(':scope > a'));
+
+                let more = nav.querySelector('.t-nav-more');
+                if (!more) {
+                    more = document.createElement('div');
+                    more.className = 't-nav-more';
+                    more.innerHTML = '<button type="button" class="t-nav-more-btn" aria-expanded="false"></button>' +
+                                     '<div class="t-nav-more-list" role="menu"></div>';
+                    nav.appendChild(more);
+                }
+
+                const btn = more.querySelector('.t-nav-more-btn');
+                const list = more.querySelector('.t-nav-more-list');
+
+                function closeMore() {
+                    more.classList.remove('open');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const open = more.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!more.contains(e.target)) closeMore();
+                });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') closeMore();
+                });
+
+                // scrollWidth bisa berbohong kalau container memakai distribusi
+                // flex yang salah (pernah kejadian: flex-end membuat item meluber
+                // ke kiri sementara scrollWidth == clientWidth). Jadi ukur dua
+                // cara: scrollWidth DAN jumlah lebar item + gap.
+                function meluber() {
+                    if (menu.scrollWidth > menu.clientWidth + 1) return true;
+                    const kids = Array.prototype.slice.call(menu.children);
+                    if (!kids.length) return false;
+                    const gap = parseFloat(getComputedStyle(menu).columnGap) || 0;
+                    const total = kids.reduce(function (sum, el) {
+                        return sum + el.getBoundingClientRect().width;
+                    }, 0) + gap * (kids.length - 1);
+                    return total > menu.clientWidth + 1;
+                }
+
+                function layout() {
+                    // Di layar sempit menu sudah jadi collapse, biarkan CSS yang urus.
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        original.forEach(item => menu.appendChild(item));
+                        list.innerHTML = '';
+                        more.classList.remove('is-visible');
+                        closeMore();
+                        return;
+                    }
+
+                    // Kembalikan semua item ke menu, lalu ukur dari nol.
+                    original.forEach(item => menu.appendChild(item));
+                    list.innerHTML = '';
+                    more.classList.remove('is-visible');
+                    closeMore();
+
+                    // Masih muat semua: tidak perlu tombol.
+                    if (!meluber()) return;
+
+                    more.classList.add('is-visible');
+
+                    let moved = 0;
+                    // Pindahkan dari kanan ke kiri sampai muat.
+                    while (meluber() && menu.children.length > 0) {
+                        const last = menu.lastElementChild;
+                        if (!last) break;
+                        list.insertBefore(last, list.firstChild);
+                        moved++;
+                        if (moved > original.length) break; // pengaman
+                    }
+
+                    if (moved === 0) {
+                        more.classList.remove('is-visible');
+                        return;
+                    }
+
+                    btn.textContent = '[ +' + moved + ' ]';
+                    btn.title = moved + ' item lainnya';
+                }
+
+                const schedule = (function () {
+                    let raf = 0;
+                    return function () {
+                        if (raf) cancelAnimationFrame(raf);
+                        raf = requestAnimationFrame(layout);
+                    };
+                })();
+
+                layout();
+                window.addEventListener('resize', schedule);
+
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(schedule);
+                }
+            });
         },
 
         copy: async function (target, trigger = null) {
