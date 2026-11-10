@@ -976,11 +976,11 @@
                         <a href="#navbar-priority">[ ABOUT ]</a>
                     </div>
                 </nav>
-                <p class="mt-3">Perkecil jendela dan item paling kanan pindah sendiri ke
-                menu <code>[ +N ]</code>. Lebarkan lagi, semuanya kembali. Susunan
-                asli disimpan JS, jadi tidak ada item yang hilang.</p>
-                <p>Nomor urut dipertahankan: yang dipindah selalu dari kanan, karena
-                itulah yang dianggap paling tidak penting.</p>
+                <p class="mt-3">Shrink the window and the right-most items move into the
+                <code>[ +N ]</code> menu on their own. Widen it again and everything
+                comes back. The original order is kept in JS, so no item is lost.</p>
+                <p>Order is preserved: items are always taken from the right, because
+                that is the side considered least important.</p>
             </div>
             <div class="docs-code">
 <pre><code>&lt;nav class="t-navbar t-nav-priority"&gt;
@@ -992,18 +992,18 @@
     &lt;/div&gt;
 &lt;/nav&gt;
 
-&lt;!-- Tidak perlu HTML tambahan. Terminal.navbarPriority() membuat
-     tombol [ +N ] dan daftarnya sendiri saat init. --&gt;</code></pre>
+&lt;!-- No extra HTML needed. Terminal.navbarPriority() builds the
+     [ +N ] button and its list itself on init. --&gt;</code></pre>
             </div>
             <div class="docs-example">
-                <p><strong>Tanpa JavaScript.</strong> Kalau JS gagal dimuat, kelas
-                <code>.t-nav-priority</code> tetap membuat menu bisa digulir
-                mendatar, jadi seluruh tautan masih terjangkau. Yang hilang hanya
-                kenyamanan, bukan akses.</p>
-                <p><strong>Di layar sempit.</strong> Di bawah 768px Priority+
-                dimatikan karena navbar sudah memakai tombol
-                <code>[ MENU ]</code> dan menu collapse. Dua mekanisme itu tidak
-                pernah aktif bersamaan.</p>
+                <p><strong>Without JavaScript.</strong> If the JS fails to load, the
+                <code>.t-nav-priority</code> class still lets the menu scroll
+                horizontally, so every link stays reachable. Only the convenience is
+                lost, not the access.</p>
+                <p><strong>On narrow screens.</strong> Below 768px Priority+ is
+                switched off because the navbar already uses the
+                <code>[ MENU ]</code> button and a collapsing menu. The two
+                mechanisms are never active at the same time.</p>
             </div>
         </div>
 
