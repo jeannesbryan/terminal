@@ -876,3 +876,120 @@ html[data-terminal-theme="red"] {
 .t-bilingual-tab.active .t-lang-alt {
     color: inherit;
 }
+/* =========================================
+   CONTAINER QUERIES
+   =========================================
+
+   Every grid in this file so far answers the viewport, not its own box. That
+   works while a component spans the page. It stops working the moment the same
+   component sits in a narrow column: a three-column metric grid inside a 380px
+   card on a 1400px screen still renders three cramped columns, because the
+   viewport is wide. Container queries let the component answer the only width
+   that matters, which is its own.
+
+   Opt-in, never automatic, for two reasons.
+
+   First, turning every container into a query context is a layout change no
+   page asked for. A context is a containing block boundary; that is cheap but
+   not free, and it is the kind of change that should be a decision, not a
+   side effect of upgrading a stylesheet.
+
+   Second, and this is worth writing down because it is easy to get wrong: a
+   query context built from `container-type` behaves differently from one built
+   from `contain`. Measured in Chrome 157, with a `position: fixed` child inside
+   a wrapper offset 300px from the left edge:
+
+     contain: layout                  -> child at x=301 (trapped in the wrapper)
+     contain: paint                   -> child at x=301 (trapped)
+     container-type: inline-size      -> child at x=0   (still viewport-fixed)
+
+   So `container-type: inline-size` did NOT anchor fixed descendants to the
+   wrapper in that browser, even though `contain: layout` does. Anyone tempted
+   to swap one for the other should measure it rather than assume. Because the
+   behaviour may differ across browsers and future versions, and because
+   .t-modal, .t-lightbox, .t-toast-container, .t-sidebar and .t-command-palette
+   are all `position: fixed`, the context stays opt-in: add it to a wrapper you
+   know the contents of.
+
+   The media queries earlier in the file are left untouched. They stay the
+   fallback for browsers without container query support, and for elements that
+   live outside any .t-cq. That means no page changes behaviour until it opts
+   in, and opting in degrades gracefully.
+*/
+
+/* Opt-in query context. Put this on a wrapper you own. */
+.t-cq { container-type: inline-size; }
+
+/* Named variant, for the rare case where a nested context must be targeted
+   explicitly instead of the nearest one. */
+.t-cq-panel { container-type: inline-size; container-name: t-panel; }
+
+/* Two-column grids: side by side only when the box is actually wide enough. */
+@container (min-width: 520px) {
+    .t-grid-2 { grid-template-columns: 1fr 1fr; }
+    .t-action-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Below that, one column. This is the rule that fixes the narrow-column case. */
+@container (max-width: 519px) {
+    .t-grid-2,
+    .t-action-grid,
+    .t-kv { grid-template-columns: 1fr; }
+    .t-metric-grid { grid-template-columns: 1fr; }
+}
+
+/* Three-column grids step through two on the way up. */
+@container (min-width: 520px) and (max-width: 779px) {
+    .t-grid-3 { grid-template-columns: 1fr 1fr; }
+    .t-metric-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@container (min-width: 780px) {
+    .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .t-metric-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Key-value pairs: stack the key above the value once the box gets tight,
+   because a 120px key column plus a value column stops fitting. */
+@container (min-width: 520px) {
+    .t-kv { grid-template-columns: minmax(120px, 35%) 1fr; }
+}
+
+/* Masonry columns follow the box, not the window. */
+@container (max-width: 479px) {
+    .t-masonry { column-count: 1; }
+}
+
+@container (min-width: 480px) and (max-width: 700px) {
+    .t-masonry { column-count: 2; }
+}
+
+@container (min-width: 701px) {
+    .t-masonry { column-count: 3; }
+}
+
+/* --- NAMED CONTEXT: t-panel ---
+   Same rules for the named variant. Written out rather than shared, because
+   CSS has no way to alias one @container block to two names. */
+@container t-panel (max-width: 519px) {
+    .t-grid-2,
+    .t-action-grid,
+    .t-kv,
+    .t-metric-grid { grid-template-columns: 1fr; }
+}
+
+@container t-panel (min-width: 520px) {
+    .t-grid-2 { grid-template-columns: 1fr 1fr; }
+    .t-action-grid { grid-template-columns: 1fr 1fr; }
+    .t-kv { grid-template-columns: minmax(120px, 35%) 1fr; }
+}
+
+@container t-panel (min-width: 520px) and (max-width: 779px) {
+    .t-grid-3 { grid-template-columns: 1fr 1fr; }
+    .t-metric-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@container t-panel (min-width: 780px) {
+    .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .t-metric-grid { grid-template-columns: repeat(3, 1fr); }
+}
