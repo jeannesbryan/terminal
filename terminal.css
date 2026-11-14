@@ -171,7 +171,13 @@ body.t-crt::after {
 .t-container { width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; }
 .t-container-fluid { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; }
 .t-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-@media (min-width: 768px) { .t-grid-2 { grid-template-columns: 1fr 1fr; } .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
+/* 769, bukan 768. Batas mode di berkas ini adalah "mobile sampai 768,
+   desktop mulai 769", dan blok max-width: 768 untuk .t-metric-grid, .t-navbar,
+   .d-none-mobile dan lainnya mengikuti konvensi itu. Dengan min-width: 768,
+   lebar 768 membuat halaman setengah mobile setengah desktop: navbar mengecil
+   dan metric-grid jadi satu kolom, tetapi .t-grid-2 tetap dua kolom dan
+   .t-grid-3 tetap tiga kolom. Terukur di Chrome pada iframe 768px. */
+@media (min-width: 769px) { .t-grid-2 { grid-template-columns: 1fr 1fr; } .t-grid-3 { grid-template-columns: 1fr 1fr 1fr; } }
 .t-grid-layout { display: flex; flex-wrap: wrap; gap: 20px; }
 .t-main-panel { flex: 3; min-width: 300px; }
 .t-side-panel { flex: 1; min-width: 250px; }
